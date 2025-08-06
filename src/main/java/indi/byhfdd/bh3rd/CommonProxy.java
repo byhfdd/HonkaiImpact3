@@ -1,0 +1,29 @@
+package indi.byhfdd.bh3rd;
+
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import indi.byhfdd.bh3rd.craft.*;
+import indi.byhfdd.bh3rd.loader.*;
+
+public class CommonProxy {
+    public void preInit(FMLPreInitializationEvent event){
+        new CreativeTabsLoader();
+        ItemLoader.init();
+        WeaponLoader.init();
+        new BlockLoader();
+    }
+    public void init(FMLInitializationEvent event){
+        OreLoader.init();
+        BlockLoader.init();
+        ManaCraftTableRecipes.setRecipes();
+        MetalCraftTableRecipes.steRecipes();
+        AddRecipe.init();
+        CastingRecipes.init();
+        BossStoreAdd.main();
+        ManaGravityWellDataAdd.init();
+        DarkMagicCoreAdd.init();
+    }
+    public void postInit(FMLPostInitializationEvent event){
+    }
+}

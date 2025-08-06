@@ -1,0 +1,41 @@
+/*
+ * 在此添加你的依赖项。支持以下配置：
+ *  - api("group:name:version:classifier")：如果你在 mod 的公共 API 中使用了该依赖的类型
+ *       对于依赖此 mod 的其他 mod，在运行时和编译时均可见
+ *  - implementation("g:n:v:c")：如果你仅在 mod 的内部实现中使用该依赖，且其内容不会暴露在公共 API 中
+ *       对于依赖此 mod 的其他 mod，仅在运行时可见，编译时不可见
+ *  - compileOnly("g:n:v:c")：如果你构建的 mod 在运行时不需要该依赖，例如用于可选 mod
+ *       对于依赖此 mod 的其他 mod 完全不可见，仅在本 mod 编译时可见
+ *  - compileOnlyApi("g:n:v:c")：类似 compileOnly，但依赖此 mod 的其他 mod 在编译时也可见
+ *       对于依赖此 mod 的其他 mod，仅在编译时可见，运行时不可见
+ *  - runtimeOnlyNonPublishable("g:n:v:c")：如果你想在 runClient/runServer 运行时包含某个 mod，但不希望将其作为依赖发布
+ *       对于依赖此 mod 的其他 mod 完全不可见，仅在本 mod 运行时可见
+ *  - devOnlyNonPublishable("g:n:v:c")：同时具有 runtimeOnlyNonPublishable 和 compileOnly 的特性，依赖在编译和运行时都存在，
+ *       但不会作为 Maven 依赖发布 —— 适用于 RFG 反混淆依赖或本地测试
+ *  - runtimeOnly("g:n:v:c")：如果你编译时不需要它，但希望在运行时存在
+ *       对于依赖此 mod 的其他 mod，在运行时可见
+ *  - annotationProcessor("g:n:v:c")：主要用于 Java 编译器插件，如果你确定需要它，就用它；否则无需担心
+ *  - testCONFIG("g:n:v:c") - 将 CONFIG 替换为上述任意一种（api 除外），与上述含义相同，但作用于测试源代码
+ *
+ *  - shadowImplementation("g:n:v:c")：效果类似于 API，但该依赖会被重命名打包进你的 jar 文件中
+ *       需要你在 gradle.properties 中启用 usesShadowedDependencies
+ *
+ *  - compile("g:n:v:c")：已弃用，请替换为 "api"（行为类似旧的 "compile"）或 "implementation"（更高效）
+ *
+ * 如有需要，你可以通过添加 { transitive = false } 来排除传递依赖（即所选依赖的依赖），
+ * 但请谨慎使用，否则可能导致你的 mod 在被其他 mod 依赖时出现问题。
+ *
+ * 如果你需要依赖已混淆的 jar，可以使用 `devOnlyNonPublishable(rfg.deobf("dep:spec:1.2.3"))` 从 Maven 获取反混淆 jar，
+ * 或使用 `devOnlyNonPublishable(rfg.deobf(project.files("libs/my-mod-jar.jar")))` 使用本地文件。
+ *
+ * Gradle 中某些配置的名称可能具有误导性：compileOnlyApi 和 runtimeOnly 都会被发布为 Maven 依赖，但 compileOnly 不会。
+ * 该构建脚本额外添加了 runtimeOnlyNonPublishable，用于支持不发布的运行时依赖。
+ *
+ * 更多详情请参见：https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
+ */
+dependencies {
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.4-GTNH:dev")
+    compileOnly("org.jetbrains:annotations:24.1.0")
+    devOnlyNonPublishable(project.files("libs/manametalmod.jar"))
+    devOnlyNonPublishable(project.files("libs/Muya.jar"))
+}

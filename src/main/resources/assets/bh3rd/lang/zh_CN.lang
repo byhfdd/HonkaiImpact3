@@ -1,0 +1,209 @@
+#创造物品栏
+itemGroup.Bh3rd=崩坏3
+
+#物品
+item.EtherPhlogiston.name=以太燃素
+item.EinsteinRingMagnet.name=爱因斯坦环磁机
+item.SuperconductingMetallicHydrogen.name=超导金属氢
+item.FluidAlloyBlock.name=流体合金块
+item.PrecisionCard01.name=精准补给卡01
+item.PrecisionCard02.name=精准补给卡02
+item.PrecisionCard03.name=精准补给卡03
+item.PrecisionCard04.name=精准补给卡04
+item.PrecisionCard05.name=精准补给卡05
+item.PrecisionCard06.name=精准补给卡06
+item.PrecisionCard07.name=精准补给卡07
+item.DiscCard.name=崩坏唱片包
+item.crystal1.name=水晶
+item.crystal5.name=5水晶
+item.crystal35.name=35水晶
+item.StaminaPotion.name=体力药水
+item.SodaPop.name=汽水
+item.Watermelon.name=西瓜
+item.SoulShards.name=灵魂碎片
+item.SoulGeminiShards.name=双子灵魂碎片
+item.SoulCrystallization.name=灵魂结晶
+item.SoulGeminiCrystallization.name=双子灵魂结晶
+item.GoldBox.name=金币礼盒
+item.BaseChip.name=基础学习芯片
+item.AdvancedChips.name=进阶学习芯片
+item.SeniorChips.name=高级学习芯片
+item.PremiumChips.name=特级学习芯片
+
+
+
+item.IllusoryRubine.name=§c空幻的红晶
+item.IllusoryAmethyst.name=§5空幻的紫晶
+item.IllusoryAshcrystal.name=§7空幻的灰晶
+item.IllusoryCyanite.name=§b空幻的青晶
+item.DarkRubine.name=§c幽晦的红晶
+item.DarkAmethyst.name=§5幽晦的紫晶
+item.DarkAshcrystal.name=§7幽晦的灰晶
+item.DarkCyanite.name=§b幽晦的青晶
+item.ProfoundRubine.name=§c深邃的红晶
+item.ProfoundAmethyst.name=§5深邃的紫晶
+item.ProfoundAshcrystal.name=§7深邃的灰晶
+item.ProfoundCyanite.name=§b深邃的青晶
+item.DistilledRubine.name=§c凝萃的红晶
+item.DistilledAmethyst.name=§5凝萃的紫晶
+item.DistilledAshcrystal.name=§7凝萃的灰晶
+item.DistilledCyanite.name=§b凝萃的青晶
+item.StigmataResonance.name=圣痕共鸣
+item.ShapedSpaceLens.name=聚能·空间透镜
+
+
+#方块
+tile.EtherPhlogistonore01.name=以太燃素矿石
+tile.EtherPhlogistonore02.name=以太燃素矿石
+tile.EtherPhlogistonore03.name=以太燃素矿石
+
+#圣痕
+#G4
+item.ImmaculateFairy0.name=§7G4无瑕妖精套装
+item.BaroqueDramaSaint0.name=§5G4巴洛克剧圣套装
+item.SingSoftly0.name=§bG4浅斟低唱套装
+item.TinyMoments0.name=§cG4细碎时光套装
+#G3
+item.QuantumWaltz0.name=§7G3量子圆舞曲套装
+item.SwordHeart0.name=§5G3忍舞剑心套装
+item.LawIce0.name=§bG3冰之律者套装
+item.PrincessLilliput0.name=§cG3小人国公主套装
+#G2
+item.Renaissance0.name=§7G2文艺复兴套装
+item.Artist0.name=§5G2绘画者套装
+item.ArcticExplorer0.name=§bG2北极探险家套装
+item.SunProphet0.name=§cG2烈阳先知套装
+#G1
+item.RussianCzar0.name=§7G1俄国沙皇套装
+item.KnifeLegend0.name=§5G1刀工传说套装
+item.LceShadowButterfly0.name=§bG1冰影之蝶套装
+item.AncientWill0.name=§cG1远古意志套装
+
+#武器
+item.XSZJ.name=撷生之径：你我如一
+item.XSZY.name=撷生之谣
+item.SYZ.name=裁星刃 双鱼座
+item.BAX.name=星刃 白矮星
+item.XYZMY.name=血渊之眸·如一
+item.XYZM.name=血渊之眸
+item.BAZFL.name=彼岸之扉·连理
+item.BAZF.name=彼岸之扉
+item.TSZS.name=天霜之斯卡蒂
+item.HSZS.name=恒霜之斯卡蒂
+item.MFXX.name=冥府携香
+item.AXYW.name=安息鸢尾
+
+item.ZXX.name=星枪 主序星
+item.RMZ.name=贯星枪 人马座
+item.YJZHLE.name=永寂之赫勒尔
+item.ZJZHLE.name=湛寂之赫勒尔
+item.HYBH.name=黑渊白花
+item.HYBHC.name=黑渊白花·创灭螺旋
+item.ZYDHG.name=子夜的黑光
+item.ZYDATJN.name=子夜的阿塔吉娜
+
+item.WSDFH.name=往世的飞花
+item.WSDFHA.name=往世的飞花·爱之诗
+item.ZWZY.name=真我之钥
+item.ZWZJ.name=真我之境·无瑕回归
+
+item.JM.name=劫灭
+item.JMWJ.name=劫灭无烬
+item.SYJ.name=神陨剑·史尔特尔
+item.NYJ.name=涅炎剑·史尔特尔
+
+item.FLD.name=仿灵刀·冰昙天
+item.YLD.name=御灵刀 寒狱冰天
+item.TJZY.name=天殛之钥
+item.TJZJ.name=天殛之境：裁决
+item.CRY.name=妖刀·赤染樱
+item.HYD.name=魂妖刀 血樱寂灭
+item.CBZ.name=磁暴·斩
+item.ZCB.name=重磁暴·斩
+item.DZQL.name=涤罪七雷·鸣
+item.DZQLM.name=涤罪七雷·鸣雷见
+item.CNZY.name=澄凝之钥
+item.CNZJ.name=澄凝之境：自性纯一
+
+item.YYQWX.name=夜宴蔷薇·虚之冕
+item.YYQW.name=夜宴蔷薇
+
+item.FNMZC.name=凡念梦兆 · 诸相自为
+item.FNMZ.name=凡念梦兆
+
+#提示
+tips.XSZJ=生命即是彷徨 死亡亦非终场
+tips.XSZY=如雏鸟初见朝阳 如秋风撷去芬芳
+tips.SYZ=如雏鸟初见朝阳 如秋风撷去芬芳
+tips.BAX=正如美神阿弗洛狄忒一般多才多艺
+tips.XYZMY=祈愿这无尽梦魇的终结
+tips.XYZM=于漆黑之夜张开渴血的喙刃
+tips.BAZFL=她们终将于那门后的世界绽放
+tips.BAZF=无尽的回音交织成无声之潮
+tips.TSZS=天霜降临之夜万物凝为冰结
+tips.HSZS=苏醒吧冰霜的主人
+tips.MFXX=为我们指明生者的方向
+tips.AXYW=它仿佛是用「优雅」与「神秘」铸就而成的
+tips.ZXX=贯穿前方的一切阻碍
+tips.RMZ=恰如那闪耀于夜空中的人马之弓矢
+tips.YJZHLE=使用在大海深处中发现的异色魂钢块铸造而成
+tips.ZJZHLE=宛如深海传来的不眠悲鸣在耳边回响
+tips.HYBH=以前文明纪元第六律者·死之律者的核心制成的神之键
+tips.HYBHC=执掌凋零与死亡 执掌凋零与死亡
+tips.ZYDHG=人生即为二律背反的矛盾螺旋
+tips.ZYDATJN=用自己的意志去继续他们的拓荒之旅
+tips.WSDFH=逐火英桀第二位 爱莉希雅的武器
+tips.WSDFHA=静似飞花、动若燕雀 就和它美丽的主人一样
+tips.ZWZY=少女是如此深爱着这个世界——全心全意 毫无保留
+tips.ZWZJ=少女是如此深爱着这个世界——跨越终局 开辟未来
+tips.JM=宛如破坏神的化身降世
+tips.JMWJ=这即是——跨越终焉之剑。
+tips.SYJ=鸣动的声音犹如挽歌:斩却神庭
+tips.NYJ=这是诸神的黄昏 是神史的落幕
+tips.FLD=使用“魂钢”制作的仿制太刀
+tips.YLD=身缠风雪 透薄如冰的魂钢太刀
+tips.TJZY=雷电涤荡世间的罪孽
+tips.TJZJ=向命运降下叛逆的裁决
+tips.CRY=被污染为了妖刀
+tips.HYD=红月升起 血樱凋落
+tips.CBZ=ME社总部开发的武士刀
+tips.ZCB=“磁暴·斩”超限改造后的姿态
+tips.DZQL=以前文明纪元第三律者·雷之律者的核心制成的神之键
+tips.DZQLM=往事不堪回首
+tips.CNZY=所思之事 所念之物 所想之人
+tips.CNZJ=无迹可寻 亦无所不在
+tips.YYQWX=她为自己加冕 向追随者许以无休止的享乐狂宴
+tips.YYQW=尊贵之人的崇高与虚伪 权威之人的持重与迂腐 睿智之人的深谋与执迷
+tips.FNMZC=我相信人类的美丽 恰恰源自他们的谬误
+tips.FNMZ=理念交织而成的梦境 也会生出状如永恒的棘刺
+tips.Stamina_Potion=获得两分钟急迫、矿工汤、咖啡
+
+
+#唱片
+item.BCY.name=八重樱唱片
+item.Befall.name=Befall唱片
+item.BHSJDGJ.name=崩坏世界的歌姬唱片
+item.Cyberangel.name=Cyberangel唱片
+item.DaCapo.name=Da Capo唱片
+item.DualEgo.name=Dual-Ego唱片
+item.GirlInside.name=Girl Inside唱片
+item.GZJSZ.name=光之救世主唱片(已删除)
+item.IRAS17514.name=IRAS 17514唱片
+item.MoonHalo.name=Moon Halo唱片
+item.Nightglow.name=Nightglow唱片
+item.Oaths.name=Oaths唱片
+item.QNZY.name=千年之羽唱片
+item.QSZZ.name=起始之终唱片(已删除)
+item.QYX.name=漆夜雪唱片
+item.Reburn.name=Reburn唱片
+item.Regression.name=Regression唱片
+item.ReOracle.name=ReOracle唱片
+item.Rubia.name=Rubia唱片
+item.Starfall.name=Starfall唱片
+item.TruE.name=TruE唱片
+item.WLLK.name=未来轮廓唱片(已删除)
+item.WLZJ.name=未来再见唱片
+item.XYNXSZR.name=星与你消失之日唱片
+item.LZ.name=Φ²唱片
+item.NoCeiling.name=No Ceiling唱片
+item.ZCFZQ.name=在出发之前唱片
