@@ -1,21 +1,30 @@
 package indi.byhfdd.bh3rd.loader;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.obj.WavefrontObject;
+
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderer  implements IItemRenderer {
+public class ItemRenderer implements IItemRenderer {
+
     public final String name;
     public final Minecraft mc = Minecraft.getMinecraft();
     public WavefrontObject modelobj;
     public ResourceLocation tex;
+    private static final Map<String, WavefrontObject> modelCache = new HashMap<>();
+    private static final Map<String, ResourceLocation> texCache = new HashMap<>();
+
     public ItemRenderer(String name) {
         this.name = name;
     }
+
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
         return type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON;
     }
@@ -25,19 +34,26 @@ public class ItemRenderer  implements IItemRenderer {
     }
 
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-        // 只在手持时渲染自定义模型
         if (type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
 
             if (this.modelobj == null) {
                 try {
-                    this.modelobj = (WavefrontObject) AdvancedModelLoader.loadModel(
-                        new ResourceLocation("bh3rd:model/" + this.name + ".obj")
-                    );
-                    this.tex = new ResourceLocation("bh3rd:textures/weapon/" + this.name + ".png");
+                    if (!modelCache.containsKey(name)) {
+                        modelCache.put(
+                            name,
+                            (WavefrontObject) AdvancedModelLoader
+                                .loadModel(new ResourceLocation("bh3rd:model/" + name + ".obj")));
+                    }
+                    if (!texCache.containsKey(name)) {
+                        texCache.put(name, new ResourceLocation("bh3rd:textures/weapon/" + name + ".png"));
+                    }
+
+                    this.modelobj = modelCache.get(name);
+                    this.tex = texCache.get(name);
                 } catch (Exception e) {
-                    System.err.println("Failed to load model or texture for: " + this.name);
+                    System.err.println("Failed to load model or texture for: " + name);
                     e.printStackTrace();
-                    return; // 加载失败则不渲染
+                    return;
                 }
             }
 
@@ -53,7 +69,7 @@ public class ItemRenderer  implements IItemRenderer {
                 GL11.glScalef(size, size, size);
                 GL11.glRotatef(40.0F, 0.0F, 0.0F, 1.0F);
                 GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-            } else if (type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
+            } else {
                 GL11.glTranslatef(0.9F, 0.2F, -0.0F);
                 GL11.glScalef(size, size, size);
                 GL11.glRotatef(30.0F, 0.0F, 0.0F, 1.0F);
@@ -65,8 +81,8 @@ public class ItemRenderer  implements IItemRenderer {
 
             GL11.glPopMatrix();
 
-            GL11.glEnable(2896); // 启用光照
-            GL11.glEnable(2884); // 启用背面剔除
+            GL11.glEnable(2896);
+            GL11.glEnable(2884);
         }
 
     }

@@ -3,6 +3,7 @@ package indi.byhfdd.bh3rd.loader;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class RendererLoader {
+
     public static final void init() {
         MinecraftForgeClient.registerItemRenderer(WeaponLoader.XSZJ, new ItemRenderer("XSZJ"));
         MinecraftForgeClient.registerItemRenderer(WeaponLoader.XSZY, new ItemRenderer("XSZY"));

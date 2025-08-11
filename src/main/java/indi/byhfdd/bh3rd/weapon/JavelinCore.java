@@ -1,20 +1,23 @@
 package indi.byhfdd.bh3rd.weapon;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import java.util.List;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.items.ItemToolJavelinLapuda;
 import project.studio.manametalmod.utils.ToolCore;
 
-import java.util.List;
-
 public class JavelinCore extends ItemToolJavelinLapuda {
+
     public final String name;
+
     public JavelinCore(String name, int attack, ToolMaterial ToolMaterial, int needLV) {
         super(ToolMaterial, name, attack);
         this.name = name;
@@ -22,12 +25,18 @@ public class JavelinCore extends ItemToolJavelinLapuda {
         this.needLV = needLV;
         this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
         this.setUnlocalizedName(name);
+        this.setTextureName("bh3rd:" + name);
         ToolCore.listAllJavelin.remove(this);
 
     }
+
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack item, EntityPlayer Player, List List, boolean par4) {
-        List.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("tips."+name));
+        List.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("tips." + name));
         super.addInformation(item, Player, List, par4);
+    }
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister register) {
+        this.itemIcon = register.registerIcon(this.getIconString());
     }
 }

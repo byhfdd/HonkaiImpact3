@@ -1,21 +1,24 @@
 package indi.byhfdd.bh3rd.item;
 
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
-import indi.byhfdd.bh3rd.loader.ItemLoader;
-import net.minecraft.item.ItemStack;
-import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
+
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import indi.byhfdd.bh3rd.loader.ItemLoader;
+import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
+
 public class DiscCard extends ItemBasicBagWeight {
+
     public DiscCard() {
         super(1, "DiscCard");
-        this.setTextureName("bh3rd:DiscCard");//材质路径
-        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);//物品栏
+        this.setTextureName("bh3rd:DiscCard");// 材质路径
+        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 物品栏
     }
-    public List getBagItem() {
-        List list = new ArrayList();
+
+    public List<ItemStack> getBagItem() {
+        List<ItemStack> list = new ArrayList<>();
         list.add(new ItemStack(ItemLoader.BCY));
         list.add(new ItemStack(ItemLoader.Befall));
         list.add(new ItemStack(ItemLoader.BHSJDGJ));
@@ -42,8 +45,9 @@ public class DiscCard extends ItemBasicBagWeight {
         list.add(new ItemStack(ItemLoader.NoCeiling));
         return list;
     }
-    public List<Integer> getItemProbability(){
-        List<Integer> list = new ArrayList();
+
+    public List<Integer> getItemProbability() {
+        List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(1);
         list.add(1);

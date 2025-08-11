@@ -1,70 +1,61 @@
-下载RetroFuturaGradle缓慢可手动下载后放入
-https://github.com/GTNewHorizons/RetroFuturaGradle/releases 
-# 使用 RetroFuturaGradle 的示例模组
+# 崩坏3rd (Honkai Impact 3) 更新日志
 
-请参考 [build.gradle.kts](build.gradle.kts) 和 [settings.gradle.kts](settings.gradle.kts) 中的构建脚本。  
-如有疑问，请查阅 RFG 类的 Javadoc（在 IntelliJ 中编辑 Gradle 脚本时可直接导航查看）以及 Gradle 官方用户指南。
+## 2.3.5
+- 优化武器渲染。
 
----
+## 2.3.4
+- 修复渲染问题。
 
-## 设置开发工作区（可选，首次构建或运行时会自动完成）
+## 2.3.2
+- 添加超限配方。
 
-```bash
-Linux:   ./gradlew setupDecompWorkspace
-Windows: ./gradlew.bat setupDecompWorkspace
-```
+## 2.3.1
+- 添加崩坏唱片包纹理。
+- 修正圣痕数值。
 
-> ⚠ 首次设置工作区后，请务必**刷新 IDE 的 Gradle 模型**，否则可能找不到 Minecraft 和 Forge 的类。
+## 2.3
+- 添加武器——夜宴蔷薇、凡念梦兆及其超限。
+- 添加物品——崩坏唱片包、体力药水、灵魂碎片、金币礼盒、学习芯片等。
+- 添加唱片——在出发之前、No Ceiling。
+- 更新部分纹理。
+- 修改抽卡内容。
+- 缩小音频比特以减少内存。
+- 删除未来轮廓、起始之终、光之救世主、唱片音频。
 
----
+## 2.2.1
+- 修改矿物生成的权重来解决影响天界其他矿物的问题。
+- 将以太燃素矿石生成添加进远古世界。
 
-## 编译
+## 2.2
+- 添加G1-G3圣痕。
+- 修改部分圣痕属性。
+- 为空幻材料添加黑暗复制，能量为2048约两个黑暗碎片（不合理可以留言）。
+- 修正武器使用等级。
+- 修复Φ²唱片声音。
 
-```bash
-Linux:   ./gradlew build
-Windows: ./gradlew.bat build
-```
+## 2.1.2
+- 修复进入天界崩溃问题。
 
----
+## 2.1.1
+- 修复模型材质丢失。
 
-## 运行客户端
+## 2.1
+- 修复进入服务器崩溃问题。
 
-```bash
-Linux:   ./gradlew runClient
-Windows: ./gradlew.bat runClient
-```
+## 2.0
+- 删除原有的31把拔刀剑变更为40把武器。
+- 添加12张唱片并更改材质。
+- 添加4个圣痕饰品。
+- 添加7张补给卡。
+- 添加以太燃素矿石。
+- 合成材料变更。
 
-可选参数：
-```bash
-./gradlew runClient [--debug-jvm] [--args "minecraft 启动参数"] [--username 玩家名] [--uuid 覆盖的 UUID]
-```
+## 1.1.2
+- 修正了超限素材的合成bug。
 
----
+## 1.1.1
+- 拔刀剑刀身模型缩小19%。
+- 唱片材质进行修改。
 
-## 运行服务器
-
-```bash
-Linux:   ./gradlew runServer
-Windows: ./gradlew.bat runServer
-```
-
-可选参数：
-```bash
-./gradlew runServer [--debug-jvm] [--args nogui]
-```
-
----
-
-## 发布到 Maven
-
-本地发布：
-```bash
-Linux:   ./gradlew publishToMavenLocal
-Windows: ./gradlew.bat publishToMavenLocal
-```
-
-远程发布：
-```bash
-Linux:   ./gradlew publish
-Windows: ./gradlew.bat publish
-```
+## 1.1
+- 添加了20个SE。
