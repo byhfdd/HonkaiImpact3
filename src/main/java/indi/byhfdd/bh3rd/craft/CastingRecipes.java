@@ -1,9 +1,9 @@
 package indi.byhfdd.bh3rd.craft;
 
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import indi.byhfdd.bh3rd.loader.WeaponLoader;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.items.craftingRecipes.CastingData;
 
 public class CastingRecipes {// 锻造
@@ -14,53 +14,40 @@ public class CastingRecipes {// 锻造
 
     @SuppressWarnings("unchecked")
     public static void init() {
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.XSZJ), ET, SN, FK, new ItemStack(WeaponLoader.XSZY) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.SYZ), ET, SN, FK, new ItemStack(WeaponLoader.BAX) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.XYZMY), ET, SN, FK, new ItemStack(WeaponLoader.XYZM) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.BAZFL), ET, SN, FK, new ItemStack(WeaponLoader.BAZF) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.TSZS), ET, SN, FK, new ItemStack(WeaponLoader.HSZS) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.MFXX), ET, SN, FK, new ItemStack(WeaponLoader.AXYW) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.RMZ), ET, SN, FK, new ItemStack(WeaponLoader.ZXX) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.ZJZHLE), ET, SN, FK,
-                new ItemStack(WeaponLoader.YJZHLE) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.HYBHC), ET, SN, FK, new ItemStack(WeaponLoader.HYBH) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.ZYDATJN), ET, SN, FK,
-                new ItemStack(WeaponLoader.ZYDHG) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.WSDFHA), ET, SN, FK, new ItemStack(WeaponLoader.WSDFH) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.ZWZJ), ET, SN, FK, new ItemStack(WeaponLoader.ZWZY) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.JMWJ), ET, SN, FK, new ItemStack(WeaponLoader.JM) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.NYJ), ET, SN, FK, new ItemStack(WeaponLoader.SYJ) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.YLD), ET, SN, FK, new ItemStack(WeaponLoader.FLD) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.TJZJ), ET, SN, FK, new ItemStack(WeaponLoader.TJZY) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.HYD), ET, SN, FK, new ItemStack(WeaponLoader.CRY) });
-        CastingData.getRecipes
-            .add(new Object[] { 100000, new ItemStack(WeaponLoader.ZCB), ET, SN, FK, new ItemStack(WeaponLoader.CBZ) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.DZQLM), ET, SN, FK, new ItemStack(WeaponLoader.DZQL) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.CNZJ), ET, SN, FK, new ItemStack(WeaponLoader.CNZY) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.YYQWX), ET, SN, FK, new ItemStack(WeaponLoader.YYQW) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.FNMZC), ET, SN, FK, new ItemStack(WeaponLoader.FNMZ) });
-        CastingData.getRecipes.add(
-            new Object[] { 100000, new ItemStack(WeaponLoader.FNMZC), ET, SN, FK, new ItemStack(WeaponLoader.FNMZ) });
+        Object[][] PAIRS = {
+            {WeaponLoader.LSJB, WeaponLoader.JRTG},
+            {WeaponLoader.CGWQX, WeaponLoader.CGWQ},
+            {WeaponLoader.XSZJ, WeaponLoader.XSZY},
+            {WeaponLoader.SYZ, WeaponLoader.BAX},
+            {WeaponLoader.XYZMY, WeaponLoader.XYZM},
+            {WeaponLoader.BAZFL, WeaponLoader.BAZF},
+            {WeaponLoader.TSZS, WeaponLoader.HSZS},
+            {WeaponLoader.MFXX, WeaponLoader.AXYW},
+            {WeaponLoader.RMZ, WeaponLoader.ZXX},
+            {WeaponLoader.ZJZHLE, WeaponLoader.YJZHLE},
+            {WeaponLoader.HYBHC, WeaponLoader.HYBH},
+            {WeaponLoader.ZYDATJN, WeaponLoader.ZYDHG},
+            {WeaponLoader.WSDFHA, WeaponLoader.WSDFH},
+            {WeaponLoader.ZWZJ, WeaponLoader.ZWZY},
+            {WeaponLoader.JMWJ, WeaponLoader.JM},
+            {WeaponLoader.NYJ, WeaponLoader.SYJ},
+            {WeaponLoader.YLD, WeaponLoader.FLD},
+            {WeaponLoader.TJZJ, WeaponLoader.TJZY},
+            {WeaponLoader.HYD, WeaponLoader.CRY},
+            {WeaponLoader.ZCB, WeaponLoader.CBZ},
+            {WeaponLoader.DZQLM, WeaponLoader.DZQL},
+            {WeaponLoader.CNZJ, WeaponLoader.CNZY},
+            {WeaponLoader.YYQWX, WeaponLoader.YYQW},
+            {WeaponLoader.FNMZC, WeaponLoader.FNMZ}
+        };
+
+        for (Object[] pair : PAIRS) {
+            CastingData.getRecipes.add(new Object[]{
+                100000,
+                new ItemStack((Item) pair[0]),
+                ET, SN, FK,
+                new ItemStack((Item) pair[1])
+            });
+        }
     }
 }

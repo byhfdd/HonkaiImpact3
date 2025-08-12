@@ -1,11 +1,12 @@
 package indi.byhfdd.bh3rd.loader;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.weapon.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.utils.ToolCore;
+
+import java.lang.reflect.Field;
 
 public class WeaponLoader {
 
@@ -61,58 +62,17 @@ public class WeaponLoader {
     public static final JavelinCore FNMZ = new JavelinCore("FNMZ", 301, BH, 80);
     public static final JavelinCore CGWQX = new JavelinCore("CGWQX", 416, BH, 100);
     public static final JavelinCore CGWQ = new JavelinCore("CGWQ", 284, BH, 80);
-
     public static void init() {
-
-        GameRegistry.registerItem(XSZJ, "XSZJ");
-        GameRegistry.registerItem(XSZY, "XSZY");
-        GameRegistry.registerItem(SYZ, "SYZ");
-        GameRegistry.registerItem(BAX, "BAX");
-        GameRegistry.registerItem(XYZMY, "XYZMY");
-        GameRegistry.registerItem(XYZM, "XYZM");
-        GameRegistry.registerItem(BAZFL, "BAZFL");
-        GameRegistry.registerItem(BAZF, "BAZF");
-        GameRegistry.registerItem(TSZS, "TSZS");
-        GameRegistry.registerItem(HSZS, "HSZS");
-        GameRegistry.registerItem(MFXX, "MFXX");
-        GameRegistry.registerItem(AXYW, "AXYW");
-        GameRegistry.registerItem(RMZ, "RMZ");
-        GameRegistry.registerItem(ZXX, "ZXX");
-        GameRegistry.registerItem(ZJZHLE, "ZJZHLE");
-        GameRegistry.registerItem(YJZHLE, "YJZHLE");
-        GameRegistry.registerItem(HYBHC, "HYBHC");
-        GameRegistry.registerItem(HYBH, "HYBH");
-        GameRegistry.registerItem(ZYDATJN, "ZYDATJN");
-        GameRegistry.registerItem(ZYDHG, "ZYDHG");
-        GameRegistry.registerItem(WSDFHA, "WSDFHA");
-        GameRegistry.registerItem(WSDFH, "WSDFH");
-        GameRegistry.registerItem(ZWZJ, "ZWZJ");
-        GameRegistry.registerItem(ZWZY, "ZWZY");
-        GameRegistry.registerItem(JMWJ, "JMWJ");
-        GameRegistry.registerItem(JM, "JM");
-        GameRegistry.registerItem(NYJ, "NYJ");
-        GameRegistry.registerItem(SYJ, "SYJ");
-        GameRegistry.registerItem(YLD, "YLD");
-        GameRegistry.registerItem(FLD, "FLD");
-        GameRegistry.registerItem(TJZJ, "TJZJ");
-        GameRegistry.registerItem(TJZY, "TJZY");
-        GameRegistry.registerItem(HYD, "HYD");
-        GameRegistry.registerItem(CRY, "CRY");
-        GameRegistry.registerItem(ZCB, "ZCB");
-        GameRegistry.registerItem(CBZ, "CBZ");
-        GameRegistry.registerItem(DZQLM, "DZQLM");
-        GameRegistry.registerItem(DZQL, "DZQL");
-        GameRegistry.registerItem(CNZJ, "CNZJ");
-        GameRegistry.registerItem(CNZY, "CNZY");
-        GameRegistry.registerItem(YYQWX, "YYQWX");
-        GameRegistry.registerItem(YYQW, "YYQW");
-        GameRegistry.registerItem(FNMZC, "FNMZC");
-        GameRegistry.registerItem(FNMZ, "FNMZ");
-        GameRegistry.registerItem(WXZJ, "WXZJ");
-        GameRegistry.registerItem(WXZJC, "WXZJC");
-        GameRegistry.registerItem(LSJB, "LSJB");
-        GameRegistry.registerItem(JRTG, "JRTG");
-        GameRegistry.registerItem(CGWQX, "CGWQX");
-        GameRegistry.registerItem(CGWQ, "CGWQ");
+        for (Field field : WeaponLoader.class.getDeclaredFields()) {
+            if (Item.class.isAssignableFrom(field.getType())) {
+                try {
+                    Item item = (Item) field.get(null);
+                    String name = field.getName();
+                    GameRegistry.registerItem(item, name);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Failed to register item: " + field.getName(), e);
+                }
+            }
+        }
     }
 }
