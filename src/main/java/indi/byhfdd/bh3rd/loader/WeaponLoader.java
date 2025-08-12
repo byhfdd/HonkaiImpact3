@@ -11,7 +11,6 @@ public class WeaponLoader {
 
     public static final Item.ToolMaterial BH = ToolCore
         .addToolMaterial("BH", 30, -1, 50, 50, 50, new ItemStack(ItemLoader.Bh3rd));
-    // 名字。收获。耐久。效率。伤害加成。附魔能力
     public static final SickleCore XSZJ = new SickleCore("XSZJ", 441, BH, 100);
     public static final SickleCore XSZY = new SickleCore("XSZY", 298, BH, 80);
     public static final SickleCore SYZ = new SickleCore("SYZ", 414, BH, 100);
@@ -36,6 +35,8 @@ public class WeaponLoader {
     public static final BowCore WSDFH = new BowCore("WSDFH", 286, BH, 80);
     public static final BowCore ZWZJ = new BowCore("ZWZJ", 441, BH, 100);
     public static final BowCore ZWZY = new BowCore("ZWZY", 299, BH, 80);
+    public static final BowCore WXZJ = new BowCore("WXZJ", 299, BH, 80);
+    public static final BowCore WXZJC = new BowCore("WXZJC", 411, BH, 100);
     public static final SwordCore JMWJ = new SwordCore("JMWJ", 420, BH, 100);
     public static final SwordCore JM = new SwordCore("JM", 298, BH, 80);
     public static final SwordCore NYJ = new SwordCore("NYJ", 392, BH, 100);
@@ -54,8 +55,12 @@ public class WeaponLoader {
     public static final KatanaCore CNZY = new KatanaCore("CNZY", 291, BH, 80);
     public static final DaggerCore YYQWX = new DaggerCore("YYQWX", 442, BH, 100);
     public static final DaggerCore YYQW = new DaggerCore("YYQW", 301, BH, 80);
+    public static final DaggerCore LSJB = new DaggerCore("LSJB", 442, BH, 100);
+    public static final DaggerCore JRTG = new DaggerCore("JRTG", 301, BH, 80);
     public static final JavelinCore FNMZC = new JavelinCore("FNMZC", 439, BH, 100);
     public static final JavelinCore FNMZ = new JavelinCore("FNMZ", 301, BH, 80);
+    public static final JavelinCore CGWQX = new JavelinCore("CGWQX", 416, BH, 100);
+    public static final JavelinCore CGWQ = new JavelinCore("CGWQ", 284, BH, 80);
 
     public static void init() {
 
@@ -103,5 +108,11 @@ public class WeaponLoader {
         GameRegistry.registerItem(YYQW, "YYQW");
         GameRegistry.registerItem(FNMZC, "FNMZC");
         GameRegistry.registerItem(FNMZ, "FNMZ");
+        GameRegistry.registerItem(WXZJ, "WXZJ");
+        GameRegistry.registerItem(WXZJC, "WXZJC");
+        GameRegistry.registerItem(LSJB, "LSJB");
+        GameRegistry.registerItem(JRTG, "JRTG");
+        GameRegistry.registerItem(CGWQX, "CGWQX");
+        GameRegistry.registerItem(CGWQ, "CGWQ");
     }
 }

@@ -49,5 +49,11 @@ public class RendererLoader {
         MinecraftForgeClient.registerItemRenderer(WeaponLoader.YYQWX, new ItemRenderer("YYQWX"));
         MinecraftForgeClient.registerItemRenderer(WeaponLoader.FNMZC, new ItemRenderer("FNMZC"));
         MinecraftForgeClient.registerItemRenderer(WeaponLoader.FNMZ, new ItemRenderer("FNMZ"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.WXZJ, new ItemRenderer("WXZJ"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.WXZJC, new ItemRenderer("WXZJC"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.LSJB, new ItemRenderer("LSJB"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.JRTG, new ItemRenderer("JRTG"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.CGWQX, new ItemRenderer("CGWQX"));
+        MinecraftForgeClient.registerItemRenderer(WeaponLoader.CGWQ, new ItemRenderer("CGWQ"));
     }
 }

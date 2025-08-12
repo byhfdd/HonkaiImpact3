@@ -1,30 +1,30 @@
 package indi.byhfdd.bh3rd.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import indi.byhfdd.bh3rd.loader.WeaponLoader;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.itemAndBlockCraft.ItemCraft10;
 import project.studio.manametalmod.itemAndBlockCraft.ItemCraft2;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrecisionCard03 extends ItemBasicBagWeight {
 
     public PrecisionCard03() {
         super(1, "PrecisionCard03");
-        this.setTextureName("bh3rd:PrecisionCard03");// 材质路径
-        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 物品栏
+        this.setTextureName("bh3rd:PrecisionCard03");
+        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
     }
 
     public List<ItemStack> getBagItem() {
         List<ItemStack> list = new ArrayList<>();
         list.add(new ItemStack(WeaponLoader.WSDFH));
         list.add(new ItemStack(WeaponLoader.ZWZY));
+        list.add(new ItemStack(WeaponLoader.WXZJ));
         list.add(new ItemStack(ItemCraft10.testItemBagRoll));// 卷轴随机包
         list.add(new ItemStack(ItemCraft2.Itemblack_ball));// 黑色珍珠
         list.add(new ItemStack(ItemCraft2.PlatinumCube));// 白金魔方
@@ -48,6 +48,7 @@ public class PrecisionCard03 extends ItemBasicBagWeight {
 
     public List<Integer> getItemProbability() {
         List<Integer> list = new ArrayList<>();
+        list.add(5);
         list.add(5);
         list.add(5);
 

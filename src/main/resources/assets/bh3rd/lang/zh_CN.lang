@@ -106,6 +106,8 @@ item.WSDFH.name=往世的飞花
 item.WSDFHA.name=往世的飞花·爱之诗
 item.ZWZY.name=真我之钥
 item.ZWZJ.name=真我之境·无瑕回归
+item.WXZJC.name=无瑕之眷·册礼
+item.WXZJ.name=无瑕之眷
 
 item.JM.name=劫灭
 item.JMWJ.name=劫灭无烬
@@ -127,14 +129,18 @@ item.CNZJ.name=澄凝之境：自性纯一
 
 item.YYQWX.name=夜宴蔷薇·虚之冕
 item.YYQW.name=夜宴蔷薇
+item.LSJB.name=假日通告·临时加班
+item.JRTG.name=假日通告
 
 item.FNMZC.name=凡念梦兆·诸相自为
 item.FNMZ.name=凡念梦兆
+item.CGWQX.name=炽光无前·心启新程
+item.CGWQ.name=炽光无前
 
 #提示
-tips.XSZJ=生命即是彷徨 死亡亦非终场
-tips.XSZY=如雏鸟初见朝阳 如秋风撷去芬芳
-tips.SYZ=如雏鸟初见朝阳 如秋风撷去芬芳
+tips.XSZJ=生命即是彷徨,死亡亦非终场
+tips.XSZY=如雏鸟初见朝阳,如秋风撷去芬芳
+tips.SYZ=如雏鸟初见朝阳,如秋风撷去芬芳
 tips.BAX=正如美神阿弗洛狄忒一般多才多艺
 tips.XYZMY=祈愿这无尽梦魇的终结
 tips.XYZM=于漆黑之夜张开渴血的喙刃
@@ -161,7 +167,7 @@ tips.JMWJ=这即是——跨越终焉之剑。
 tips.SYJ=鸣动的声音犹如挽歌:斩却神庭
 tips.NYJ=这是诸神的黄昏 是神史的落幕
 tips.FLD=使用“魂钢”制作的仿制太刀
-tips.YLD=身缠风雪 透薄如冰的魂钢太刀
+tips.YLD=身缠风雪,透薄如冰的魂钢太刀
 tips.TJZY=雷电涤荡世间的罪孽
 tips.TJZJ=向命运降下叛逆的裁决
 tips.CRY=被污染为了妖刀
@@ -170,12 +176,18 @@ tips.CBZ=ME社总部开发的武士刀
 tips.ZCB=“磁暴·斩”超限改造后的姿态
 tips.DZQL=以前文明纪元第三律者·雷之律者的核心制成的神之键
 tips.DZQLM=往事不堪回首
-tips.CNZY=所思之事 所念之物 所想之人
-tips.CNZJ=无迹可寻 亦无所不在
+tips.CNZY=所思之事,所念之物,所想之人
+tips.CNZJ=无迹可寻,亦无所不在
 tips.YYQWX=她为自己加冕 向追随者许以无休止的享乐狂宴
-tips.YYQW=尊贵之人的崇高与虚伪 权威之人的持重与迂腐 睿智之人的深谋与执迷
-tips.FNMZC=我相信人类的美丽 恰恰源自他们的谬误
-tips.FNMZ=理念交织而成的梦境 也会生出状如永恒的棘刺
+tips.YYQW=尊贵之人的崇高与虚伪,权威之人的持重与迂腐,睿智之人的深谋与执迷
+tips.FNMZC=我相信人类的美丽,恰恰源自他们的谬误
+tips.FNMZ=理念交织而成的梦境,也会生出状如永恒的棘刺
+tips.LSJB=下班吼！休假吼！
+tips.JRTG=这真的是最后一次了，再帮我上一天班吧
+tips.CGWQX=故事翻开新的一页，再次踏上旅途用一颗澄澈的心继续自己的道路
+tips.CGWQ=小小的她向星空伸出了手。
+tips.WXZJ=她让经行的道路遍布无瑕之花，为这充满美好的大地降下祝福
+tips.WXZJC=她将全然的自己化作希望之种，为这行将泯没的世界赋予新生
 tips.Stamina_Potion=获得两分钟急迫、矿工汤、咖啡
 
 
