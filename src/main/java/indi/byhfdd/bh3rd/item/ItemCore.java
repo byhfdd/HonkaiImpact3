@@ -1,11 +1,10 @@
 package indi.byhfdd.bh3rd.item;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.Main;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.api.IQualityItem;
 import project.studio.manametalmod.api.Quality;
 

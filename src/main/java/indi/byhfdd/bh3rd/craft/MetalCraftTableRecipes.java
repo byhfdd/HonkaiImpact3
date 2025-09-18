@@ -1,8 +1,7 @@
 package indi.byhfdd.bh3rd.craft;
 
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.ItemLoader;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.Lapuda.LapudaCore;
 import project.studio.manametalmod.ManaMetalAPI;
 import project.studio.manametalmod.ManaMetalMod;

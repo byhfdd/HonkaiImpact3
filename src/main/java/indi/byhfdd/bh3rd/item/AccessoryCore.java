@@ -1,26 +1,25 @@
 package indi.byhfdd.bh3rd.item;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.Main;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.Main;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.api.IQualityItem;
 import project.studio.manametalmod.api.Quality;
 import project.studio.manametalmod.api.weapon.IMagicItem;
 import project.studio.manametalmod.core.ManaItemType;
 import project.studio.manametalmod.magic.magicItem.IMagicEffect;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AccessoryCore extends IMagicItem implements IQualityItem {
 

@@ -1,17 +1,16 @@
 package indi.byhfdd.bh3rd.ore;
 
-import java.util.Random;
-
+import cpw.mods.fml.common.IWorldGenerator;
+import indi.byhfdd.bh3rd.loader.BlockLoader;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-
-import cpw.mods.fml.common.IWorldGenerator;
-import indi.byhfdd.bh3rd.loader.BlockLoader;
 import project.studio.manametalmod.MMM;
 import project.studio.manametalmod.config.M3Config;
 import project.studio.manametalmod.world.WorldAncient;
 import project.studio.manametalmod.world.ore.OreSpawnMain;
+
+import java.util.Random;
 
 public class AncientGenerate implements IWorldGenerator {
 

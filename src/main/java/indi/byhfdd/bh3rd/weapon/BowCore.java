@@ -1,18 +1,17 @@
 package indi.byhfdd.bh3rd.weapon;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.Lapuda.ItemToolBowLaputa;
 import project.studio.manametalmod.utils.ToolCore;
+
+import java.util.List;
 
 public class BowCore extends ItemToolBowLaputa {
 

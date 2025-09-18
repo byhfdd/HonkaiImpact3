@@ -25,6 +25,7 @@ public class CommonProxy {
         BossStoreAdd.init();
         ManaGravityWellDataAdd.init();
         DarkMagicCoreAdd.init();
+//        new FoodLoader();
     }
 
     public void postInit(FMLPostInitializationEvent event) { }
