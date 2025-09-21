@@ -47,9 +47,8 @@ public class PrecisionCard07 extends ItemBasicBagWeight {
 
     public List<Integer> getItemProbability() {
         List<Integer> list = new ArrayList<>();
-
         list.add(5);
-
+        list.add(5);
         list.add(10);
         list.add(10);
         list.add(10);
@@ -58,7 +57,6 @@ public class PrecisionCard07 extends ItemBasicBagWeight {
         list.add(10);
         list.add(20);
         list.add(30);
-
         list.add(50);
         list.add(40);
         list.add(30);
