@@ -6,7 +6,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import indi.byhfdd.bh3rd.craft.*;
 import indi.byhfdd.bh3rd.loader.*;
 
-
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -25,8 +24,8 @@ public class CommonProxy {
         BossStoreAdd.init();
         ManaGravityWellDataAdd.init();
         DarkMagicCoreAdd.init();
-//        new FoodLoader();
+        // new FoodLoader();
     }
 
-    public void postInit(FMLPostInitializationEvent event) { }
+    public void postInit(FMLPostInitializationEvent event) {}
 }

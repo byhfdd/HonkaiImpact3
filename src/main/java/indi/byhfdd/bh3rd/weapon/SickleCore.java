@@ -1,17 +1,18 @@
 package indi.byhfdd.bh3rd.weapon;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.Lapuda.ItemToolSickleLapuda;
 import project.studio.manametalmod.utils.ToolCore;
-
-import java.util.List;
 
 public class SickleCore extends ItemToolSickleLapuda {
 
@@ -34,6 +35,7 @@ public class SickleCore extends ItemToolSickleLapuda {
         List.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("tips." + name));
         super.addInformation(item, Player, List, par4);
     }
+
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister register) {
         this.itemIcon = register.registerIcon(this.getIconString());

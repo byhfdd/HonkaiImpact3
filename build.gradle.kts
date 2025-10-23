@@ -10,4 +10,3 @@ tasks.named<JavaExec>("runClient") {
 tasks.named<JavaExec>("runServer") {
     jvmArgs("-noverify")
 }
-

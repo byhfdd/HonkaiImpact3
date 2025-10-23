@@ -1,15 +1,16 @@
 package indi.byhfdd.bh3rd.loader;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.obj.WavefrontObject;
-import org.lwjgl.opengl.GL11;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.lwjgl.opengl.GL11;
 
 public class ItemRenderer implements IItemRenderer {
 

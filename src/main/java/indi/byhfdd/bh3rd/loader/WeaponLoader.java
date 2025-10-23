@@ -1,12 +1,13 @@
 package indi.byhfdd.bh3rd.loader;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.weapon.*;
+import java.lang.reflect.Field;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import project.studio.manametalmod.utils.ToolCore;
 
-import java.lang.reflect.Field;
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.weapon.*;
+import project.studio.manametalmod.utils.ToolCore;
 
 public class WeaponLoader {
 
@@ -62,6 +63,7 @@ public class WeaponLoader {
     public static final JavelinCore FNMZ = new JavelinCore("FNMZ", 301, BH, 80);
     public static final JavelinCore CGWQX = new JavelinCore("CGWQX", 416, BH, 100);
     public static final JavelinCore CGWQ = new JavelinCore("CGWQ", 284, BH, 80);
+
     public static void init() {
         for (Field field : WeaponLoader.class.getDeclaredFields()) {
             if (Item.class.isAssignableFrom(field.getType())) {

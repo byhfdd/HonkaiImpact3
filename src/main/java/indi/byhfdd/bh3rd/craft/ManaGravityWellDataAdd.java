@@ -1,7 +1,8 @@
 package indi.byhfdd.bh3rd.craft;
 
-import indi.byhfdd.bh3rd.loader.ItemLoader;
 import net.minecraft.item.ItemStack;
+
+import indi.byhfdd.bh3rd.loader.ItemLoader;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.items.craftingRecipes.ManaGravityWellData;
 import project.studio.manametalmod.world.WorldBlueCave;

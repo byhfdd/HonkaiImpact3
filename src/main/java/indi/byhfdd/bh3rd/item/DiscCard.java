@@ -1,12 +1,13 @@
 package indi.byhfdd.bh3rd.item;
 
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
-import indi.byhfdd.bh3rd.loader.ItemLoader;
-import net.minecraft.item.ItemStack;
-import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import indi.byhfdd.bh3rd.loader.ItemLoader;
+import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
 
 public class DiscCard extends ItemBasicBagWeight {
 

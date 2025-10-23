@@ -1,16 +1,17 @@
 package indi.byhfdd.bh3rd.item;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import indi.byhfdd.bh3rd.loader.WeaponLoader;
-import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.itemAndBlockCraft.ItemCraft10;
 import project.studio.manametalmod.itemAndBlockCraft.ItemCraft2;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PrecisionCard02 extends ItemBasicBagWeight {
 

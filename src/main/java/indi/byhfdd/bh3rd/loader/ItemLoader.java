@@ -1,8 +1,9 @@
 package indi.byhfdd.bh3rd.loader;
 
+import net.minecraft.item.Item;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.item.*;
-import net.minecraft.item.Item;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
 import project.studio.manametalmod.magic.magicItem.IMagicEffect;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;

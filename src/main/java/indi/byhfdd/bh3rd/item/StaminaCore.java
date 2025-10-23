@@ -1,10 +1,7 @@
 package indi.byhfdd.bh3rd.item;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.Main;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,14 +9,18 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.Main;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.MMM;
 import project.studio.manametalmod.api.IPotion;
 import project.studio.manametalmod.entity.nbt.ManaMetalModRoot;
 import project.studio.manametalmod.potion.PotionEffectM3;
 import project.studio.manametalmod.potion.PotionM3;
 import project.studio.manametalmod.produce.brewing.ManaPotionType;
-
-import java.util.List;
 
 public class StaminaCore extends Item implements IPotion {
 
