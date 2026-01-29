@@ -1,7 +1,8 @@
 package indi.byhfdd.bh3rd.cuisine;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,10 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.api.IFood;
 import project.studio.manametalmod.core.NBTHelp;
@@ -22,27 +19,53 @@ import project.studio.manametalmod.produce.cuisine.FoodTaste;
 import project.studio.manametalmod.produce.cuisine.ICuisine;
 import project.studio.manametalmod.produce.cuisine.ItemCuisine;
 
+import java.util.List;
+
 public class FoodCore extends ItemFood implements IFood, ICuisine {
+    int some;
+    // 图标数组，用于存储不同子类型食物的图标
+    IIcon[] icons;
+    String nameLV;
+    /**
+     * 构造函数，初始化食物的基本属性
+     */
+    int hunger = 20;
 
-    public static IIcon[] icons = new IIcon[10];
-
-    public FoodCore() {
+    public FoodCore(int hunger, int some, String nameLV) {
         super(1, 1.0F, false);
-        this.setMaxStackSize(1);
-        this.setAlwaysEdible();
-        this.setHasSubtypes(true);
-        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 物品栏
+        this.hunger = hunger;
+        this.some = some;
+        this.nameLV = nameLV;
+        this.icons = new IIcon[some];
+        this.setMaxStackSize(20);              // 设置最大堆叠数量
+        this.setAlwaysEdible();               // 设置总是可以食用（即使饥饿值满也可以食用）
+        this.setHasSubtypes(true);            // 启用子类型（metadata）
+        this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 设置创造模式物品栏分类
     }
 
+    /**
+     * 当食物被食用完时调用此方法
+     *
+     * @param item   食物物品栈
+     * @param world  游戏世界对象
+     * @param player 食用食物的玩家
+     * @return 处理后的物品栈
+     */
     public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
         player.getFoodStats()
-            .func_151686_a(this, item);
-        world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-        this.onFoodEaten(item, world, player);
-        ItemCuisine.addItemCuisineEffect(item, world, player, false);
+            .func_151686_a(this, item);  // 增加玩家的饱食度
+        world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F); // 播放打嗝声音
+        this.onFoodEaten(item, world, player);  // 调用父类的食物食用处理方法
+        ItemCuisine.addItemCuisineEffect(item, world, player, false); // 添加料理效果
         return item;
     }
 
+    /**
+     * 判断食物是否可以种植（作为植物种子使用）
+     *
+     * @param food 食物物品栈
+     * @return 是否可以种植
+     */
     @Override
     public boolean canRoot(ItemStack food) {
         if (food.hasTagCompound()) {
@@ -52,63 +75,124 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
                 if (data != -1) {
                     FoodTaste ft = FoodTaste.values()[data];
                     if (ft == FoodTaste.GoldDust) {
-                        return false;
+                        return false;  // 如果是金粉口味，则不能种植
                     }
                 }
             }
         }
 
-        return true;
+        return true;  // 默认可以种植
     }
 
+    /**
+     * 获取食物提供的饥饿值
+     *
+     * @param item 食物物品栈
+     * @return 饥饿值（固定返回20）
+     */
     public int func_150905_g(ItemStack item) {
-        return 20;
+        return hunger;
     }
 
+    /**
+     * 获取食物的饱和度
+     *
+     * @param item 食物物品栈
+     * @return 饱和度值（固定返回15.0F）
+     */
     public float func_150906_h(ItemStack item) {
         return 15.0F;
     }
 
+    /**
+     * 判断物品是否带有特殊效果发光
+     *
+     * @param par1ItemStack 物品栈
+     * @param pass          渲染通道
+     * @return 是否有特效
+     */
     public boolean hasEffect(ItemStack par1ItemStack, int pass) {
         return super.hasEffect(par1ItemStack, pass);
     }
 
+    /**
+     * 根据元数据获取对应的图标
+     *
+     * @param meta 元数据
+     * @return 对应的图标
+     */
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta) {
         return icons[meta];
     }
 
+    /**
+     * 获取物品的元数据
+     *
+     * @param meta 输入的元数据
+     * @return 返回元数据本身
+     */
     public int getMetadata(int meta) {
         return meta;
     }
 
+    /**
+     * 获取物品的本地化名称键
+     *
+     * @param is 物品栈
+     * @return 本地化键名
+     */
     public String getUnlocalizedName(ItemStack is) {
-        return "item.FoodCore." + is.getItemDamage();
+        return "item." + nameLV + "." + is.getItemDamage();
     }
 
+    /**
+     * 注册物品的所有图标
+     *
+     * @param reg 图标注册器
+     */
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg) {
-        for (int i = 0; i < 10; ++i) {
-            icons[i] = reg.registerIcon("bh3rd:FoodCore." + i);
+        for (int i = 0; i < some; ++i) {
+            icons[i] = reg.registerIcon("bh3rd:" + nameLV + "." + i);  // 注册10个不同子类型的图标
         }
 
     }
 
+    /**
+     * 添加物品的子类型到创造模式物品栏
+     *
+     * @param itm 物品实例
+     * @param tab 创造模式标签页
+     * @param lst 子类型列表
+     */
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itm, CreativeTabs tab, List lst) {
-        for (int i = 0; i < 10; ++i) {
-            lst.add(new ItemStack(itm, 1, i));
+        for (int i = 0; i < some; ++i) {
+            lst.add(new ItemStack(itm, 1, i));  // 添加10个不同元数据的物品
         }
 
     }
 
+    /**
+     * 获取食物的最大生长周期（用于种植功能）
+     *
+     * @param food 食物物品栈
+     * @return 最大生长时间（tick）
+     */
     @Override
     public int maxRoot(ItemStack food) {
         return 2400;
     }
 
+    /**
+     * 获取种植时使用的根部物品
+     *
+     * @param food 食物物品栈
+     * @return 用作根部的物品栈
+     */
     @Override
     public ItemStack getRootItem(ItemStack food) {
-        return new ItemStack(ManaMetalMod.bigbowl);
+        return new ItemStack(ManaMetalMod.bigbowl);  // 使用ManaMetalMod的大碗作为根部物品
     }
 }

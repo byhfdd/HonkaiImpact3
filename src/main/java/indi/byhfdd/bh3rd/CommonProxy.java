@@ -4,7 +4,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import indi.byhfdd.bh3rd.craft.*;
+import indi.byhfdd.bh3rd.event.EventLeafDrop;
 import indi.byhfdd.bh3rd.loader.*;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
@@ -24,7 +26,9 @@ public class CommonProxy {
         BossStoreAdd.init();
         ManaGravityWellDataAdd.init();
         DarkMagicCoreAdd.init();
-        // new FoodLoader();
+        new FoodLoader();
+        MinecraftForge.EVENT_BUS.register(new EventLeafDrop());
+
     }
 
     public void postInit(FMLPostInitializationEvent event) {}

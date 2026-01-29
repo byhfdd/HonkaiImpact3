@@ -1,42 +1,205 @@
 package indi.byhfdd.bh3rd.loader;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.cuisine.FoodCore;
+import indi.byhfdd.bh3rd.item.FItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.cuisine.FoodCore;
+import project.studio.manametalmod.Lapuda.LapudaCore;
 import project.studio.manametalmod.ManaMetalAPI;
+import project.studio.manametalmod.ManaMetalMod;
+import project.studio.manametalmod.api.Quality;
+import project.studio.manametalmod.bosssummon.BossSummonCore;
 import project.studio.manametalmod.food_collection.FoodCollectionCore;
+import project.studio.manametalmod.itemAndBlockCraft.ItemCraft10;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;
+import project.studio.manametalmod.produce.beekeeping.BeekeepingCore;
+import project.studio.manametalmod.produce.cuisine.FoodType;
 import project.studio.manametalmod.produce.cuisine.PotRecipe;
+import project.studio.manametalmod.produce.farming.CropDifficult;
+import project.studio.manametalmod.produce.farming.FarmCore;
+import project.studio.manametalmod.produce.fishing.FishPrey;
+import project.studio.manametalmod.produce.fishing.FishSizeType;
+import project.studio.manametalmod.produce.fishing.FishingCore;
+import project.studio.manametalmod.produce.fishing.WaterType;
 
 public class FoodLoader {
+    public static Item FoodMaterials1 = new FItem(1, 1, "FoodMaterials1");
+    public static Item FoodMaterials2 = new FItem(1, 1, "FoodMaterials2");
+    public static Item FoodMaterials3 = new FItem(1, 1, "FoodMaterials3");
+    public static Item FoodMaterials4 = new FItem(1, 1, "FoodMaterials4");
+    public static Item FoodMaterials5 = new FItem(1, 1, "FoodMaterials5");
+    public static Item FoodMaterials6 = new FItem(1, 1, "FoodMaterials6");
+    public static Item FoodMaterials7 = new FItem(1, 1, "FoodMaterials7");
+    public static Item FoodMaterials8 = new FItem(1, 1, "FoodMaterials8");
+    public static Item FoodMaterials9 = new FItem(1, 1, "FoodMaterials9");
+    public static Item FoodMaterials10 = new FItem(1, 1, "FoodMaterials10");
+    public static Item FoodMaterials11 = new FItem(1, 1, "FoodMaterials11");
+    public static Item FoodMaterials12 = new FItem(1, 1, "FoodMaterials12");
+    public static Item FoodMaterials13 = new FItem(1, 1, "FoodMaterials13");
+    public static Item FoodMaterials14 = new FItem(1, 1, "FoodMaterials14");
+    public static Item FoodMaterials15 = new FItem(1, 1, "FoodMaterials15");
+    public static Item FoodMaterials16 = new FItem(1, 1, "FoodMaterials16");
+    public static Item FoodMaterials17 = new FItem(1, 1, "FoodMaterials17");
 
-    public static Item ItemFoodCore = new FoodCore();
-    int i = 0;
+    public static Item FoodCoreLV1 = new FoodCore(5, 3, "FoodCoreLv1");
+    public static Item FoodCoreLV2 = new FoodCore(10, 16, "FoodCoreLv2");
+    public static Item FoodCoreLV3 = new FoodCore(20, 17, "FoodCoreLv3");
+    public static Item FoodCoreLV4 = new FoodCore(25, 8, "FoodCoreLv4");
 
+    int FishCount = ManaMetalAPI.FishingList.size();
     public FoodLoader() {
-        GameRegistry.registerItem(ItemFoodCore, "ItemFoodCore");
-        ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
-                new ItemStack(ItemFoodCore, 1, i++),
-                new int[] { 0, 2, 0, 0, 0, 0, 0, 0 },
-                30,
-                new Object[] { Items.potato, Items.carrot }));
-        ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
-                new ItemStack(ItemFoodCore, 1, i++),
-                new int[] { 0, 2, 0, 0, 0, 0, 0, 0 },
-                30,
-                new Object[] { Items.potato, Items.carrot }));
-        ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
-                new ItemStack(ItemFoodCore, 1, i++),
-                new int[] { 0, 2, 0, 0, 0, 0, 0, 0 },
-                30,
-                new Object[] { Items.potato, Items.carrot }));
-        FoodCollectionCore.addItemEffect(new ItemStack(ItemFoodCore, 1, 0), MagicItemType.manaMax, 50.0F, (short) 5);
+        init();
+        recipe();
+        effect();
+    }
+
+    private void init() {
+        GameRegistry.registerItem(FoodCoreLV1, "FoodCoreLv1");
+        GameRegistry.registerItem(FoodCoreLV2, "FoodCoreLV2");
+        GameRegistry.registerItem(FoodCoreLV3, "FoodCoreLV3");
+        GameRegistry.registerItem(FoodCoreLV4, "FoodCoreLV4");
+
+        GameRegistry.registerItem(FoodMaterials1, "FoodMaterials1");
+        GameRegistry.registerItem(FoodMaterials2, "FoodMaterials2");
+        GameRegistry.registerItem(FoodMaterials3, "FoodMaterials3");
+        GameRegistry.registerItem(FoodMaterials4, "FoodMaterials4");
+        GameRegistry.registerItem(FoodMaterials5, "FoodMaterials5");
+        GameRegistry.registerItem(FoodMaterials6, "FoodMaterials6");
+        GameRegistry.registerItem(FoodMaterials7, "FoodMaterials7");
+        GameRegistry.registerItem(FoodMaterials8, "FoodMaterials8");
+        GameRegistry.registerItem(FoodMaterials9, "FoodMaterials9");
+        GameRegistry.registerItem(FoodMaterials10, "FoodMaterials10");
+        GameRegistry.registerItem(FoodMaterials11, "FoodMaterials11");
+        GameRegistry.registerItem(FoodMaterials12, "FoodMaterials12");
+        GameRegistry.registerItem(FoodMaterials13, "FoodMaterials13");
+        GameRegistry.registerItem(FoodMaterials14, "FoodMaterials14");
+        GameRegistry.registerItem(FoodMaterials15, "FoodMaterials15");
+        GameRegistry.registerItem(FoodMaterials16, "FoodMaterials16");
+        GameRegistry.registerItem(FoodMaterials17, "FoodMaterials17");
 
     }
+
+    private void recipe() {
+        //LV1
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV1, 1, 0), new int[]{0, 4, 0, 0, 0, 0, 0, 0}, 30, new Object[]{FarmCore.Rice, FarmCore.Rice, FarmCore.Rice, FarmCore.Rice}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV1, 1, 1), new int[]{0, 2, 0, 0, 2, 0, 0, 0}, 30, new Object[]{Items.egg, Items.egg, FarmCore.Rice, FarmCore.Rice}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV1, 1, 2), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 30, new Object[]{FoodMaterials1, FoodMaterials1, Items.chicken, Items.chicken}));
+        //LV2
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 0), new int[]{0, 0, 0, 4, 0, 0, 0, 0}, 30, new Object[]{FoodMaterials2, FoodMaterials2, FoodMaterials2, FoodMaterials2}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 1), new int[]{0, 0, 0, 2, 2, 0, 0, 0}, 30, new Object[]{FoodMaterials3, FoodMaterials3, Items.egg, Items.egg}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 2), new int[]{0, 0, 0, 2, 2, 0, 0, 0}, 30, new Object[]{FarmCore.Tomato, FarmCore.Tomato, Items.egg, Items.egg}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 3), new int[]{0, 2, 2, 0, 0, 0, 0, 0}, 30, new Object[]{FarmCore.Rice, FarmCore.Rice, Items.porkchop, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 4), new int[]{0, 0, 0, 2, 2, 0, 0, 0}, 30, new Object[]{FoodMaterials1, FoodMaterials1, FoodMaterials4, FoodMaterials4}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 5), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 30, new Object[]{FoodMaterials3, FoodMaterials3, Items.porkchop, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 6), new int[]{0, 2, 2, 0, 0, 0, 0, 0}, 30, new Object[]{ItemCraft10.Itemflour, ItemCraft10.Itemflour, Items.porkchop, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 7), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 30, new Object[]{FarmCore.WhiteRadish, FarmCore.WhiteRadish, Items.porkchop, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 8), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 30, new Object[]{FarmCore.Rice, FarmCore.Rice, Items.egg, FarmCore.Tomato}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 9), new int[]{0, 2, 0, 0, 0, 0, 2, 0}, 30, new Object[]{ItemCraft10.Itemflour, ItemCraft10.Itemflour, new ItemStack(FishingCore.fish_M3_Dead, 1, 40), new ItemStack(FishingCore.fish_M3_Dead, 1, 40)}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 10), new int[]{0, 0, 1, 1, 2, 0, 0, 0}, 30, new Object[]{FoodMaterials3, FoodMaterials4, FoodMaterials4, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 11), new int[]{0, 0, 1, 1, 2, 0, 0, 0}, 30, new Object[]{ItemCraft10.Itemflour, ItemCraft10.Itemflour, Items.egg, Items.milk_bucket}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 12), new int[]{0, 0, 0, 4, 0, 0, 0, 0}, 30, new Object[]{FoodMaterials2, FoodMaterials2, FoodMaterials3, Items.potato}));
+        //查看
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 13), new int[]{0, 0, 0, 2, 0, 0, 2, 0}, 30, new Object[]{FoodMaterials1, FoodMaterials3}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 14), new int[]{0, 0, 0, 2, 0, 0, 2, 0}, 30, new Object[]{FoodMaterials1, FoodMaterials3, new ItemStack(FishingCore.fish_M3_Dead, 1, 118), new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials1, FarmCore.WhiteRadish}));
+        //查看
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV2, 1, 15), new int[]{0, 1, 0, 1, 0, 0, 2, 0}, 30, new Object[]{FarmCore.Tomato, ItemCraft10.Itemflour}));
+        //LV3
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 0), new int[]{0, 0, 0, 4, 0, 0, 0, 0}, 40, new Object[]{FoodMaterials5, FoodMaterials5, FoodMaterials5, FoodMaterials5}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 1), new int[]{0, 0, 0, 0, 0, 0, 4, 0}, 40, new Object[]{new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25)}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 2), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 40, new Object[]{FoodMaterials6, FoodMaterials6, FoodMaterials3, FoodMaterials3}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 3), new int[]{0, 0, 2, 0, 0, 2, 0, 0}, 40, new Object[]{Items.porkchop, Items.mushroom_stew}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 4), new int[]{0, 2, 1, 1, 0, 0, 0, 0}, 40, new Object[]{FarmCore.Rice, FarmCore.Rice, FoodMaterials1, Items.porkchop}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 5), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 40, new Object[]{FarmCore.Rice, FarmCore.Rice, ManaMetalMod.Lotus, ManaMetalMod.Lotus}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 6), new int[]{0, 2, 1, 1, 0, 0, 0, 0}, 40, new Object[]{FarmCore.Rice, FarmCore.Rice, Items.porkchop, FarmCore.Onion}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 7), new int[]{0, 2, 0, 0, 0, 0, 2, 0}, 40, new Object[]{new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25), FoodMaterials4, FoodMaterials4}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 8), new int[]{0, 0, 0, 2, 0, 0, 2, 0}, 40, new Object[]{FoodMaterials3, new ItemStack(FishingCore.fish_M3_Dead, 1, 118), new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials7}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 9), new int[]{0, 1, 2, 1, 0, 0, 0, 0}, 40, new Object[]{Items.porkchop, Items.porkchop, ItemCraft10.Itemflour, FarmCore.Onion}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 10), new int[]{0, 0, 3, 1, 0, 0, 0, 0}, 40, new Object[]{FoodMaterials7, FoodMaterials6, Items.chicken, Items.chicken}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 11), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 40, new Object[]{FarmCore.Onion, Items.potato, Items.porkchop, Items.porkchop}));
+        //查看
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 12), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 40, new Object[]{ItemCraft10.Itemflour, ItemCraft10.Itemflour, Items.egg, "foodSweetBerrie"}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 13), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 40, new Object[]{Items.porkchop, FoodMaterials2, FoodMaterials2, FoodMaterials7}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 14), new int[]{0, 0, 2, 2, 0, 0, 0, 0}, 40, new Object[]{Items.porkchop, Items.porkchop, FoodMaterials7, "foodBamboo"}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 15), new int[]{0, 2, 0, 2, 0, 0, 0, 0}, 40, new Object[]{"foodSweetBerrie", FarmCore.Rice, FarmCore.Rice, FoodMaterials8}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 15), new int[]{0, 0, 0, 2, 0, 0, 0, 2}, 40, new Object[]{Items.milk_bucket, Items.milk_bucket, FoodMaterials9, FoodMaterials5}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV3, 1, 16), new int[]{0, 2, 0, 2, 0, 0, 0, 0}, 40, new Object[]{FarmCore.Rice, FarmCore.Rice, FoodMaterials8, "foodSweetBerrie"}));
+        //LV4
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 0), new int[]{2, 0, 2, 0, 0, 0, 0, 0}, 60, new Object[]{FoodMaterials10, FoodMaterials10, "foodSweetBerrie", "foodSweetBerrie"}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 1), new int[]{0, 0, 0, 3, 1, 0, 0, 0}, 60, new Object[]{FoodMaterials11, FoodMaterials11, "foodBamboo", Items.egg}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 2), new int[]{0, 1, 2, 0, 0, 1, 0, 0}, 60, new Object[]{FoodMaterials12, FoodMaterials12, FarmCore.Rice}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 3), new int[]{0, 1, 0, 0, 1, 0, 1, 0}, 60, new Object[]{FoodMaterials13, Items.egg, FarmCore.Rice, new ItemStack(FishingCore.fish_M3_Dead, 1, 40)}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 4), new int[]{0, 2, 1, 1, 0, 0, 0, 0}, 60, new Object[]{ManaMetalMod.Lotus, FarmCore.Rice, FarmCore.Rice, FoodMaterials14}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 5), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 60, new Object[]{FoodMaterials15, FoodMaterials15, FoodMaterials9, FoodMaterials5}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 6), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 60, new Object[]{FoodMaterials16, FoodMaterials3, FoodMaterials7, FarmCore.Onion}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 7), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 60, new Object[]{FoodMaterials17, FoodMaterials17, FoodMaterials8, "foodSweetBerrie"}));
+        ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV4, 1, 8), new int[]{0, 2, 0, 1, 1, 0, 0, 0}, 60, new Object[]{FoodMaterials12, FoodMaterials15, FoodMaterials16, FoodMaterials17}));
+        //食材
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials4), FarmCore.Soy, FarmCore.Soy, FarmCore.Soy);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials6, 2), Items.chicken);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials13), Items.gold_nugget, Items.gold_nugget, Items.gold_nugget, Items.gold_nugget);
+        ManaMetalAPI.FishingList.add(new FishPrey(new ItemStack(FishingCore.fish_M3_Life, 1, FishCount+2), FishSizeType.Medium, WaterType.river, 30, false));
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials16), new ItemStack(BossSummonCore.bossItemM, 1,62), new ItemStack(BossSummonCore.bossItemM, 1,51));
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials17), Items.glass_bottle, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials15), Blocks.packed_ice, Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice, ItemCraft10.Biliha.block);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials12), LapudaCore.ItemBossBloodDragonsSkin,LapudaCore.ItemBossBloodDragonsSkin,LapudaCore.ItemBossBloodDragonsSkin);
+        //食材-种植
+        FoodMaterials1 = FarmCore.addCropBase(3, CropDifficult.Base, "FoodMaterials1", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+
+    }
+
+    private void effect() {
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV1, 1, 0), MagicItemType.HP, 25.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV1, 1, 1), MagicItemType.magicAttack, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV1, 1, 2), MagicItemType.fatigue, 10.0F, (short) 2);
+
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 0), MagicItemType.physicalAttack, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 1), MagicItemType.magicAttack, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 2), MagicItemType.crit, 5.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 3), MagicItemType.avoid, 5.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 4), MagicItemType.magicDefense, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 5), MagicItemType.critDamage, 0.1F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 6), MagicItemType.dropRate, 5.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 7), MagicItemType.healthRecovery, 0.10F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 8), MagicItemType.maxMagicShield, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 9), MagicItemType.maxSP, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 10), MagicItemType.hpReply, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 11), MagicItemType.HP, 100.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 12), MagicItemType.water, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 13), MagicItemType.fatigue, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 14), MagicItemType.health, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV2, 1, 15), MagicItemType.HP, 100.0F, (short) 2);
+
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 0), MagicItemType.HP, 100.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 1), MagicItemType.physicalAttack, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 2), MagicItemType.magicAttack, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 3), MagicItemType.crit, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 4), MagicItemType.avoid, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 5), MagicItemType.attackSpeed, 0.1F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 6), MagicItemType.magicDefense, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 7), MagicItemType.critDamage, 0.2F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 8), MagicItemType.dropRate, 10.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 9), MagicItemType.healthRecovery, 0.20F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 10), MagicItemType.maxMagicShield, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 11), MagicItemType.maxSP, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 12), MagicItemType.hpReply, 20.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 13), MagicItemType.HP, 200.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 14), MagicItemType.water, 30.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 15), MagicItemType.fatigue, 30.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 16), MagicItemType.health, 30.0F, (short) 2);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV3, 1, 17), MagicItemType.HP, 200.0F, (short) 2);
+
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 0), MagicItemType.pointPower, 10.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 1), MagicItemType.pointAgile, 10.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 2), MagicItemType.pointWisdom, 10.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 3), MagicItemType.pointWis, 10.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 4), MagicItemType.pointCon, 10.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 5), MagicItemType.penetrate, 5.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 6), MagicItemType.penetrate, 5.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 7), MagicItemType.penetrate, 5.0F, (short) 1);
+        FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 8), MagicItemType.penetrate, 5.0F, (short) 1);
+    }
+
 }

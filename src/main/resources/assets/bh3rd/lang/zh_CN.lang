@@ -221,4 +221,76 @@ item.NoCeiling.name=No Ceiling唱片
 item.ZCFZQ.name=在出发之前唱片
 
 #食物
-item.FoodCore.0.name=aaaaa
+# 食物 - I级
+item.FoodCoreLv1.0.name=[煮]白粥
+item.FoodCoreLv1.1.name=[炒]蛋炒饭
+item.FoodCoreLv1.2.name=[炒]包菜炒鸡肉
+
+# 食物 - II级
+item.FoodCoreLv2.0.name=[炒]酱茄子
+item.FoodCoreLv2.1.name=[炒]辣椒炒蛋
+item.FoodCoreLv2.2.name=[炒]西红柿炒蛋
+item.FoodCoreLv2.3.name=[蒸]粉蒸排骨
+item.FoodCoreLv2.4.name=[煮]包菜豆腐汤
+item.FoodCoreLv2.5.name=[炒]小炒肉
+item.FoodCoreLv2.6.name=[蒸]蒸饺
+item.FoodCoreLv2.7.name=[煮]萝卜排骨汤
+item.FoodCoreLv2.8.name=[炒]蛋包饭
+item.FoodCoreLv2.9.name=[炸]天妇罗虾
+item.FoodCoreLv2.10.name=[炒]麻婆豆腐
+item.FoodCoreLv2.11.name=[烤]蛋糕
+item.FoodCoreLv2.12.name=[炒]地三鲜
+item.FoodCoreLv2.13.name=[煮]水煮鱼
+item.FoodCoreLv2.14.name=[煮]盾菜
+item.FoodCoreLv2.15.name=[炸]松鼠鱼
+
+# 食物 - III级
+item.FoodCoreLv3.0.name=[炒]清炒薄荷叶
+item.FoodCoreLv3.1.name=[烤]烤螃蟹
+item.FoodCoreLv3.2.name=[炒]香辣鸡翅
+item.FoodCoreLv3.3.name=[炒]火腿烧蘑菇
+item.FoodCoreLv3.4.name=[蒸]煲仔饭
+item.FoodCoreLv3.5.name=[蒸]蜜藕
+item.FoodCoreLv3.6.name=[煮]黯然销魂饭
+item.FoodCoreLv3.7.name=[煮]蟹黄豆腐
+item.FoodCoreLv3.8.name=[烤]蒜香贝壳盾
+
+item.FoodCoreLv3.9.name=[炸]锅包肉
+item.FoodCoreLv3.10.name=[炸]蒜香炸鸡
+item.FoodCoreLv3.11.name=[炒]干锅肉
+item.FoodCoreLv3.12.name=[烤]水果派
+item.FoodCoreLv3.13.name=[蒸]蒜末蒸茄子
+item.FoodCoreLv3.14.name=[炸]烟笋腊肉
+item.FoodCoreLv3.15.name=[蒸]桂花酿
+item.FoodCoreLv3.16.name=[蒸]抹茶冰淇淋
+item.FoodCoreLv3.17.name=[蒸]水果糯米饭
+
+# 食物 - IV级
+item.FoodCoreLv4.0.name=[炒]海葡萄
+item.FoodCoreLv4.1.name=[炒]苦瓜炒蛋
+item.FoodCoreLv4.2.name=[煮]龙翅粥
+item.FoodCoreLv4.3.name=[炒]黄金蛋炒饭
+item.FoodCoreLv4.4.name=[煮]燕窝米仁粥
+item.FoodCoreLv4.5.name=[蒸]根源绽放
+item.FoodCoreLv4.6.name=[炸]脆脆角
+item.FoodCoreLv4.7.name=[烤]画糖人
+item.FoodCoreLv4.8.name=[蒸]四角俱全
+
+# 食物 - 食材
+item.FoodMaterials1.name=包菜
+item.FoodMaterials2.name=茄子
+item.FoodMaterials3.name=辣椒
+item.FoodMaterials4.name=豆腐
+item.FoodMaterials5.name=薄荷
+item.FoodMaterials6.name=鸡翅
+item.FoodMaterials7.name=蒜
+item.FoodMaterials8.name=桂花
+item.FoodMaterials9.name=山葵
+item.FoodMaterials10.name=海蜘蛛
+item.FoodMaterials11.name=苦瓜
+item.FoodMaterials12.name=强韧筋膜
+item.FoodMaterials13.name=可食用金箔
+item.FoodMaterials14.name=燕窝
+item.FoodMaterials15.name=根源物质
+item.FoodMaterials16.name=原始之角
+item.FoodMaterials17.name=命定之甜
