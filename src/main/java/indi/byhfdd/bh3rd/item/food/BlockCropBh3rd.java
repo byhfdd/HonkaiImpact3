@@ -33,7 +33,7 @@ public class BlockCropBh3rd extends BlockCropSpecial {
         if (meta < 0) meta = 0;
         if (meta > 7) meta = 7;
 
-        // ✅ 关键：meta 0~6 → 未成熟（index=0），meta 7 → 成熟（index=1）
+        // meta 0~6 → 未成熟（index=0），meta 7 → 成熟（index=1）
         int index = (meta >= 7) ? 1 : 0;
         return this.icons[index];
     }
