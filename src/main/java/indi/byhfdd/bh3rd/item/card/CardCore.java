@@ -26,7 +26,7 @@ public abstract class CardCore extends ItemBasicBagWeight {
 
     protected abstract List<Integer> getWeaponProbabilities();
 
-    // ✅ 每次调用时动态构建 commonItems（确保所有物品已注册）
+    // 每次调用时动态构建 commonItems（确保所有物品已注册）
     private List<ItemStack> getCommonItems() {
         return Arrays.asList(
             new ItemStack(ItemCraft10.testItemBagRoll),// 卷轴随机包
