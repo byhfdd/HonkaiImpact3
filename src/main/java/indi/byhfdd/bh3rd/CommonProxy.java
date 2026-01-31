@@ -5,6 +5,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import indi.byhfdd.bh3rd.craft.*;
 import indi.byhfdd.bh3rd.event.EventLeafDrop;
+import indi.byhfdd.bh3rd.item.card.CardLoader;
+import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import indi.byhfdd.bh3rd.loader.*;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -14,6 +16,7 @@ public class CommonProxy {
         new CreativeTabsLoader();
         ItemLoader.init();
         WeaponLoader.init();
+        CardLoader.main();
         BlockLoader.init();
     }
 

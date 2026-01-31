@@ -14,6 +14,7 @@ item.PrecisionCard05.name=精准补给卡05
 item.PrecisionCard06.name=精准补给卡06
 item.PrecisionCard07.name=精准补给卡07
 item.DiscCard.name=崩坏唱片包
+item.SeedCard.name=崩坏食材包
 item.crystal1.name=水晶
 item.crystal5.name=5水晶
 item.crystal35.name=35水晶
@@ -56,6 +57,10 @@ item.ShapedSpaceLens.name=聚能·空间透镜
 tile.EtherPhlogistonore01.name=以太燃素矿石
 tile.EtherPhlogistonore02.name=以太燃素矿石
 tile.EtherPhlogistonore03.name=以太燃素矿石
+tile.HiLoveELF.name=爱愿妖精方块
+tile.SchicksalImperative.name=天命难逃方块
+tile.ReignSolaris.name=天光驰彻方块
+
 
 #圣痕
 #G4
@@ -199,13 +204,11 @@ item.Cyberangel.name=Cyberangel唱片
 item.DaCapo.name=Da Capo唱片
 item.DualEgo.name=Dual-Ego唱片
 item.GirlInside.name=Girl Inside唱片
-item.GZJSZ.name=光之救世主唱片(已删除)
 item.IRAS17514.name=IRAS 17514唱片
 item.MoonHalo.name=Moon Halo唱片
 item.Nightglow.name=Nightglow唱片
 item.Oaths.name=Oaths唱片
 item.QNZY.name=千年之羽唱片
-item.QSZZ.name=起始之终唱片(已删除)
 item.QYX.name=漆夜雪唱片
 item.Reburn.name=Reburn唱片
 item.Regression.name=Regression唱片
@@ -213,7 +216,6 @@ item.ReOracle.name=ReOracle唱片
 item.Rubia.name=Rubia唱片
 item.Starfall.name=Starfall唱片
 item.TruE.name=TruE唱片
-item.WLLK.name=未来轮廓唱片(已删除)
 item.WLZJ.name=未来再见唱片
 item.XYNXSZR.name=星与你消失之日唱片
 item.LZ.name=Φ²唱片
@@ -225,6 +227,9 @@ item.ZCFZQ.name=在出发之前唱片
 item.FoodCoreLv1.0.name=[煮]白粥
 item.FoodCoreLv1.1.name=[炒]蛋炒饭
 item.FoodCoreLv1.2.name=[炒]包菜炒鸡肉
+
+tips.FoodCoreLv1.0=只用莹润的颗粒，简单煲煮，在锅中轻轻漂浮，散发出淡淡的香气，清新自然。
+tips.FoodCoreLv1.2=脆爽的绿色与嫩滑的常用肉类中带着微妙的层次感，在热锅里碰撞，给人一种无尽的满足感。
 
 # 食物 - II级
 item.FoodCoreLv2.0.name=[炒]酱茄子
@@ -244,6 +249,24 @@ item.FoodCoreLv2.13.name=[煮]水煮鱼
 item.FoodCoreLv2.14.name=[煮]盾菜
 item.FoodCoreLv2.15.name=[炸]松鼠鱼
 
+tips.FoodCoreLv2.0=只用从草原带来的深色的蔬菜，浓郁酱汁和家常食材的完美结合。
+tips.FoodCoreLv2.1=色彩鲜明，轻微的刺激感和金黄的滑嫩完美融合，浓烈的香气在热锅中翻腾。
+tips.FoodCoreLv2.2=家常经典搭配，红色与黄色的颜色看起来十分喜庆，锅中翻腾，酸酸甜甜口感平衡。
+tips.FoodCoreLv2.3=村庄带来的肉类，搭配颗粒研磨而成的粉末，夹杂着精华的水汽，使其保持鲜嫩的口感。
+tips.FoodCoreLv2.4=清澈的汤底透着细腻的白色，清新的绿色仿佛带着大自然的气息，鲜香适口。
+tips.FoodCoreLv2.5=草原带回肉类的鲜嫩加上刺激的口感，妥妥的下饭首选！
+tips.FoodCoreLv2.6=晶莹的外皮柔软细腻，轻轻一咬，单一食材用料扎实的内馅咸香四溢，口感丰富，美味可口。
+tips.FoodCoreLv2.7=清澈的汤汁浮起白色食材，村庄产出的肉类与之是绝配。
+tips.FoodCoreLv2.8=外面包裹着嫩滑的金黄外皮，红色的酸甜颗粒被紧紧包裹，味道鲜美。
+tips.FoodCoreLv2.9=外皮酥脆，鲜活的高蛋白食材裹上了金黄色的外衣，酥香可口。
+tips.FoodCoreLv2.10=热辣刺激的酱汁搭配白色的嫩滑方块，加入肉末，每一口都在唤醒味蕾。
+tips.FoodCoreLv2.11=金黄松软的外表，白色碳水化合物和丝滑牛奶的巧妙搭配，在高温下生成甜美的味道。
+tips.FoodCoreLv2.12=草原带回色彩各异的三种蔬菜的完美结合，咸香浓郁，酱气四溢。
+tips.FoodCoreLv2.13=红亮的汤底热气腾腾，水中的河鲜配上大自然的清新，带来味觉冲击的同时平衡的恰到好处。
+tips.FoodCoreLv2.14=坚硬外壳、肉质鲜美的食材与适合炖煮的蔬菜搭配，营养丰富且味道鲜美，是一道健康的汤品。
+tips.FoodCoreLv2.15=鲜活的河鲜裹上了金黄色的外衣，红色蔬菜酱汁的酸甜恰到好处。酥、酸、甜、鲜，味道好极了。
+
+
 # 食物 - III级
 item.FoodCoreLv3.0.name=[炒]清炒薄荷叶
 item.FoodCoreLv3.1.name=[烤]烤螃蟹
@@ -254,7 +277,6 @@ item.FoodCoreLv3.5.name=[蒸]蜜藕
 item.FoodCoreLv3.6.name=[煮]黯然销魂饭
 item.FoodCoreLv3.7.name=[煮]蟹黄豆腐
 item.FoodCoreLv3.8.name=[烤]蒜香贝壳盾
-
 item.FoodCoreLv3.9.name=[炸]锅包肉
 item.FoodCoreLv3.10.name=[炸]蒜香炸鸡
 item.FoodCoreLv3.11.name=[炒]干锅肉
@@ -264,6 +286,29 @@ item.FoodCoreLv3.14.name=[炸]烟笋腊肉
 item.FoodCoreLv3.15.name=[蒸]桂花酿
 item.FoodCoreLv3.16.name=[蒸]抹茶冰淇淋
 item.FoodCoreLv3.17.name=[蒸]水果糯米饭
+
+tips.FoodCoreLv3.0=碧绿叶片高温翻炒，清香四溢，清爽微辛余韵悠长。
+tips.FoodCoreLv3.1=外壳呈现出诱人的焦黄色泽，散发着独特的鲜味，第一个尝试这种食材的人抱着多大的勇气？
+tips.FoodCoreLv3.2=禽类食材炒至金黄，添加刺激感食物调味，裹满浓厚酱汁，咸香味美。
+tips.FoodCoreLv3.3=草原带回的肉类制成火腿，与菌类慢炖，褐红酱汁裹满食材，鲜味满溢。
+tips.FoodCoreLv3.4=谷物被腌渍肉片的油脂浸透，再加入绿色蔬菜点缀，米香、肉香和焦香弥漫，令人垂涎。
+tips.FoodCoreLv3.5=入口爽脆，细腻爽脆的根状茎与清透的白色颗粒一起烹饪，搭配蜜汁进一步丰富了口感。
+tips.FoodCoreLv3.6=精心制作的叉烧，配上饱满圆润的颗粒，再加入那令人感动到落泪的食材，就是全部的秘诀。
+tips.FoodCoreLv3.7=取自坚硬外壳中的金黄的精华，入口即化的白色方块食材，鲜香嫩滑，色泽诱人。
+tips.FoodCoreLv3.8=带壳的食物与辛辣风味白色植物放入锅中，搭配红绿辛辣蔬菜，香味与鲜味在高温中层层交织。
+tips.FoodCoreLv3.9=肉类裹上炸制的金黄脆壳，加入少许味辛食材，油炸后裹酱汁，酸酸甜甜，酥酥脆脆。
+tips.FoodCoreLv3.10=两种禽肉裹满金黄面衣，放入辛辣风味植物为佐，入口酥脆伴随浓郁辛香。
+tips.FoodCoreLv3.11=两种根茎类食材与肉类的香气交融，炒制时油脂渗入配菜，热辣香气窜入鼻腔。
+tips.FoodCoreLv3.12=酥脆的外壳包裹着绵密酸甜的内陷，另有丝滑口感食材的甜香阵阵，果香浓浓。
+tips.FoodCoreLv3.13=色泽深邃的蔬菜作为航船，辛辣的白色点缀作为繁星，再加一下常用的肉类增加层次。
+tips.FoodCoreLv3.14=被岁月赋予了醇香的肉类，搭配尖锥形状的山珍，加上一点白色辛辣食材提味，口感丰富而层次分明。
+tips.FoodCoreLv3.15=晶莹如玉的颗粒伴随着细碎芳香的氤氲，加上酸甜点缀，回味悠长而不腻。
+tips.FoodCoreLv3.16=清凉的甜香中伴随着一丝不寻常的刺激感，搭配来自村庄醇厚丝滑的食材，是奇妙的组合。
+tips.FoodCoreLv3.17=鲜果与谷物共蒸，再添加一味花香，甜汁渗入米粒晶莹透亮。
+
+
+
+
 
 # 食物 - IV级
 item.FoodCoreLv4.0.name=[炒]海葡萄
@@ -275,6 +320,18 @@ item.FoodCoreLv4.5.name=[蒸]根源绽放
 item.FoodCoreLv4.6.name=[炸]脆脆角
 item.FoodCoreLv4.7.name=[烤]画糖人
 item.FoodCoreLv4.8.name=[蒸]四角俱全
+
+tips.FoodCoreLv4.0=奇形怪状的食材和酸甜的食材产生奇妙的反应，尝试需要勇气。
+tips.FoodCoreLv4.1=不寻常味道的翠绿蔬菜与金黄食材交织，鲜脆的食材带来了创新。或许会受到某位成员的特别钟爱？
+tips.FoodCoreLv4.2=考验处理手法的食材软烂入味，晶莹剔透的颗粒搭配菌类食材，汤汁醇厚，鲜香四溢。
+tips.FoodCoreLv4.3=粒粒分明的主料在热锅中翻腾，带着奢华的金色光泽，滑嫩和鲜香的两种配料更是不可或缺。
+tips.FoodCoreLv4.4=纤细如丝的食材加上晶莹剔透的颗粒，搭配细腻爽脆的食材增加丰富的口感，清爽香甜。
+tips.FoodCoreLv4.5=将形状规整的食材切片装盘，搭配火烈和清凉的感觉，带来味觉的多重体验。
+tips.FoodCoreLv4.6=使用三种辛辣食材，配上尖尖的顶级食材，强烈的香气扑面而来。
+tips.FoodCoreLv4.7=晶莹剔透的外表泛着琥珀般的光泽，芳香的碎金和酸甜的淡红嵌入糖画脉络，一抹清甜缓缓融化。
+tips.FoodCoreLv4.8=四种极为稀有的食材共同烹制，异质能量在喉间共鸣爆裂。
+
+
 
 # 食物 - 食材
 item.FoodMaterials1.name=包菜
@@ -294,3 +351,12 @@ item.FoodMaterials14.name=燕窝
 item.FoodMaterials15.name=根源物质
 item.FoodMaterials16.name=原始之角
 item.FoodMaterials17.name=命定之甜
+
+item.FoodMaterials1_seed.name=包菜种子
+item.FoodMaterials2_seed.name=茄子种子
+item.FoodMaterials3_seed.name=辣椒种子
+item.FoodMaterials5_seed.name=薄荷种子
+item.FoodMaterials7_seed.name=蒜种子
+item.FoodMaterials8_seed.name=桂花种子
+item.FoodMaterials9_seed.name=山葵种子
+item.FoodMaterials11_seed.name=苦瓜种子

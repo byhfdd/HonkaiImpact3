@@ -1,13 +1,13 @@
 package indi.byhfdd.bh3rd.craft;
 
-import java.util.Calendar;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.item.card.CardLoader;
+import indi.byhfdd.bh3rd.loader.ItemLoader;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.loader.ItemLoader;
+import java.util.Calendar;
 
 public class AddRecipe {// 合成
 
@@ -15,9 +15,9 @@ public class AddRecipe {// 合成
     public static final Item ShapedSpaceLens = ItemLoader.ShapedSpaceLens;
     public static final Item StigmataResonance = ItemLoader.StigmataResonance;
 
-    public static Item[] cardDecks = { ItemLoader.PrecisionCard01, ItemLoader.PrecisionCard02,
-        ItemLoader.PrecisionCard03, ItemLoader.PrecisionCard04, ItemLoader.PrecisionCard05, ItemLoader.PrecisionCard06,
-        ItemLoader.PrecisionCard07 };
+    public static Item[] cardDecks = { CardLoader.PrecisionCard01, CardLoader.PrecisionCard02,
+        CardLoader.PrecisionCard03, CardLoader.PrecisionCard04, CardLoader.PrecisionCard05, CardLoader.PrecisionCard06,
+        CardLoader.PrecisionCard07 };
 
     public static void init() {
         // G4

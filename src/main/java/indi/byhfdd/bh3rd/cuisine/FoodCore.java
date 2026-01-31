@@ -10,7 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.api.IFood;
@@ -59,7 +61,26 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
         ItemCuisine.addItemCuisineEffect(item, world, player, false); // 添加料理效果
         return item;
     }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+        // 使用 nameLV 构造 key，并加上 metadata 支持（可选）
+        String tipKey = "tips." + this.nameLV + "." + stack.getItemDamage();
 
+        // 先尝试带 meta 的提示（如 tips.cooked_meat.1）
+        if (StatCollector.canTranslate(tipKey)) {
+            tooltip.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal(tipKey));
+        } else {
+            // 回退到通用提示（如 tips.cooked_meat）
+            String fallbackKey = "tips." + this.nameLV;
+            if (StatCollector.canTranslate(fallbackKey)) {
+                tooltip.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal(fallbackKey));
+            }
+        }
+
+        // 调用父类（通常为空，但保留好习惯）
+        super.addInformation(stack, player, tooltip, advanced);
+    }
     /**
      * 判断食物是否可以种植（作为植物种子使用）
      *

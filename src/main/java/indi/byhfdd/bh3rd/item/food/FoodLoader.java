@@ -1,12 +1,12 @@
-package indi.byhfdd.bh3rd.loader;
+package indi.byhfdd.bh3rd.item.food;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.cuisine.FoodCore;
-import indi.byhfdd.bh3rd.item.FItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import project.studio.manametalmod.Lapuda.LapudaCore;
 import project.studio.manametalmod.ManaMetalAPI;
 import project.studio.manametalmod.ManaMetalMod;
@@ -18,25 +18,20 @@ import project.studio.manametalmod.magic.magicItem.MagicItemType;
 import project.studio.manametalmod.produce.beekeeping.BeekeepingCore;
 import project.studio.manametalmod.produce.cuisine.FoodType;
 import project.studio.manametalmod.produce.cuisine.PotRecipe;
-import project.studio.manametalmod.produce.farming.CropDifficult;
-import project.studio.manametalmod.produce.farming.FarmCore;
+import project.studio.manametalmod.produce.farming.*;
 import project.studio.manametalmod.produce.fishing.FishPrey;
 import project.studio.manametalmod.produce.fishing.FishSizeType;
 import project.studio.manametalmod.produce.fishing.FishingCore;
 import project.studio.manametalmod.produce.fishing.WaterType;
 
 public class FoodLoader {
-    public static Item FoodMaterials1 = new FItem(1, 1, "FoodMaterials1");
-    public static Item FoodMaterials2 = new FItem(1, 1, "FoodMaterials2");
-    public static Item FoodMaterials3 = new FItem(1, 1, "FoodMaterials3");
+
     public static Item FoodMaterials4 = new FItem(1, 1, "FoodMaterials4");
-    public static Item FoodMaterials5 = new FItem(1, 1, "FoodMaterials5");
+
     public static Item FoodMaterials6 = new FItem(1, 1, "FoodMaterials6");
-    public static Item FoodMaterials7 = new FItem(1, 1, "FoodMaterials7");
-    public static Item FoodMaterials8 = new FItem(1, 1, "FoodMaterials8");
-    public static Item FoodMaterials9 = new FItem(1, 1, "FoodMaterials9");
+
     public static Item FoodMaterials10 = new FItem(1, 1, "FoodMaterials10");
-    public static Item FoodMaterials11 = new FItem(1, 1, "FoodMaterials11");
+
     public static Item FoodMaterials12 = new FItem(1, 1, "FoodMaterials12");
     public static Item FoodMaterials13 = new FItem(1, 1, "FoodMaterials13");
     public static Item FoodMaterials14 = new FItem(1, 1, "FoodMaterials14");
@@ -49,7 +44,18 @@ public class FoodLoader {
     public static Item FoodCoreLV3 = new FoodCore(20, 17, "FoodCoreLv3");
     public static Item FoodCoreLV4 = new FoodCore(25, 8, "FoodCoreLv4");
 
+
+    public static ItemCropBh3rd FoodMaterials1;
+    public static ItemCropBh3rd FoodMaterials2;
+    public static ItemCropBh3rd FoodMaterials3;
+    public static ItemCropBh3rd FoodMaterials5;
+    public static ItemCropBh3rd FoodMaterials7;
+    public static ItemCropBh3rd FoodMaterials8;
+    public static ItemCropBh3rd FoodMaterials9;
+    public static ItemCropBh3rd FoodMaterials11;
+
     int FishCount = ManaMetalAPI.FishingList.size();
+
     public FoodLoader() {
         init();
         recipe();
@@ -62,17 +68,8 @@ public class FoodLoader {
         GameRegistry.registerItem(FoodCoreLV3, "FoodCoreLV3");
         GameRegistry.registerItem(FoodCoreLV4, "FoodCoreLV4");
 
-        GameRegistry.registerItem(FoodMaterials1, "FoodMaterials1");
-        GameRegistry.registerItem(FoodMaterials2, "FoodMaterials2");
-        GameRegistry.registerItem(FoodMaterials3, "FoodMaterials3");
         GameRegistry.registerItem(FoodMaterials4, "FoodMaterials4");
-        GameRegistry.registerItem(FoodMaterials5, "FoodMaterials5");
-        GameRegistry.registerItem(FoodMaterials6, "FoodMaterials6");
-        GameRegistry.registerItem(FoodMaterials7, "FoodMaterials7");
-        GameRegistry.registerItem(FoodMaterials8, "FoodMaterials8");
-        GameRegistry.registerItem(FoodMaterials9, "FoodMaterials9");
         GameRegistry.registerItem(FoodMaterials10, "FoodMaterials10");
-        GameRegistry.registerItem(FoodMaterials11, "FoodMaterials11");
         GameRegistry.registerItem(FoodMaterials12, "FoodMaterials12");
         GameRegistry.registerItem(FoodMaterials13, "FoodMaterials13");
         GameRegistry.registerItem(FoodMaterials14, "FoodMaterials14");
@@ -140,14 +137,22 @@ public class FoodLoader {
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials4), FarmCore.Soy, FarmCore.Soy, FarmCore.Soy);
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials6, 2), Items.chicken);
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials13), Items.gold_nugget, Items.gold_nugget, Items.gold_nugget, Items.gold_nugget);
-        ManaMetalAPI.FishingList.add(new FishPrey(new ItemStack(FishingCore.fish_M3_Life, 1, FishCount+2), FishSizeType.Medium, WaterType.river, 30, false));
-        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials16), new ItemStack(BossSummonCore.bossItemM, 1,62), new ItemStack(BossSummonCore.bossItemM, 1,51));
+        ManaMetalAPI.FishingList.add(new FishPrey(new ItemStack(FishingCore.fish_M3_Life, 1, FishCount + 2), FishSizeType.Medium, WaterType.river, 30, false));
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials16), new ItemStack(BossSummonCore.bossItemM, 1, 62), new ItemStack(BossSummonCore.bossItemM, 1, 51));
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials17), Items.glass_bottle, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney, BeekeepingCore.BlockHoney);
-        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials15), Blocks.packed_ice, Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice,Blocks.packed_ice, ItemCraft10.Biliha.block);
-        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials12), LapudaCore.ItemBossBloodDragonsSkin,LapudaCore.ItemBossBloodDragonsSkin,LapudaCore.ItemBossBloodDragonsSkin);
-        //食材-种植
-        FoodMaterials1 = FarmCore.addCropBase(3, CropDifficult.Base, "FoodMaterials1", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials15), Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, Blocks.packed_ice, ItemCraft10.Biliha.block);
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials12), LapudaCore.ItemBossBloodDragonsSkin, LapudaCore.ItemBossBloodDragonsSkin, LapudaCore.ItemBossBloodDragonsSkin);
 
+
+        //食材-种植
+        FoodMaterials1 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials1", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials2 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials2", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials3 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials3", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials5 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials5", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials7 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials7", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials8 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials8", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials9 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials9", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials11 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials11", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
     }
 
     private void effect() {
@@ -202,4 +207,37 @@ public class FoodLoader {
         FoodCollectionCore.addItemEffect(new ItemStack(FoodCoreLV4, 1, 8), MagicItemType.penetrate, 5.0F, (short) 1);
     }
 
+    public static ItemCropBh3rd addCropBh3rd(int LV, CropDifficult type, String name, float food, FoodType foodtype, int water, int money, Quality quality) {
+        // 1. 创建方块
+        BlockCropBh3rd cropBlock = new BlockCropBh3rd(type, name, LV);
+        GameRegistry.registerBlock(cropBlock, "bh3rd:" + name + "_cropBlock");
+
+        // 2. 创建种子
+        ItemSeedsBh3rd seed = new ItemSeedsBh3rd(LV, name, cropBlock, PlantType.Crop, type);
+        GameRegistry.registerItem(seed, "bh3rd:" + name + "_seed");
+
+        // 3. 创建作物
+        float fooddata = 1.0F + (float) LV * 0.5F;
+        ItemCropBh3rd crop = new ItemCropBh3rd((int) fooddata, fooddata * 0.5F, name, quality);
+        crop.seeds = seed; // 保持兼容
+        GameRegistry.registerItem(crop, "bh3rd:" + name + "_crop");
+
+        // 4. OreDict、配方、水、商店
+        OreDictionary.registerOre("listAllseed", seed);
+        OreDictionary.registerOre("crop" + name, crop);
+        OreDictionary.registerOre("food" + name, crop);
+        OreDictionary.registerOre("seed" + name, seed);
+        if (foodtype != null) OreDictionary.registerOre(foodtype.getName(), crop);
+        if (water > 0) ManaMetalAPI.addItemWater(crop, water);
+        ManaMetalAPI.WorldGenPlantList.add(new IWorldGenPlant(cropBlock, 8, seed));
+        ManaMetalAPI.setItemValue(crop, money);
+        FarmCore.SeedList.add(seed);
+        GameRegistry.addShapelessRecipe(new ItemStack(seed), new Object[]{crop});
+
+        // 5. 修复 cropBlock 引用
+        cropBlock.itemSeed = seed;
+        cropBlock.itemCrop = crop;
+
+        return crop;
+    }
 }

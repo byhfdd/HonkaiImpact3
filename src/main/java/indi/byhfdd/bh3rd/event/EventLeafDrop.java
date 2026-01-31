@@ -1,7 +1,7 @@
 package indi.byhfdd.bh3rd.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import indi.byhfdd.bh3rd.loader.FoodLoader;
+import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.init.Blocks;

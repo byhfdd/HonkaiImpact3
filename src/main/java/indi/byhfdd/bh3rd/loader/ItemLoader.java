@@ -1,24 +1,15 @@
 package indi.byhfdd.bh3rd.loader;
 
-import net.minecraft.item.Item;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.item.*;
-import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
+import net.minecraft.item.Item;
 import project.studio.manametalmod.magic.magicItem.IMagicEffect;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;
 
 public class ItemLoader {
 
     public static final Item Bh3rd = (new Item()).setTextureName("bh3rd:Bh3rd");
-    public static final ItemBasicBagWeight PrecisionCard01 = new PrecisionCard01();
-    public static final ItemBasicBagWeight PrecisionCard02 = new PrecisionCard02();
-    public static final ItemBasicBagWeight PrecisionCard03 = new PrecisionCard03();
-    public static final ItemBasicBagWeight PrecisionCard04 = new PrecisionCard04();
-    public static final ItemBasicBagWeight PrecisionCard05 = new PrecisionCard05();
-    public static final ItemBasicBagWeight PrecisionCard06 = new PrecisionCard06();
-    public static final ItemBasicBagWeight PrecisionCard07 = new PrecisionCard07();
-    public static final ItemBasicBagWeight DiscCard = new DiscCard();
+
 
     public static final ItemCore EinsteinRingMagnet = new ItemCore("EinsteinRingMagnet");
     public static final ItemCore FluidAlloyBlock = new ItemCore("FluidAlloyBlock");
@@ -77,15 +68,12 @@ public class ItemLoader {
     public static final DiscCore BCY = new DiscCore("BCY");
     public static final DiscCore BHSJDGJ = new DiscCore("BHSJDGJ");
     public static final DiscCore GirlInside = new DiscCore("GirlInside");
-    public static final DiscCore GZJSZ = new DiscCore("GZJSZ");
     public static final DiscCore Oaths = new DiscCore("Oaths");
     public static final DiscCore LZ = new DiscCore("LZ");
     public static final DiscCore XYNXSZR = new DiscCore("XYNXSZR");
-    public static final DiscCore WLLK = new DiscCore("WLLK");
     public static final DiscCore WLZJ = new DiscCore("WLZJ");
     public static final DiscCore ReOracle = new DiscCore("ReOracle");
     public static final DiscCore QYX = new DiscCore("QYX");
-    public static final DiscCore QSZZ = new DiscCore("QSZZ");
     public static final DiscCore QNZY = new DiscCore("QNZY");
     public static final DiscCore ZCFZQ = new DiscCore("ZCFZQ");
     public static final DiscCore NoCeiling = new DiscCore("NoCeiling");
@@ -230,13 +218,6 @@ public class ItemLoader {
 
     public static void init() {
         GameRegistry.registerItem(Bh3rd, "Bh3rd");
-        GameRegistry.registerItem(PrecisionCard01, "PrecisionCard01");
-        GameRegistry.registerItem(PrecisionCard02, "PrecisionCard02");
-        GameRegistry.registerItem(PrecisionCard03, "PrecisionCard03");
-        GameRegistry.registerItem(PrecisionCard04, "PrecisionCard04");
-        GameRegistry.registerItem(PrecisionCard05, "PrecisionCard05");
-        GameRegistry.registerItem(PrecisionCard06, "PrecisionCard06");
-        GameRegistry.registerItem(PrecisionCard07, "PrecisionCard07");
-        GameRegistry.registerItem(DiscCard, "DiscCard");
+
     }
 }
