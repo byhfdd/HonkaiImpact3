@@ -80,6 +80,15 @@ public class FoodLoader {
     }
 
     private void recipe() {
+        //食材-种植
+        FoodMaterials1 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials1", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials2 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials2", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials3 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials3", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials5 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials5", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials7 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials7", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials8 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials8", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials9 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials9", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+        FoodMaterials11 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials11", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
         //LV1
         ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV1, 1, 0), new int[]{0, 4, 0, 0, 0, 0, 0, 0}, 30, new Object[]{FarmCore.Rice, FarmCore.Rice, FarmCore.Rice, FarmCore.Rice}));
         ManaMetalAPI.PotFoodRecipe.add(new PotRecipe(new ItemStack(FoodCoreLV1, 1, 1), new int[]{0, 2, 0, 0, 2, 0, 0, 0}, 30, new Object[]{Items.egg, Items.egg, FarmCore.Rice, FarmCore.Rice}));
@@ -144,15 +153,7 @@ public class FoodLoader {
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials12), LapudaCore.ItemBossBloodDragonsSkin, LapudaCore.ItemBossBloodDragonsSkin, LapudaCore.ItemBossBloodDragonsSkin);
 
 
-        //食材-种植
-        FoodMaterials1 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials1", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials2 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials2", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials3 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials3", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials5 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials5", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials7 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials7", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials8 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials8", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials9 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials9", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
-        FoodMaterials11 = addCropBh3rd(3, CropDifficult.Base, "FoodMaterials11", 1.0F, FoodType.veggie, 0, 200, Quality.VeryRare);
+
     }
 
     private void effect() {
