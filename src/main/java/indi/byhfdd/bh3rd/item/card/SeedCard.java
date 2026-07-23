@@ -1,7 +1,7 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.item.food.FoodLoader;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
 

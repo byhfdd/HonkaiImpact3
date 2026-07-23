@@ -1,16 +1,19 @@
 package indi.byhfdd.bh3rd.loader;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.block.BlockCore;
 import indi.byhfdd.bh3rd.block.ActivityBlockBh3rd;
+import indi.byhfdd.bh3rd.block.BlockCore;
 
 public class BlockLoader {
 
     public static BlockCore EtherPhlogistonore01, EtherPhlogistonore02, EtherPhlogistonore03;
-    public static ActivityBlockBh3rd HiLoveELF = new ActivityBlockBh3rd("HiLoveELF");
-    public static ActivityBlockBh3rd SchicksalImperative = new ActivityBlockBh3rd("SchicksalImperative");
-    public static ActivityBlockBh3rd ReignSolaris = new ActivityBlockBh3rd("ReignSolaris");
+    public static ActivityBlockBh3rd HiLoveELF;
+    public static ActivityBlockBh3rd SchicksalImperative;
+    public static ActivityBlockBh3rd ReignSolaris;
     public static void init() {
+        HiLoveELF = new ActivityBlockBh3rd("HiLoveELF");
+        SchicksalImperative = new ActivityBlockBh3rd("SchicksalImperative");
+        ReignSolaris = new ActivityBlockBh3rd("ReignSolaris");
         GameRegistry.registerBlock(HiLoveELF, "HiLoveELF");
         GameRegistry.registerBlock(SchicksalImperative, "SchicksalImperative");
         GameRegistry.registerBlock(ReignSolaris, "ReignSolaris");

@@ -1,5 +1,6 @@
 package indi.byhfdd.bh3rd.block;
 
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
@@ -16,17 +17,11 @@ import net.minecraft.world.World;
 public class ActivityBlockBh3rd extends Block {
 
     // 基础纹理：逻辑方向（与世界无关）
-    @SideOnly(Side.CLIENT)
     private IIcon topIcon;
-    @SideOnly(Side.CLIENT)
     private IIcon bottomIcon;
-    @SideOnly(Side.CLIENT)
     private IIcon[] frontIcons = new IIcon[4]; // 逻辑前面4种状态
-    @SideOnly(Side.CLIENT)
     private IIcon backIcon;   // 逻辑后面
-    @SideOnly(Side.CLIENT)
     private IIcon leftIcon;   // 逻辑左面
-    @SideOnly(Side.CLIENT)
     private IIcon rightIcon;  // 逻辑右面
     String name;
 

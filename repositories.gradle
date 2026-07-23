@@ -1,5 +1,29 @@
-// Add any additional repositories for your dependencies here.
-
 repositories {
+    // 阿里云 Maven 镜像（放最前面优先使用）
+    maven {
+        name 'Aliyun Maven'
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    maven {
+        name 'Aliyun Google'
+        url 'https://maven.aliyun.com/repository/google/'
+    }
+    maven {
+        name 'Aliyun Spring'
+        url 'https://maven.aliyun.com/repository/spring/'
+    }
 
+    // GTNH Nexus（GTNH 专属依赖，阿里云没有，必须保留）
+    maven {
+        name 'GTNH Maven'
+        url 'https://nexus.gtnewhorizons.com/repository/public/'
+    }
+
+    // Forge Maven（Forge 相关依赖）
+    maven {
+        name = "Forge"
+        url = "https://maven.minecraftforge.net/"
+    }
+
+    mavenCentral()
 }

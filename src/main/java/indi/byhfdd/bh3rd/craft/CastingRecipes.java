@@ -1,10 +1,9 @@
 package indi.byhfdd.bh3rd.craft;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import indi.byhfdd.bh3rd.loader.WeaponLoader;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.items.craftingRecipes.CastingData;
 
 public class CastingRecipes {// 锻造

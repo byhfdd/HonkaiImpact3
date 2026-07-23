@@ -15,8 +15,6 @@ public class BlockCropBh3rd extends BlockCropSpecial {
     public BlockCropBh3rd(CropDifficult type, String name, int LV) {
         super(type, name, LV);
         this.cropName = name;
-        // 关键：不要让父类设置 blockIcon
-        this.blockIcon = null;
     }
 
     @Override

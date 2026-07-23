@@ -1,6 +1,13 @@
-
 pluginManagement {
     repositories {
+        maven {
+            name = "Aliyun Gradle Plugin"
+            url = uri("https://maven.aliyun.com/repository/gradle-plugin/")
+        }
+        maven {
+            name = "Aliyun Maven"
+            url = uri("https://maven.aliyun.com/repository/public/")
+        }
         maven {
             // RetroFuturaGradle
             name = "GTNH Maven"
