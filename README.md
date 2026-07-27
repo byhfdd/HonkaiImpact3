@@ -15,18 +15,17 @@
 
 # 食物
 
-0 listAllfruit 水果
-1 listAllgrain 谷物
-2 listAllmeatraw 生肉
-3 listAllveggie 蔬菜
-4 listAllegg 蛋
-5 listAllmushroom 蘑菇
-6 listAllfishraw 生鱼
-7 listAllmilk 奶制品
+0,fruit,水果
+1,grain,谷物
+2,meatraw,生肉
+3,veggie,蔬菜
+4,egg,蛋
+5,mushroom,蘑菇
+6,fishraw,生鱼
+7,milk,奶制品
 
 ## 云津百味记
 
-辣椒、包菜、排骨、茄子、豆腐、大米、桂花、蒜、山葵、腊肉、鸡翅、命定之甜、苦瓜、海蜘蛛、强韧筋膜、原始之角、根源物质、燕窝
 
 | 等级     | 菜肴名称  | 价格  | 烹饪手法 | 口味  | 消耗食材                | 配方描述                                          |
 |--------|-------|-----|------|-----|---------------------|:----------------------------------------------|
