@@ -174,293 +174,294 @@ public class FoodLoader {
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 0),
-                new int[] { 0, 4, 0, 0, 0, 0, 0, 0 },
+                new int[]{0, 4, 0, 0, 0, 0, 0, 0},
                 30,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, FarmCore.Rice, FarmCore.Rice }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, FarmCore.Rice, FarmCore.Rice}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 1),
-                new int[] { 0, 2, 0, 0, 2, 0, 0, 0 },
+                new int[]{0, 2, 0, 0, 2, 0, 0, 0},
                 30,
-                new Object[] { Items.egg, Items.egg, FarmCore.Rice, FarmCore.Rice }));
+                new Object[]{Items.egg, Items.egg, FarmCore.Rice, FarmCore.Rice}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 2),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials1, FoodMaterials1, Items.chicken, Items.chicken }));
+                new Object[]{FoodMaterials1, FoodMaterials1, Items.chicken, Items.chicken}));
         // LV2
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 0),
-                new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
+                new int[]{0, 0, 0, 4, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials2, FoodMaterials2, FoodMaterials2, FoodMaterials2 }));
+                new Object[]{FoodMaterials2, FoodMaterials2, FoodMaterials2, FoodMaterials2}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 1),
-                new int[] { 0, 0, 0, 2, 2, 0, 0, 0 },
+                new int[]{0, 0, 0, 2, 2, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials3, FoodMaterials3, Items.egg, Items.egg }));
+                new Object[]{FoodMaterials3, FoodMaterials3, Items.egg, Items.egg}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 2),
-                new int[] { 0, 0, 0, 2, 2, 0, 0, 0 },
+                new int[]{0, 0, 0, 2, 2, 0, 0, 0},
                 30,
-                new Object[] { FarmCore.Tomato, FarmCore.Tomato, Items.egg, Items.egg }));
+                new Object[]{FarmCore.Tomato, FarmCore.Tomato, Items.egg, Items.egg}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 3),
-                new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
+                new int[]{0, 2, 2, 0, 0, 0, 0, 0},
                 30,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, Items.porkchop, Items.porkchop }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, Items.porkchop, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 4),
-                new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
+                new int[]{0, 2, 0, 2, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials1, FoodMaterials1, FoodMaterials4, FoodMaterials4 }));
+                new Object[]{FoodMaterials1, FoodMaterials1, FoodMaterials4, FoodMaterials4}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 5),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials3, FoodMaterials3, Items.porkchop, Items.porkchop }));
+                new Object[]{FoodMaterials3, FoodMaterials3, Items.porkchop, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 6),
-                new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
+                new int[]{0, 2, 2, 0, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials18, FoodMaterials18, Items.porkchop, Items.porkchop }));
+                new Object[]{FoodMaterials18, FoodMaterials18, Items.porkchop, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 7),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 30,
-                new Object[] { FarmCore.WhiteRadish, FarmCore.WhiteRadish, Items.porkchop, Items.porkchop }));
+                new Object[]{FarmCore.WhiteRadish, FarmCore.WhiteRadish, Items.porkchop, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 8),
-                new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
+                new int[]{0, 2, 0, 1, 1, 0, 0, 0},
                 30,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, Items.egg, FarmCore.Tomato }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, Items.egg, FarmCore.Tomato}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 9),
-                new int[] { 0, 2, 0, 0, 0, 0, 2, 0 },
+                new int[]{0, 2, 0, 0, 0, 0, 2, 0},
                 30,
-                new Object[] { FoodMaterials18, FoodMaterials18, new ItemStack(FishingCore.fish_M3_Dead, 1, 40),
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 40) }));
+                new Object[]{FoodMaterials18, FoodMaterials18, new ItemStack(FishingCore.fish_M3_Dead, 1, 40),
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 40)}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 10),
-                new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
+                new int[]{0, 2, 1, 1, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials3, FoodMaterials4, FoodMaterials4, Items.porkchop }));
+                new Object[]{FoodMaterials3, FoodMaterials4, FoodMaterials4, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 11),
-                new int[] { 0, 2, 0, 0, 1, 0, 0, 1 },
+                new int[]{0, 2, 0, 0, 1, 0, 0, 1},
                 30,
-                new Object[] { FoodMaterials18, FoodMaterials18, Items.egg, Items.milk_bucket }));
+                new Object[]{FoodMaterials18, FoodMaterials18, Items.egg, Items.milk_bucket}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 12),
-                new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
+                new int[]{0, 0, 0, 4, 0, 0, 0, 0},
                 30,
-                new Object[] { FoodMaterials2, FoodMaterials2, FoodMaterials3, Items.potato }));
+                new Object[]{FoodMaterials2, FoodMaterials2, FoodMaterials3, Items.potato}));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 13),
-                new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
+                new int[]{0, 0, 0, 2, 0, 0, 2, 0},
                 30,
-                new Object[] { FoodMaterials1, FoodMaterials3 }));
+                new Object[]{FoodMaterials1, FoodMaterials3}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 14),
-                new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
+                new int[]{0, 0, 0, 2, 0, 0, 2, 0},
                 30,
-                new Object[] { new ItemStack(FishingCore.fish_M3_Dead, 1, 118),
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials1, FarmCore.WhiteRadish }));
+                new Object[]{new ItemStack(FishingCore.fish_M3_Dead, 1, 118),
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials1, FarmCore.WhiteRadish}));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 15),
-                new int[] { 0, 1, 0, 1, 0, 0, 2, 0 },
+                new int[]{0, 1, 0, 1, 0, 0, 2, 0},
                 30,
-                new Object[] { FarmCore.Tomato, FoodMaterials18 }));
+                new Object[]{FarmCore.Tomato, FoodMaterials18}));
         // LV3
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 0),
-                new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
+                new int[]{0, 0, 0, 4, 0, 0, 0, 0},
                 40,
-                new Object[] { FoodMaterials5, FoodMaterials5, FoodMaterials5, FoodMaterials5 }));
+                new Object[]{FoodMaterials5, FoodMaterials5, FoodMaterials5, FoodMaterials5}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 1),
-                new int[] { 0, 0, 0, 0, 0, 0, 4, 0 },
+                new int[]{0, 0, 0, 0, 0, 0, 4, 0},
                 40,
-                new Object[] { new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
+                new Object[]{new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 25) }));
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 25)}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 2),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { FoodMaterials6, FoodMaterials6, FoodMaterials3, FoodMaterials3 }));
+                new Object[]{FoodMaterials6, FoodMaterials6, FoodMaterials3, FoodMaterials3}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 3),
-                new int[] { 0, 0, 2, 0, 0, 2, 0, 0 },
+                new int[]{0, 0, 2, 0, 0, 2, 0, 0},
                 40,
-                new Object[] { Items.porkchop, Items.mushroom_stew }));
+                new Object[]{Items.porkchop, Items.mushroom_stew}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 4),
-                new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
+                new int[]{0, 2, 1, 1, 0, 0, 0, 0},
                 40,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, FoodMaterials1, Items.porkchop }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, FoodMaterials1, Items.porkchop}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 5),
-                new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
+                new int[]{0, 2, 0, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, ManaMetalMod.Lotus, ManaMetalMod.Lotus }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, ManaMetalMod.Lotus, ManaMetalMod.Lotus}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 6),
-                new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
+                new int[]{0, 2, 1, 1, 0, 0, 0, 0},
                 40,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, Items.porkchop, FarmCore.Onion }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, Items.porkchop, FarmCore.Onion}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 7),
-                new int[] { 0, 2, 0, 0, 0, 0, 2, 0 },
+                new int[]{0, 2, 0, 0, 0, 0, 2, 0},
                 40,
-                new Object[] { new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 25), FoodMaterials4, FoodMaterials4 }));
+                new Object[]{new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 25), FoodMaterials4, FoodMaterials4}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 8),
-                new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
+                new int[]{0, 0, 0, 2, 0, 0, 2, 0},
                 40,
-                new Object[] { FoodMaterials3, new ItemStack(FishingCore.fish_M3_Dead, 1, 118),
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials7 }));
+                new Object[]{FoodMaterials3, new ItemStack(FishingCore.fish_M3_Dead, 1, 118),
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials7}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 9),
-                new int[] { 0, 1, 2, 1, 0, 0, 0, 0 },
+                new int[]{0, 1, 2, 1, 0, 0, 0, 0},
                 40,
-                new Object[] { Items.porkchop, Items.porkchop, FoodMaterials18, FarmCore.Onion }));
+                new Object[]{Items.porkchop, Items.porkchop, FoodMaterials18, FarmCore.Onion}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 10),
-                new int[] { 0, 0, 3, 1, 0, 0, 0, 0 },
+                new int[]{0, 0, 3, 1, 0, 0, 0, 0},
                 40,
-                new Object[] { FoodMaterials7, FoodMaterials6, Items.chicken, Items.chicken }));
+                new Object[]{FoodMaterials7, FoodMaterials6, Items.chicken, Items.chicken}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 11),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { FarmCore.Onion, Items.potato, Items.porkchop, Items.porkchop }));
+                new Object[]{FarmCore.Onion, Items.potato, Items.porkchop, Items.porkchop}));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 12),
-                new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
+                new int[]{0, 2, 0, 1, 1, 0, 0, 0},
                 40,
-                new Object[] { FoodMaterials18, FoodMaterials18, Items.egg, "foodSweetBerrie" }));
+                new Object[]{FoodMaterials18, FoodMaterials18, Items.egg, "foodSweetBerrie"}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 13),
-                new int[] { 0, 0, 1, 3, 0, 0, 0, 0 },
+                new int[]{0, 0, 1, 3, 0, 0, 0, 0},
                 40,
-                new Object[] { Items.porkchop, FoodMaterials2, FoodMaterials2, FoodMaterials7 }));
+                new Object[]{Items.porkchop, FoodMaterials2, FoodMaterials2, FoodMaterials7}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 14),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { Items.porkchop, Items.porkchop, FoodMaterials7, "foodBamboo" }));
+                new Object[]{Items.porkchop, Items.porkchop, FoodMaterials7, "foodBamboo"}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 15),
-                new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
+                new int[]{0, 2, 0, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { "foodSweetBerrie", FarmCore.Rice, FarmCore.Rice, FoodMaterials8 }));
+                new Object[]{"foodSweetBerrie", FarmCore.Rice, FarmCore.Rice, FoodMaterials8}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 15),
-                new int[] { 0, 0, 0, 2, 0, 0, 0, 2 },
+                new int[]{0, 0, 0, 2, 0, 0, 0, 2},
                 40,
-                new Object[] { Items.milk_bucket, Items.milk_bucket, FoodMaterials9, FoodMaterials5 }));
+                new Object[]{Items.milk_bucket, Items.milk_bucket, FoodMaterials9, FoodMaterials5}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 16),
-                new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
+                new int[]{0, 2, 0, 2, 0, 0, 0, 0},
                 40,
-                new Object[] { FarmCore.Rice, FarmCore.Rice, FoodMaterials8, "foodSweetBerrie" }));
+                new Object[]{FarmCore.Rice, FarmCore.Rice, FoodMaterials8, "foodSweetBerrie"}));
         // LV4
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 0),
-                new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
+                new int[]{0, 0, 0, 2, 0, 0, 2, 0},
                 60,
-                new Object[] { FoodMaterials10, FoodMaterials10, "foodSweetBerrie", "foodSweetBerrie" }));
+                new Object[]{FoodMaterials10, FoodMaterials10, "foodSweetBerrie", "foodSweetBerrie"}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 1),
-                new int[] { 0, 0, 0, 3, 1, 0, 0, 0 },
+                new int[]{0, 0, 0, 3, 1, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials11, FoodMaterials11, "foodBamboo", Items.egg }));
+                new Object[]{FoodMaterials11, FoodMaterials11, "foodBamboo", Items.egg}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 2),
-                new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
+                new int[]{0, 2, 2, 0, 0, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials12, FoodMaterials12, FarmCore.Rice, FarmCore.Rice }));
+                new Object[]{FoodMaterials12, FoodMaterials12, FarmCore.Rice, FarmCore.Rice}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 3),
-                new int[] { 0, 1, 1, 0, 1, 0, 1, 0 },
+                new int[]{0, 1, 1, 0, 1, 0, 1, 0},
                 60,
-                new Object[] { FoodMaterials13, Items.egg, FarmCore.Rice,
-                    new ItemStack(FishingCore.fish_M3_Dead, 1, 40) }));
+                new Object[]{FoodMaterials13, Items.egg, FarmCore.Rice,
+                    new ItemStack(FishingCore.fish_M3_Dead, 1, 40)}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 4),
-                new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
+                new int[]{0, 2, 0, 1, 1, 0, 0, 0},
                 60,
-                new Object[] { ManaMetalMod.Lotus, FarmCore.Rice, FarmCore.Rice, FoodMaterials14 }));
+                new Object[]{ManaMetalMod.Lotus, FarmCore.Rice, FarmCore.Rice, FoodMaterials14}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 5),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials15, FoodMaterials15, FoodMaterials9, FoodMaterials5 }));
+                new Object[]{FoodMaterials15, FoodMaterials15, FoodMaterials9, FoodMaterials5}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 6),
-                new int[] { 0, 0, 1, 3, 0, 0, 0, 0 },
+                new int[]{0, 0, 1, 3, 0, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials16, FoodMaterials3, FoodMaterials7, FarmCore.Onion }));
+                new Object[]{FoodMaterials16, FoodMaterials3, FoodMaterials7, FarmCore.Onion}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 7),
-                new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
+                new int[]{0, 0, 2, 2, 0, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials17, FoodMaterials17, FoodMaterials8, "foodSweetBerrie" }));
+                new Object[]{FoodMaterials17, FoodMaterials17, FoodMaterials8, "foodSweetBerrie"}));
         ManaMetalAPI.PotFoodRecipe.add(
             new PotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 8),
-                new int[] { 0, 0, 4, 0, 0, 0, 0, 0 },
+                new int[]{0, 0, 4, 0, 0, 0, 0, 0},
                 60,
-                new Object[] { FoodMaterials12, FoodMaterials15, FoodMaterials16, FoodMaterials17 }));
+                new Object[]{FoodMaterials12, FoodMaterials15, FoodMaterials16, FoodMaterials17}));
         // 食材
+        GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials18), ItemCraft10.Itemflour, ItemCraft10.Itemflour, ItemCraft10.Itemflour);
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials4), FarmCore.Soy, FarmCore.Soy, FarmCore.Soy);
         GameRegistry.addShapelessRecipe(new ItemStack(FoodMaterials6, 2), Items.chicken);
         GameRegistry.addShapelessRecipe(
@@ -571,7 +572,7 @@ public class FoodLoader {
     }
 
     public static ItemCropBh3rd addCropBh3rd(int LV, CropDifficult type, String name, float food, FoodType foodtype,
-        int water, int money, Quality quality) {
+                                             int water, int money, Quality quality) {
         // 1. 创建方块
         BlockCropBh3rd cropBlock = new BlockCropBh3rd(type, name, LV);
         GameRegistry.registerBlock(cropBlock, "bh3rd:" + name + "_cropBlock");
@@ -596,7 +597,7 @@ public class FoodLoader {
         ManaMetalAPI.WorldGenPlantList.add(new IWorldGenPlant(cropBlock, 8, seed));
         ManaMetalAPI.setItemValue(crop, money);
         FarmCore.SeedList.add(seed);
-        GameRegistry.addShapelessRecipe(new ItemStack(seed), new Object[] { crop });
+        GameRegistry.addShapelessRecipe(new ItemStack(seed), new Object[]{crop});
 
         // 5. 修复 cropBlock 引用
         cropBlock.itemSeed = seed;
