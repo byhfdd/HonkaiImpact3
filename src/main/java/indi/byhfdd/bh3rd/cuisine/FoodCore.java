@@ -1,8 +1,7 @@
 package indi.byhfdd.bh3rd.cuisine;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +13,10 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.api.IFood;
 import project.studio.manametalmod.core.NBTHelp;
@@ -21,9 +24,8 @@ import project.studio.manametalmod.produce.cuisine.FoodTaste;
 import project.studio.manametalmod.produce.cuisine.ICuisine;
 import project.studio.manametalmod.produce.cuisine.ItemCuisine;
 
-import java.util.List;
-
 public class FoodCore extends ItemFood implements IFood, ICuisine {
+
     int some;
     // 图标数组，用于存储不同子类型食物的图标
     IIcon[] icons;
@@ -39,9 +41,9 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
         this.some = some;
         this.nameLV = nameLV;
         this.icons = new IIcon[some];
-        this.setMaxStackSize(20);              // 设置最大堆叠数量
-        this.setAlwaysEdible();               // 设置总是可以食用（即使饥饿值满也可以食用）
-        this.setHasSubtypes(true);            // 启用子类型（metadata）
+        this.setMaxStackSize(20); // 设置最大堆叠数量
+        this.setAlwaysEdible(); // 设置总是可以食用（即使饥饿值满也可以食用）
+        this.setHasSubtypes(true); // 启用子类型（metadata）
         this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 设置创造模式物品栏分类
     }
 
@@ -55,12 +57,13 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
      */
     public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
         player.getFoodStats()
-            .func_151686_a(this, item);  // 增加玩家的饱食度
+            .func_151686_a(this, item); // 增加玩家的饱食度
         world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F); // 播放打嗝声音
-        this.onFoodEaten(item, world, player);  // 调用父类的食物食用处理方法
+        this.onFoodEaten(item, world, player); // 调用父类的食物食用处理方法
         ItemCuisine.addItemCuisineEffect(item, world, player, false); // 添加料理效果
         return item;
     }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
@@ -81,6 +84,7 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
         // 调用父类（通常为空，但保留好习惯）
         super.addInformation(stack, player, tooltip, advanced);
     }
+
     /**
      * 判断食物是否可以种植（作为植物种子使用）
      *
@@ -96,13 +100,13 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
                 if (data != -1) {
                     FoodTaste ft = FoodTaste.values()[data];
                     if (ft == FoodTaste.GoldDust) {
-                        return false;  // 如果是金粉口味，则不能种植
+                        return false; // 如果是金粉口味，则不能种植
                     }
                 }
             }
         }
 
-        return true;  // 默认可以种植
+        return true; // 默认可以种植
     }
 
     /**
@@ -175,7 +179,7 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg) {
         for (int i = 0; i < some; ++i) {
-            icons[i] = reg.registerIcon("bh3rd:" + nameLV + "." + i);  // 注册10个不同子类型的图标
+            icons[i] = reg.registerIcon("bh3rd:" + nameLV + "." + i); // 注册10个不同子类型的图标
         }
 
     }
@@ -190,7 +194,7 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < some; ++i) {
-            lst.add(new ItemStack(itm, 1, i));  // 添加10个不同元数据的物品
+            lst.add(new ItemStack(itm, 1, i)); // 添加10个不同元数据的物品
         }
 
     }
@@ -214,6 +218,6 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
      */
     @Override
     public ItemStack getRootItem(ItemStack food) {
-        return new ItemStack(ManaMetalMod.bigbowl);  // 使用ManaMetalMod的大碗作为根部物品
+        return new ItemStack(ManaMetalMod.bigbowl); // 使用ManaMetalMod的大碗作为根部物品
     }
 }

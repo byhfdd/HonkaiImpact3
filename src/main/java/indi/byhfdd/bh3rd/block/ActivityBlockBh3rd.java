@@ -1,9 +1,5 @@
 package indi.byhfdd.bh3rd.block;
 
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,15 +10,19 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+
 public class ActivityBlockBh3rd extends Block {
 
     // 基础纹理：逻辑方向（与世界无关）
     private IIcon topIcon;
     private IIcon bottomIcon;
     private IIcon[] frontIcons = new IIcon[4]; // 逻辑前面4种状态
-    private IIcon backIcon;   // 逻辑后面
-    private IIcon leftIcon;   // 逻辑左面
-    private IIcon rightIcon;  // 逻辑右面
+    private IIcon backIcon; // 逻辑后面
+    private IIcon leftIcon; // 逻辑左面
+    private IIcon rightIcon; // 逻辑右面
     String name;
 
     public ActivityBlockBh3rd(String name) {
@@ -60,7 +60,8 @@ public class ActivityBlockBh3rd extends Block {
 
     // ========== 右键：切换前面状态 ==========
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+        float hitY, float hitZ) {
         if (world.isRemote) {
             // ========== 客户端：播放预测的下一个音效 ==========
             int currentMeta = world.getBlockMetadata(x, y, z);
@@ -77,16 +78,16 @@ public class ActivityBlockBh3rd extends Block {
                 (double) y + 0.5D,
                 (double) z + 0.5D,
                 soundName,
-                1.0F,   // volume
-                1.0F,   // pitch
-                false   // no distance delay
+                1.0F, // volume
+                1.0F, // pitch
+                false // no distance delay
             );
             return true;
         } else {
             // ========== 服务端：更新状态 ==========
             int meta = world.getBlockMetadata(x, y, z);
             int facing = meta & 0xC; // 高2位
-            int state = meta & 3;    // 低2位
+            int state = meta & 3; // 低2位
             state = (state + 1) % 4;
             world.setBlockMetadataWithNotify(x, y, z, facing | state, 3);
             return true;

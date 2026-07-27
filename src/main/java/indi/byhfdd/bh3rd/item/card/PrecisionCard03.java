@@ -1,10 +1,11 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import indi.byhfdd.bh3rd.loader.WeaponLoader;
-import net.minecraft.item.ItemStack;
-
 import java.util.Arrays;
 import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
+import indi.byhfdd.bh3rd.loader.WeaponLoader;
 
 public class PrecisionCard03 extends CardCore {
 
@@ -17,8 +18,7 @@ public class PrecisionCard03 extends CardCore {
         return Arrays.asList(
             new ItemStack(WeaponLoader.WSDFH),
             new ItemStack(WeaponLoader.ZWZY),
-            new ItemStack(WeaponLoader.WXZJ)
-        );
+            new ItemStack(WeaponLoader.WXZJ));
     }
 
     @Override

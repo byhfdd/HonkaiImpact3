@@ -1,12 +1,13 @@
 package indi.byhfdd.bh3rd.loader;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.weapon.*;
+import java.lang.reflect.Field;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import project.studio.manametalmod.utils.ToolCore;
 
-import java.lang.reflect.Field;
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.weapon.*;
+import project.studio.manametalmod.utils.ToolCore;
 
 public class WeaponLoader {
 

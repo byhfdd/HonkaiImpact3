@@ -1,17 +1,18 @@
 package indi.byhfdd.bh3rd.weapon;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.items.ItemToolKatanaLapuda;
 import project.studio.manametalmod.utils.ToolCore;
-
-import java.util.List;
 
 public class KatanaCore extends ItemToolKatanaLapuda {
 

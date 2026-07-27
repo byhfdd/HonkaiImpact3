@@ -1,10 +1,12 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.item.DiscCard;
 import net.minecraft.item.Item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.item.DiscCard;
+
 public class CardLoader {
+
     public static final Item PrecisionCard01 = new PrecisionCard01();
     public static final Item PrecisionCard02 = new PrecisionCard02();
     public static final Item PrecisionCard03 = new PrecisionCard03();
@@ -15,11 +17,13 @@ public class CardLoader {
 
     public static final Item DiscCard = new DiscCard();
     public static final Item SeedCard = new SeedCard();
-    public CardLoader(){}
+
+    public CardLoader() {}
 
     public static void main() {
         init();
     }
+
     public static void init() {
         GameRegistry.registerItem(PrecisionCard01, "PrecisionCard01");
         GameRegistry.registerItem(PrecisionCard02, "PrecisionCard02");
@@ -32,4 +36,3 @@ public class CardLoader {
         GameRegistry.registerItem(SeedCard, "SeedCard");
     }
 }
-

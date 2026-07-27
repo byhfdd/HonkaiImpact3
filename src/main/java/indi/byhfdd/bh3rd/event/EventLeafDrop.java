@@ -1,7 +1,5 @@
 package indi.byhfdd.bh3rd.event;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.init.Blocks;
@@ -10,7 +8,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.world.BlockEvent;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import indi.byhfdd.bh3rd.item.food.FoodLoader;
+
 public class EventLeafDrop {
+
     @SubscribeEvent
     public void onHarvestLeaves(BlockEvent.HarvestDropsEvent event) {
         if (event.block == null || event.harvester == null
@@ -21,9 +23,7 @@ public class EventLeafDrop {
 
         Block block = event.block;
 
-        boolean isLeaves = block instanceof BlockLeavesBase
-            || block == Blocks.leaves
-            || block == Blocks.leaves2;
+        boolean isLeaves = block instanceof BlockLeavesBase || block == Blocks.leaves || block == Blocks.leaves2;
 
         if (isLeaves) {
             World world = event.world;

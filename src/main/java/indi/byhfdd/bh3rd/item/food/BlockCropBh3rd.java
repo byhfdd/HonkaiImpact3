@@ -1,13 +1,15 @@
 package indi.byhfdd.bh3rd.item.food;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import project.studio.manametalmod.produce.farming.BlockCropSpecial;
 import project.studio.manametalmod.produce.farming.CropDifficult;
 
 public class BlockCropBh3rd extends BlockCropSpecial {
+
     private final String cropName;
     @SideOnly(Side.CLIENT)
     private IIcon[] icons; // 存储8个阶段的图标

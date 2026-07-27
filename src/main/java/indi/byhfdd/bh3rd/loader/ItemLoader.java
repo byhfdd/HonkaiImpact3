@@ -1,15 +1,15 @@
 package indi.byhfdd.bh3rd.loader;
 
+import net.minecraft.item.Item;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.item.*;
-import net.minecraft.item.Item;
 import project.studio.manametalmod.magic.magicItem.IMagicEffect;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;
 
 public class ItemLoader {
 
     public static final Item Bh3rd = (new Item()).setTextureName("bh3rd:Bh3rd");
-
 
     public static final ItemCore EinsteinRingMagnet = new ItemCore("EinsteinRingMagnet");
     public static final ItemCore FluidAlloyBlock = new ItemCore("FluidAlloyBlock");

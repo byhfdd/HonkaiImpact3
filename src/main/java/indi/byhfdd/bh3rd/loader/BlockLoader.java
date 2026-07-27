@@ -10,6 +10,7 @@ public class BlockLoader {
     public static ActivityBlockBh3rd HiLoveELF;
     public static ActivityBlockBh3rd SchicksalImperative;
     public static ActivityBlockBh3rd ReignSolaris;
+
     public static void init() {
         HiLoveELF = new ActivityBlockBh3rd("HiLoveELF");
         SchicksalImperative = new ActivityBlockBh3rd("SchicksalImperative");

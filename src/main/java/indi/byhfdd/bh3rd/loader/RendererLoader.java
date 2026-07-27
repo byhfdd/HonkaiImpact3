@@ -1,9 +1,9 @@
 package indi.byhfdd.bh3rd.loader;
 
+import java.lang.reflect.Field;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
-
-import java.lang.reflect.Field;
 
 public class RendererLoader {
 

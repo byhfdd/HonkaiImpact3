@@ -1,5 +1,7 @@
 package indi.byhfdd.bh3rd;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -8,7 +10,6 @@ import indi.byhfdd.bh3rd.event.EventLeafDrop;
 import indi.byhfdd.bh3rd.item.card.CardLoader;
 import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import indi.byhfdd.bh3rd.loader.*;
-import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
