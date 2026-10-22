@@ -1,13 +1,12 @@
 package indi.byhfdd.bh3rd.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DiscCard extends ItemBasicBagWeight {
 
@@ -43,11 +42,13 @@ public class DiscCard extends ItemBasicBagWeight {
         list.add(new ItemStack(ItemLoader.LZ));
         list.add(new ItemStack(ItemLoader.ZCFZQ));
         list.add(new ItemStack(ItemLoader.NoCeiling));
+        list.add(new ItemStack(ItemLoader.MFXJDYY));
         return list;
     }
 
     public List<Integer> getItemProbability() {
         List<Integer> list = new ArrayList<>();
+        list.add(1);
         list.add(1);
         list.add(1);
         list.add(1);
