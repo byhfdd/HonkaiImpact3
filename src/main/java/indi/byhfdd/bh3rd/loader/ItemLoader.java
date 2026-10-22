@@ -77,6 +77,7 @@ public class ItemLoader {
     public static final DiscCore QNZY = new DiscCore("QNZY");
     public static final DiscCore ZCFZQ = new DiscCore("ZCFZQ");
     public static final DiscCore NoCeiling = new DiscCore("NoCeiling");
+    public static final DiscCore MFXJDYY = new DiscCore("MFXJDYY");
 
     // 圣痕
     // 物理

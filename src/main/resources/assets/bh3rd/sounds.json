@@ -188,6 +188,15 @@
       }
     ]
   },
+  "records.LZ": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "bh3rd:LZ",
+        "stream": true
+      }
+    ]
+  },
   "records.ZCFZQ": {
     "category": "record",
     "sounds": [
@@ -202,6 +211,15 @@
     "sounds": [
       {
         "name": "bh3rd:NoCeiling",
+        "stream": true
+      }
+    ]
+  },
+  "records.MFXJDYY": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "bh3rd:MFXJDYY",
         "stream": true
       }
     ]
