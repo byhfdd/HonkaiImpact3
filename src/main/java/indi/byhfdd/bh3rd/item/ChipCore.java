@@ -1,14 +1,13 @@
 package indi.byhfdd.bh3rd.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.Main;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.Main;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.MMM;
 import project.studio.manametalmod.entity.nbt.ManaMetalModRoot;
 

@@ -1,16 +1,15 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
-
 import indi.byhfdd.bh3rd.loader.BlockLoader;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
+import net.minecraft.item.ItemStack;
 import project.studio.manametalmod.itemAndBlockCraft.ItemCraft10;
 import project.studio.manametalmod.items.itemBag.ItemBasicBagWeight;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // 抽象基类：所有 PrecisionCard 的父类
 public abstract class CardCore extends ItemBasicBagWeight {

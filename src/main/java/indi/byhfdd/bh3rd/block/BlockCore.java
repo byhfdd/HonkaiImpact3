@@ -1,14 +1,13 @@
 package indi.byhfdd.bh3rd.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.sound.SoundTypeCore;
+
+import java.util.Random;
 
 public class BlockCore extends Block {
 

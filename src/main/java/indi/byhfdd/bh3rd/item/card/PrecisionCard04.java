@@ -1,11 +1,10 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import java.util.Arrays;
-import java.util.List;
-
+import indi.byhfdd.bh3rd.loader.WeaponLoader;
 import net.minecraft.item.ItemStack;
 
-import indi.byhfdd.bh3rd.loader.WeaponLoader;
+import java.util.Arrays;
+import java.util.List;
 
 public class PrecisionCard04 extends CardCore {
 

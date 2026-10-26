@@ -1,5 +1,7 @@
 package indi.byhfdd.bh3rd.event;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.init.Blocks;
@@ -7,9 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.world.BlockEvent;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import indi.byhfdd.bh3rd.item.food.FoodLoader;
 
 public class EventLeafDrop {
 

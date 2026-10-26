@@ -1,8 +1,7 @@
 package indi.byhfdd.bh3rd.loader;
 
-import net.minecraft.creativetab.CreativeTabs;
-
 import indi.byhfdd.bh3rd.creativetabs.CreativeTabsFMLTutor;
+import net.minecraft.creativetab.CreativeTabs;
 
 public class CreativeTabsLoader {
 

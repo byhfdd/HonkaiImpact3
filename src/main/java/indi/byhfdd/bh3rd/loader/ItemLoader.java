@@ -1,9 +1,14 @@
 package indi.byhfdd.bh3rd.loader;
 
-import net.minecraft.item.Item;
-
 import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.item.*;
+import indi.byhfdd.bh3rd.item.AccessoryCore;
+import indi.byhfdd.bh3rd.item.ChipCore;
+import indi.byhfdd.bh3rd.item.DiscCore;
+import indi.byhfdd.bh3rd.item.GoldCore;
+import indi.byhfdd.bh3rd.item.ItemCore;
+import indi.byhfdd.bh3rd.item.SoulCore;
+import indi.byhfdd.bh3rd.item.StaminaCore;
+import net.minecraft.item.Item;
 import project.studio.manametalmod.magic.magicItem.IMagicEffect;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;
 

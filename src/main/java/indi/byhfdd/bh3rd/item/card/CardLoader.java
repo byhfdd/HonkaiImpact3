@@ -1,9 +1,8 @@
 package indi.byhfdd.bh3rd.item.card;
 
-import net.minecraft.item.Item;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.item.DiscCard;
+import net.minecraft.item.Item;
 
 public class CardLoader {
 

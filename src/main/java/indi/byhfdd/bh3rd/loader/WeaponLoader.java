@@ -1,13 +1,18 @@
 package indi.byhfdd.bh3rd.loader;
 
-import java.lang.reflect.Field;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.weapon.BowCore;
+import indi.byhfdd.bh3rd.weapon.DaggerCore;
+import indi.byhfdd.bh3rd.weapon.HammerCore;
+import indi.byhfdd.bh3rd.weapon.JavelinCore;
+import indi.byhfdd.bh3rd.weapon.KatanaCore;
+import indi.byhfdd.bh3rd.weapon.SickleCore;
+import indi.byhfdd.bh3rd.weapon.SwordCore;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.weapon.*;
 import project.studio.manametalmod.utils.ToolCore;
+
+import java.lang.reflect.Field;
 
 public class WeaponLoader {
 

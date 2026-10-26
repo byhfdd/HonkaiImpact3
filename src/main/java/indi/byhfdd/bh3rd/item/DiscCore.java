@@ -1,10 +1,9 @@
 package indi.byhfdd.bh3rd.item;
 
-import net.minecraft.item.ItemRecord;
-import net.minecraft.util.ResourceLocation;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import net.minecraft.item.ItemRecord;
+import net.minecraft.util.ResourceLocation;
 
 public class DiscCore extends ItemRecord {
 

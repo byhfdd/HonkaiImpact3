@@ -1,9 +1,8 @@
 package indi.byhfdd.bh3rd.item.food;
 
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.api.IQualityItem;
 import project.studio.manametalmod.api.Quality;
 

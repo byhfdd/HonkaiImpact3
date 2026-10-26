@@ -1,16 +1,14 @@
 package indi.byhfdd.bh3rd.client;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.shop.ContainerCrystalShop;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-
 import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.shop.ContainerCrystalShop;
 
 @SideOnly(Side.CLIENT)
 public class GuiCrystalShop extends GuiContainer {

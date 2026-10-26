@@ -1,10 +1,9 @@
 package indi.byhfdd.bh3rd.item.food;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import project.studio.manametalmod.produce.farming.BlockCropSpecial;
 import project.studio.manametalmod.produce.farming.CropDifficult;
 

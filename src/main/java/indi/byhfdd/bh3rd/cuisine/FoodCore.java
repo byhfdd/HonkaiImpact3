@@ -1,7 +1,8 @@
 package indi.byhfdd.bh3rd.cuisine;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,16 +14,14 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import project.studio.manametalmod.ManaMetalMod;
 import project.studio.manametalmod.api.IFood;
 import project.studio.manametalmod.core.NBTHelp;
 import project.studio.manametalmod.produce.cuisine.FoodTaste;
 import project.studio.manametalmod.produce.cuisine.ICuisine;
 import project.studio.manametalmod.produce.cuisine.ItemCuisine;
+
+import java.util.List;
 
 public class FoodCore extends ItemFood implements IFood, ICuisine {
 

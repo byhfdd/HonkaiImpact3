@@ -1,16 +1,15 @@
 package indi.byhfdd.bh3rd.craft;
 
-import java.util.Calendar;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.item.card.CardLoader;
+import indi.byhfdd.bh3rd.loader.BlockLoader;
+import indi.byhfdd.bh3rd.loader.ItemLoader;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import indi.byhfdd.bh3rd.item.card.CardLoader;
-import indi.byhfdd.bh3rd.loader.BlockLoader;
-import indi.byhfdd.bh3rd.loader.ItemLoader;
+import java.util.Calendar;
 
 public class AddRecipe {// 合成
 
@@ -29,7 +28,7 @@ public class AddRecipe {// 合成
             "ICI",
             "III",
             'I',
-            Items.iron_ingot,
+            crystal35,
             'C',
             Blocks.chest);
         // G4
