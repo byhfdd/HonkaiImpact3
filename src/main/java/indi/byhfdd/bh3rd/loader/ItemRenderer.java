@@ -6,13 +6,16 @@ import indi.byhfdd.bh3rd.client.animation.FirstPersonMeleeTransform;
 import indi.byhfdd.bh3rd.client.animation.MeleeAnimations;
 import indi.byhfdd.bh3rd.client.animation.MeleePose;
 import indi.byhfdd.bh3rd.client.animation.MeleeStyle;
+import indi.byhfdd.bh3rd.client.animation.MeleeTrailFrame;
 import indi.byhfdd.bh3rd.client.animation.ThirdPersonMeleeTransform;
+import indi.byhfdd.bh3rd.client.effect.MeleeTrailRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.obj.Vertex;
 import net.minecraftforge.client.model.obj.WavefrontObject;
 import org.lwjgl.opengl.GL11;
 
@@ -29,6 +32,7 @@ public class ItemRenderer implements IItemRenderer {
     private static final Map<String, WavefrontObject> modelCache = new HashMap<>();
     private static final Map<String, ResourceLocation> texCache = new HashMap<>();
     private final MeleeStyle meleeStyle;
+    private float bladeLength = 1.0f;
 
     public ItemRenderer(String name) {
         this(name, null);
@@ -65,6 +69,7 @@ public class ItemRenderer implements IItemRenderer {
         try {
             GL11.glDisable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_CULL_FACE);
+            if (animate) renderTrail(type, item, owner);
             if (type == ItemRenderType.EQUIPPED_FIRST_PERSON && animate && owner == mc.thePlayer) {
                 FirstPersonMeleeTransform.apply(
                     owner.getSwingProgress(MeleeAnimations.INSTANCE.getPartialTicks()),
@@ -81,6 +86,33 @@ public class ItemRenderer implements IItemRenderer {
         } finally {
             GL11.glPopMatrix();
             GL11.glPopAttrib();
+        }
+    }
+
+    private void renderTrail(ItemRenderType type, ItemStack item, EntityLivingBase owner) {
+        boolean firstPerson = type == ItemRenderType.EQUIPPED_FIRST_PERSON;
+        if (firstPerson && owner != mc.thePlayer) return;
+        MeleeTrailFrame trail = MeleeAnimations.INSTANCE.sampleTrail(owner);
+        if (trail.poses.length < 2) return;
+        boolean rotateAround = item.getItem().shouldRotateAroundWhenRendering();
+        GL11.glPushMatrix();
+        try {
+            if (firstPerson) {
+                FirstPersonMeleeTransform.apply(
+                    owner.getSwingProgress(MeleeAnimations.INSTANCE.getPartialTicks()),
+                    rotateAround,
+                    MeleePose.ZERO);
+            }
+            applyRestingPose(type);
+            MeleeTrailRenderer.render(
+                trail.poses,
+                trail.strength,
+                bladeLength,
+                firstPerson,
+                rotateAround,
+                trail.combo);
+        } finally {
+            GL11.glPopMatrix();
         }
     }
 
@@ -111,6 +143,11 @@ public class ItemRenderer implements IItemRenderer {
             }
             this.modelobj = modelCache.get(name);
             this.tex = texCache.get(name);
+            float longest = .25f;
+            for (Vertex vertex : this.modelobj.vertices) {
+                if (Float.isFinite(vertex.y)) longest = Math.max(longest, vertex.y);
+            }
+            bladeLength = Math.min(8.0f, longest);
             return true;
         } catch (Exception e) {
             System.err.println("Failed to load model or texture for: " + name);

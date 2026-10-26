@@ -14,6 +14,7 @@ import indi.byhfdd.bh3rd.event.EventLeafDrop;
 import indi.byhfdd.bh3rd.item.card.CardLoader;
 import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import indi.byhfdd.bh3rd.loader.BlockLoader;
+import indi.byhfdd.bh3rd.loader.CombatEffectLoader;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
 import indi.byhfdd.bh3rd.loader.GuiLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
@@ -29,6 +30,7 @@ public class CommonProxy {
         WeaponLoader.init();
         CardLoader.main();
         BlockLoader.init();
+        CombatEffectLoader.init();
     }
 
     public void init(FMLInitializationEvent event) {

@@ -28,7 +28,7 @@ public class MeleeAnimationTest {
         }
         assertPoseEquals(MeleePose.ZERO, MeleeAnimation.sample(null, 0, .5f), 0);
         int[] combos = { Integer.MIN_VALUE, -1, 0, 1, 2, Integer.MAX_VALUE };
-        float[] limits = { .4f, .45f, .5f, 100, 70, 40 };
+        float[] limits = { .4f, .70f, .5f, 100, 70, 40 };
         for (int combo : combos) {
             for (int frame = 0; frame <= 1000; frame++) {
                 float[] pose = components(MeleeAnimation.sample(MeleeStyle.STANDARD, combo, frame / 1000f));

@@ -83,6 +83,14 @@ public final class MeleeAnimations {
         return state.animation.sample(now);
     }
 
+    public MeleeTrailFrame sampleTrail(EntityLivingBase entity) {
+        SwingState state = states.get(entity);
+        if (state == null || !isCurrent(entity, state.item, state.slot) || isUsingItem(entity)) {
+            return MeleeTrailFrame.EMPTY;
+        }
+        return state.animation.sampleTrail((double) entity.ticksExisted + partialTicks);
+    }
+
     private static boolean isCurrent(EntityLivingBase entity, Item item, int slot) {
         if (entity == null || entity.isDead || entity.worldObj != Minecraft.getMinecraft().theWorld) return false;
         ItemStack held = entity.getHeldItem();

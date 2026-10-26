@@ -62,6 +62,24 @@ public final class MeleeComboAnimation {
         return combo;
     }
 
+    public MeleeTrailFrame sampleTrail(double now) {
+        if (!hasAttack || recovering || !Double.isFinite(now)) return MeleeTrailFrame.EMPTY;
+        float progress = (float) ((now - attackTime) / duration);
+        float fadeEnd = MeleeAnimation.STRIKE_END + .22f;
+        if (progress <= MeleeAnimation.READY_END || progress >= fadeEnd) return MeleeTrailFrame.EMPTY;
+        float end = Math.min(progress, MeleeAnimation.STRIKE_END);
+        float start = Math.max(MeleeAnimation.READY_END, end - .14f);
+        float fadeIn = Math.min(1.0f, (end - MeleeAnimation.READY_END) / .04f);
+        float fadeOut = progress <= MeleeAnimation.STRIKE_END ? 1.0f
+            : (fadeEnd - progress) / (fadeEnd - MeleeAnimation.STRIKE_END);
+        MeleePose[] poses = new MeleePose[12];
+        for (int i = 0; i < poses.length; i++) {
+            float time = start + (end - start) * i / (poses.length - 1);
+            poses[i] = MeleeAnimation.sample(combo, time, attackStart);
+        }
+        return new MeleeTrailFrame(poses, fadeIn * fadeOut, combo);
+    }
+
     public void reset() {
         sequence.reset();
         attackStart = MeleePose.ZERO;

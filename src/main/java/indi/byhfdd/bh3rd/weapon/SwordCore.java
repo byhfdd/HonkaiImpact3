@@ -2,7 +2,9 @@ package indi.byhfdd.bh3rd.weapon;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.combat.MeleeAttackRules;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -34,6 +36,11 @@ public class SwordCore extends ItemToolSwordBase {
     public void addInformation(ItemStack item, EntityPlayer Player, List List, boolean par4) {
         List.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("tips." + name));
         super.addInformation(item, Player, List, par4);
+    }
+
+    @Override
+    public boolean onEntitySwing(EntityLivingBase entity, ItemStack stack) {
+        return !MeleeAttackRules.canSwing(entity) || super.onEntitySwing(entity, stack);
     }
 
     @SideOnly(Side.CLIENT)
