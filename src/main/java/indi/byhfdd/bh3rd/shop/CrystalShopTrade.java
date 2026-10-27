@@ -3,65 +3,80 @@ package indi.byhfdd.bh3rd.shop;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-/** Builds an inventory snapshot so payment and delivery can be committed together by the server. */
+/** Builds a wallet balance and inventory snapshot for one server-side transaction. */
 public final class CrystalShopTrade {
 
     public static final int PRICE = 280;
+    public static final int WITHDRAW_VALUE = 35;
     public static final int SUCCESS = 1;
     public static final int INSUFFICIENT_CRYSTALS = 2;
     public static final int INVENTORY_FULL = 3;
+    public static final int NO_CRYSTALS = 5;
+    public static final int BALANCE_FULL = 6;
 
     private static final int INVENTORY_STACK_LIMIT = 64;
 
     private CrystalShopTrade() {}
 
-    public static int countCrystals(ItemStack[] inventory, Item one, Item five, Item thirtyFive) {
-        long total = 0;
-        for (ItemStack stack : inventory) {
-            total += (long) denomination(stack, one, five, thirtyFive) * positiveSize(stack);
-        }
-        return (int) Math.min(total, Integer.MAX_VALUE);
-    }
-
     /** Neither the original inventory nor the product is changed, including when delivery fails. */
-    public static Result purchase(ItemStack[] inventory, ItemStack product, Item one, Item five, Item thirtyFive) {
+    public static Result purchase(ItemStack[] inventory, ItemStack product, long balance) {
+        requireBalance(balance);
         if (product == null || product.getItem() == null || product.stackSize <= 0) {
             throw new IllegalArgumentException("The shop product must be a nonempty item stack");
         }
-        if (countCrystals(inventory, one, five, thirtyFive) < PRICE) {
-            return new Result(INSUFFICIENT_CRYSTALS, null);
+        if (balance < PRICE) {
+            return failure(INSUFFICIENT_CRYSTALS, balance);
         }
-
         ItemStack[] result = copyInventory(inventory);
-        // All denominations divide 280, and 35 is a multiple of 5, so no change is needed.
-        if (!removePayment(result, PRICE, one, five, thirtyFive)) {
-            return new Result(INSUFFICIENT_CRYSTALS, null);
-        }
-        if (insertProduct(result, product)) {
-            return new Result(SUCCESS, result);
-        }
-
-        // A different payment can empty a currency slot even when the largest-first payment cannot.
-        for (int slot = 0; slot < inventory.length; slot++) {
-            long slotValue = (long) denomination(inventory[slot], one, five, thirtyFive)
-                * positiveSize(inventory[slot]);
-            if (slotValue <= 0 || slotValue > PRICE) {
-                continue;
-            }
-            result = copyInventory(inventory);
-            result[slot] = null;
-            if (removePayment(result, PRICE - (int) slotValue, one, five, thirtyFive)
-                && insertProduct(result, product)) {
-                return new Result(SUCCESS, result);
-            }
-        }
-        return new Result(INVENTORY_FULL, null);
+        return insertProduct(result, product) ? new Result(SUCCESS, result, balance - PRICE)
+            : failure(INVENTORY_FULL, balance);
     }
 
-    private static boolean removePayment(ItemStack[] inventory, int remaining, Item one, Item five, Item thirtyFive) {
-        remaining = removeCurrency(inventory, thirtyFive, 35, remaining);
-        remaining = removeCurrency(inventory, five, 5, remaining);
-        return removeCurrency(inventory, one, 1, remaining) == 0;
+    /** Deposits every supported inventory crystal, or leaves everything unchanged on overflow. */
+    public static Result deposit(ItemStack[] inventory, long balance, Item one, Item five, Item thirtyFive) {
+        requireBalance(balance);
+        long total = 0;
+        for (ItemStack stack : inventory) {
+            long value = (long) denomination(stack, one, five, thirtyFive) * positiveSize(stack);
+            if (value > Long.MAX_VALUE - balance - total) {
+                return failure(BALANCE_FULL, balance);
+            }
+            total += value;
+        }
+        if (total == 0) {
+            return failure(NO_CRYSTALS, balance);
+        }
+        ItemStack[] result = copyInventory(inventory);
+        for (int slot = 0; slot < result.length; slot++) {
+            if (denomination(result[slot], one, five, thirtyFive) != 0) {
+                result[slot] = null;
+            }
+        }
+        return new Result(SUCCESS, result, balance + total);
+    }
+
+    /** Restores an ordinary 35-crystal item so the original crafting recipes remain usable. */
+    public static Result withdraw(ItemStack[] inventory, long balance, Item thirtyFive) {
+        requireBalance(balance);
+        if (thirtyFive == null) {
+            throw new IllegalArgumentException("The withdrawal item must be registered");
+        }
+        if (balance < WITHDRAW_VALUE) {
+            return failure(INSUFFICIENT_CRYSTALS, balance);
+        }
+        ItemStack[] result = copyInventory(inventory);
+        return insertProduct(result, new ItemStack(thirtyFive))
+            ? new Result(SUCCESS, result, balance - WITHDRAW_VALUE) : failure(INVENTORY_FULL, balance);
+    }
+
+    private static void requireBalance(long balance) {
+        if (balance < 0) {
+            throw new IllegalArgumentException("A crystal balance cannot be negative");
+        }
+    }
+
+    private static Result failure(int status, long balance) {
+        return new Result(status, null, balance);
     }
 
     private static boolean insertProduct(ItemStack[] inventory, ItemStack product) {
@@ -98,23 +113,6 @@ public final class CrystalShopTrade {
         return false;
     }
 
-    private static int removeCurrency(ItemStack[] inventory, Item currency, int value, int remaining) {
-        for (int slot = 0; slot < inventory.length && remaining >= value; slot++) {
-            ItemStack stack = inventory[slot];
-            if (positiveSize(stack) > 0 && currency != null
-                && stack.getItem() == currency
-                && stack.getItemDamage() == 0) {
-                int removed = Math.min(stack.stackSize, remaining / value);
-                stack.stackSize -= removed;
-                remaining -= removed * value;
-                if (stack.stackSize == 0) {
-                    inventory[slot] = null;
-                }
-            }
-        }
-        return remaining;
-    }
-
     private static int denomination(ItemStack stack, Item one, Item five, Item thirtyFive) {
         if (positiveSize(stack) == 0 || stack.getItemDamage() != 0 || stack.getItem() == null) {
             return 0;
@@ -144,10 +142,12 @@ public final class CrystalShopTrade {
 
         private final int status;
         private final ItemStack[] inventory;
+        private final long balance;
 
-        private Result(int status, ItemStack[] inventory) {
+        private Result(int status, ItemStack[] inventory, long balance) {
             this.status = status;
             this.inventory = inventory;
+            this.balance = balance;
         }
 
         public int getStatus() {
@@ -156,6 +156,10 @@ public final class CrystalShopTrade {
 
         public ItemStack[] getInventory() {
             return inventory;
+        }
+
+        public long getBalance() {
+            return balance;
         }
     }
 }

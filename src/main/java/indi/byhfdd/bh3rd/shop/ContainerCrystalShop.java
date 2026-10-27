@@ -2,6 +2,7 @@ package indi.byhfdd.bh3rd.shop;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import indi.byhfdd.bh3rd.currency.CrystalWallet;
 import indi.byhfdd.bh3rd.loader.BlockLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +21,12 @@ public class ContainerCrystalShop extends Container {
     public static final int INSUFFICIENT_CRYSTALS = CrystalShopTrade.INSUFFICIENT_CRYSTALS;
     public static final int INVENTORY_FULL = CrystalShopTrade.INVENTORY_FULL;
     public static final int OFFER_CHANGED = 4;
+    public static final int NO_CRYSTALS = CrystalShopTrade.NO_CRYSTALS;
+    public static final int BALANCE_FULL = CrystalShopTrade.BALANCE_FULL;
+    public static final int DEPOSIT_SUCCESS = 7;
+    public static final int WITHDRAW_SUCCESS = 8;
+    public static final int DEPOSIT_REQUEST = 7;
+    public static final int WITHDRAW_REQUEST = 8;
 
     private final EntityPlayer owner;
     private final World world;
@@ -27,10 +34,12 @@ public class ContainerCrystalShop extends Container {
     private final int y;
     private final int z;
     private int offerIndex = -1;
-    private int crystalBalance;
+    private long crystalBalance;
+    private long pendingCrystalBalance;
+    private int pendingBalanceParts;
     private int status = READY;
     private int lastOfferIndex = -2;
-    private int lastCrystalBalance = -1;
+    private long lastCrystalBalance = -1;
     private int lastStatus = -1;
 
     public ContainerCrystalShop(EntityPlayer player, World world, int x, int y, int z) {
@@ -41,11 +50,11 @@ public class ContainerCrystalShop extends Container {
         this.z = z;
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                addSlotToContainer(new Slot(player.inventory, column + row * 9 + 9, 44 + column * 18, 124 + row * 18));
+                addSlotToContainer(new Slot(player.inventory, column + row * 9 + 9, 44 + column * 18, 145 + row * 18));
             }
         }
         for (int column = 0; column < 9; column++) {
-            addSlotToContainer(new Slot(player.inventory, column, 44 + column * 18, 182));
+            addSlotToContainer(new Slot(player.inventory, column, 44 + column * 18, 203));
         }
         if (!world.isRemote) {
             refreshShop();
@@ -60,7 +69,7 @@ public class ContainerCrystalShop extends Container {
         return DailySupply.getOfferStack(offerIndex);
     }
 
-    public int getCrystalBalance() {
+    public long getCrystalBalance() {
         return crystalBalance;
     }
 
@@ -74,11 +83,7 @@ public class ContainerCrystalShop extends Container {
             offerIndex = currentOffer;
             status = READY;
         }
-        crystalBalance = CrystalShopTrade.countCrystals(
-            owner.inventory.mainInventory,
-            ItemLoader.crystal1,
-            ItemLoader.crystal5,
-            ItemLoader.crystal35);
+        crystalBalance = CrystalWallet.getBalance(owner);
     }
 
     @Override
@@ -89,10 +94,11 @@ public class ContainerCrystalShop extends Container {
 
     private void sendShopState(ICrafting crafter) {
         crafter.sendProgressBarUpdate(this, 0, offerIndex);
-        // Window property packets carry signed shorts, so split balances above 32767.
-        crafter.sendProgressBarUpdate(this, 1, crystalBalance & 0xFFFF);
-        crafter.sendProgressBarUpdate(this, 2, crystalBalance >>> 16);
-        crafter.sendProgressBarUpdate(this, 3, status);
+        // Window property packets carry signed shorts; publish all four parts of the long together.
+        for (int part = 0; part < 4; part++) {
+            crafter.sendProgressBarUpdate(this, part + 1, (int) (crystalBalance >>> (part * 16)) & 0xFFFF);
+        }
+        crafter.sendProgressBarUpdate(this, 5, status);
     }
 
     @Override
@@ -115,17 +121,24 @@ public class ContainerCrystalShop extends Container {
     @Override
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int value) {
+        if (id >= 1 && id <= 4) {
+            int part = id - 1;
+            if (part == 0) {
+                pendingCrystalBalance = 0;
+                pendingBalanceParts = 0;
+            }
+            pendingCrystalBalance |= (long) (value & 0xFFFF) << (part * 16);
+            pendingBalanceParts |= 1 << part;
+            if (part == 3 && pendingBalanceParts == 15 && pendingCrystalBalance >= 0) {
+                crystalBalance = pendingCrystalBalance;
+            }
+            return;
+        }
         switch (id) {
             case 0:
                 offerIndex = value >= 0 && value < 7 ? value : -1;
                 break;
-            case 1:
-                crystalBalance = (crystalBalance & 0xFFFF0000) | (value & 0xFFFF);
-                break;
-            case 2:
-                crystalBalance = (crystalBalance & 0xFFFF) | ((value & 0x7FFF) << 16);
-                break;
-            case 3:
+            case 5:
                 status = value;
                 break;
             default:
@@ -134,24 +147,49 @@ public class ContainerCrystalShop extends Container {
     }
 
     @Override
-    public boolean enchantItem(EntityPlayer player, int requestedOffer) {
+    public boolean enchantItem(EntityPlayer player, int request) {
         if (world.isRemote || player.openContainer != this || !canInteractWith(player)) {
             return false;
         }
+        if (request < 0 || request > WITHDRAW_REQUEST) {
+            return false;
+        }
         refreshShop();
-        if (requestedOffer != offerIndex) {
+        if (request < DEPOSIT_REQUEST && request != offerIndex) {
             status = OFFER_CHANGED;
             detectAndSendChanges();
             return false;
         }
-        CrystalShopTrade.Result result = CrystalShopTrade.purchase(
-            player.inventory.mainInventory,
-            getOfferStack(),
-            ItemLoader.crystal1,
-            ItemLoader.crystal5,
-            ItemLoader.crystal35);
+        long previousBalance = crystalBalance;
+        CrystalShopTrade.Result result;
+        if (request == DEPOSIT_REQUEST) {
+            result = CrystalShopTrade.deposit(
+                player.inventory.mainInventory,
+                previousBalance,
+                ItemLoader.crystal1,
+                ItemLoader.crystal5,
+                ItemLoader.crystal35);
+        } else if (request == WITHDRAW_REQUEST) {
+            result = CrystalShopTrade.withdraw(player.inventory.mainInventory, previousBalance, ItemLoader.crystal35);
+        } else {
+            result = CrystalShopTrade.purchase(player.inventory.mainInventory, getOfferStack(), previousBalance);
+        }
         status = result.getStatus();
         if (status == SUCCESS) {
+            if (CrystalWallet.getBalance(player) != previousBalance) {
+                status = READY;
+                detectAndSendChanges();
+                return false;
+            }
+            long nextBalance = result.getBalance();
+            boolean committed = nextBalance > previousBalance
+                ? CrystalWallet.tryCredit(player, nextBalance - previousBalance)
+                : CrystalWallet.trySpend(player, previousBalance - nextBalance);
+            if (!committed) {
+                status = nextBalance > previousBalance ? BALANCE_FULL : INSUFFICIENT_CRYSTALS;
+                detectAndSendChanges();
+                return false;
+            }
             System.arraycopy(
                 result.getInventory(),
                 0,
@@ -159,9 +197,11 @@ public class ContainerCrystalShop extends Container {
                 0,
                 player.inventory.mainInventory.length);
             player.inventory.markDirty();
+            status = request == DEPOSIT_REQUEST ? DEPOSIT_SUCCESS
+                : request == WITHDRAW_REQUEST ? WITHDRAW_SUCCESS : SUCCESS;
         }
         detectAndSendChanges();
-        return status == SUCCESS;
+        return result.getStatus() == SUCCESS;
     }
 
     @Override

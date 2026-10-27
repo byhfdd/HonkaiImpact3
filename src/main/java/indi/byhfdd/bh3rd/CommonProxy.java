@@ -16,6 +16,7 @@ import indi.byhfdd.bh3rd.item.food.FoodLoader;
 import indi.byhfdd.bh3rd.loader.BlockLoader;
 import indi.byhfdd.bh3rd.loader.CombatEffectLoader;
 import indi.byhfdd.bh3rd.loader.CreativeTabsLoader;
+import indi.byhfdd.bh3rd.loader.CrystalCurrencyLoader;
 import indi.byhfdd.bh3rd.loader.GuiLoader;
 import indi.byhfdd.bh3rd.loader.ItemLoader;
 import indi.byhfdd.bh3rd.loader.OreLoader;
@@ -31,6 +32,7 @@ public class CommonProxy {
         CardLoader.main();
         BlockLoader.init();
         CombatEffectLoader.init();
+        CrystalCurrencyLoader.init();
     }
 
     public void init(FMLInitializationEvent event) {

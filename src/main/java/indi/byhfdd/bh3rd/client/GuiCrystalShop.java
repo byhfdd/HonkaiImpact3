@@ -3,6 +3,7 @@ package indi.byhfdd.bh3rd.client;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import indi.byhfdd.bh3rd.shop.ContainerCrystalShop;
+import indi.byhfdd.bh3rd.shop.CrystalShopTrade;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
@@ -21,20 +22,26 @@ public class GuiCrystalShop extends GuiContainer {
 
     private final ContainerCrystalShop shop;
     private GuiButton purchaseButton;
+    private GuiButton depositButton;
+    private GuiButton withdrawButton;
 
     public GuiCrystalShop(ContainerCrystalShop container) {
         super(container);
         shop = container;
         xSize = 248;
-        ySize = 212;
+        ySize = 236;
     }
 
     @Override
     public void initGui() {
         super.initGui();
         buttonList.clear();
-        purchaseButton = new GuiButton(0, guiLeft + 172, guiTop + 68, 64, 20, I18n.format(LANG + "buy"));
+        purchaseButton = new GuiButton(0, guiLeft + 172, guiTop + 72, 64, 20, I18n.format(LANG + "buy"));
+        depositButton = new GuiButton(1, guiLeft + 12, guiTop + 98, 108, 20, I18n.format(LANG + "deposit"));
+        withdrawButton = new GuiButton(2, guiLeft + 128, guiTop + 98, 108, 20, I18n.format(LANG + "withdraw"));
         buttonList.add(purchaseButton);
+        buttonList.add(depositButton);
+        buttonList.add(withdrawButton);
         updatePurchaseButton();
     }
 
@@ -49,13 +56,20 @@ public class GuiCrystalShop extends GuiContainer {
         purchaseButton.enabled = index >= 0 && index < 7
             && shop.getOfferStack() != null
             && shop.getCrystalBalance() >= ContainerCrystalShop.PRICE;
+        depositButton.enabled = shop.getCrystalBalance() < Long.MAX_VALUE;
+        withdrawButton.enabled = shop.getCrystalBalance() >= CrystalShopTrade.WITHDRAW_VALUE;
     }
 
     @Override
     protected void actionPerformed(GuiButton button) {
-        if (button == purchaseButton && button.enabled) {
-            // The server checks the day, inventory space and payment before exchanging.
-            mc.playerController.sendEnchantPacket(inventorySlots.windowId, shop.getOfferIndex());
+        if (button.enabled) {
+            if (button == purchaseButton) {
+                mc.playerController.sendEnchantPacket(inventorySlots.windowId, shop.getOfferIndex());
+            } else if (button == depositButton) {
+                mc.playerController.sendEnchantPacket(inventorySlots.windowId, ContainerCrystalShop.DEPOSIT_REQUEST);
+            } else if (button == withdrawButton) {
+                mc.playerController.sendEnchantPacket(inventorySlots.windowId, ContainerCrystalShop.WITHDRAW_REQUEST);
+            }
         }
     }
 
@@ -66,7 +80,7 @@ public class GuiCrystalShop extends GuiContainer {
 
         ItemStack offer = shop.getOfferStack();
         if (offer != null && mc.thePlayer.inventory.getItemStack() == null
-            && func_146978_c(18, 41, 36, 36, mouseX, mouseY)) {
+            && func_146978_c(18, 45, 36, 36, mouseX, mouseY)) {
             renderToolTip(offer, mouseX, mouseY);
         }
     }
@@ -78,26 +92,26 @@ public class GuiCrystalShop extends GuiContainer {
         drawRect(guiLeft - 1, guiTop - 1, guiLeft + xSize + 1, guiTop + ySize + 1, 0xFF47667F);
         drawGradientRect(guiLeft, guiTop, guiLeft + xSize, guiTop + ySize, 0xFF203349, 0xFF131F30);
         drawRect(guiLeft, guiTop, guiLeft + xSize, guiTop + 2, 0xFF70D7ED);
-        drawRect(guiLeft + 12, guiTop + 27, guiLeft + 236, guiTop + 28, 0xFF3B546C);
+        drawRect(guiLeft + 12, guiTop + 33, guiLeft + 236, guiTop + 34, 0xFF3B546C);
 
-        drawRect(guiLeft + 12, guiTop + 33, guiLeft + 236, guiTop + 97, 0xFF405A74);
-        drawGradientRect(guiLeft + 13, guiTop + 34, guiLeft + 235, guiTop + 96, 0xFF2A435C, 0xFF22364C);
-        drawRect(guiLeft + 13, guiTop + 34, guiLeft + 15, guiTop + 96, 0xFF70D7ED);
-        drawRect(guiLeft + 18, guiTop + 41, guiLeft + 54, guiTop + 77, 0xFF142538);
+        drawRect(guiLeft + 12, guiTop + 38, guiLeft + 236, guiTop + 94, 0xFF405A74);
+        drawGradientRect(guiLeft + 13, guiTop + 39, guiLeft + 235, guiTop + 93, 0xFF2A435C, 0xFF22364C);
+        drawRect(guiLeft + 13, guiTop + 39, guiLeft + 15, guiTop + 93, 0xFF70D7ED);
+        drawRect(guiLeft + 18, guiTop + 45, guiLeft + 54, guiTop + 81, 0xFF142538);
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                drawInventorySlot(44 + column * 18, 124 + row * 18);
+                drawInventorySlot(44 + column * 18, 145 + row * 18);
             }
         }
         for (int column = 0; column < 9; column++) {
-            drawInventorySlot(44 + column * 18, 182);
+            drawInventorySlot(44 + column * 18, 203);
         }
 
         ItemStack offer = shop.getOfferStack();
         if (offer != null) {
             GL11.glPushMatrix();
-            GL11.glTranslatef(guiLeft + 20, guiTop + 43, 0.0F);
+            GL11.glTranslatef(guiLeft + 20, guiTop + 47, 0.0F);
             GL11.glScalef(2.0F, 2.0F, 1.0F);
             RenderHelper.enableGUIStandardItemLighting();
             GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -118,23 +132,23 @@ public class GuiCrystalShop extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        drawFittedText(I18n.format(LANG + "title"), 12, 11, 106, TEXT);
+        drawFittedText(I18n.format(LANG + "title"), 12, 10, 224, TEXT);
         String balance = I18n.format(LANG + "balance", shop.getCrystalBalance());
-        fontRendererObj.drawString(balance, 236 - fontRendererObj.getStringWidth(balance), 11, ACCENT);
+        drawFittedText(balance, 12, 22, 224, ACCENT);
 
         ItemStack offer = shop.getOfferStack();
         String name = offer == null ? I18n.format(LANG + "loading") : offer.getDisplayName();
-        drawFittedText(name, 62, 41, 166, TEXT);
+        drawFittedText(name, 62, 45, 166, TEXT);
         int index = shop.getOfferIndex();
         if (index >= 0 && index < 7) {
-            drawFittedText(I18n.format(LANG + "today", I18n.format(LANG + "day." + index)), 62, 54, 166, MUTED);
+            drawFittedText(I18n.format(LANG + "today", I18n.format(LANG + "day." + index)), 62, 58, 166, MUTED);
         }
-        drawFittedText(I18n.format(LANG + "price", ContainerCrystalShop.PRICE), 62, 75, 106, ACCENT);
+        drawFittedText(I18n.format(LANG + "price", ContainerCrystalShop.PRICE), 62, 79, 106, ACCENT);
 
-        drawFittedText(statusText(), 12, 102, 224, statusColor());
-        fontRendererObj.drawString(I18n.format("container.inventory"), 44, 113, MUTED);
+        drawFittedText(statusText(), 12, 122, 224, statusColor());
+        fontRendererObj.drawString(I18n.format("container.inventory"), 44, 134, MUTED);
         String rotation = fontRendererObj.trimStringToWidth(I18n.format(LANG + "rotation"), 232);
-        fontRendererObj.drawString(rotation, (xSize - fontRendererObj.getStringWidth(rotation)) / 2, 202, MUTED);
+        fontRendererObj.drawString(rotation, (xSize - fontRendererObj.getStringWidth(rotation)) / 2, 226, MUTED);
     }
 
     private String statusText() {
@@ -150,6 +164,14 @@ public class GuiCrystalShop extends GuiContainer {
                 return I18n.format(LANG + "status.inventoryFull");
             case ContainerCrystalShop.OFFER_CHANGED:
                 return I18n.format(LANG + "status.offerChanged");
+            case ContainerCrystalShop.NO_CRYSTALS:
+                return I18n.format(LANG + "status.noCrystals");
+            case ContainerCrystalShop.BALANCE_FULL:
+                return I18n.format(LANG + "status.balanceFull");
+            case ContainerCrystalShop.DEPOSIT_SUCCESS:
+                return I18n.format(LANG + "status.deposited");
+            case ContainerCrystalShop.WITHDRAW_SUCCESS:
+                return I18n.format(LANG + "status.withdrawn");
             default:
                 return I18n.format(
                     LANG + (shop.getCrystalBalance() < ContainerCrystalShop.PRICE ? "status.insufficient"
@@ -162,11 +184,14 @@ public class GuiCrystalShop extends GuiContainer {
             return MUTED;
         }
         int status = shop.getStatus();
-        if (status == ContainerCrystalShop.SUCCESS) {
+        if (status == ContainerCrystalShop.SUCCESS || status == ContainerCrystalShop.DEPOSIT_SUCCESS
+            || status == ContainerCrystalShop.WITHDRAW_SUCCESS) {
             return 0x9FE3AC;
         }
         if (status == ContainerCrystalShop.INSUFFICIENT_CRYSTALS || status == ContainerCrystalShop.INVENTORY_FULL
             || status == ContainerCrystalShop.OFFER_CHANGED
+            || status == ContainerCrystalShop.NO_CRYSTALS
+            || status == ContainerCrystalShop.BALANCE_FULL
             || shop.getCrystalBalance() < ContainerCrystalShop.PRICE) {
             return ERROR;
         }

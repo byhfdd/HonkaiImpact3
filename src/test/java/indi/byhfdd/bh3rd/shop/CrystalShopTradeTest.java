@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,298 +20,253 @@ public class CrystalShopTradeTest {
     private final Item other = new Item();
 
     @Test
-    public void insufficientBalanceLeavesEveryInputUnchanged() {
-        ItemStack crystals = tagged(new ItemStack(thirtyFive, 7), "currency");
+    public void insufficientWalletDoesNotUseInventoryCrystalsOrChangeInputs() {
+        ItemStack crystals = tagged(new ItemStack(thirtyFive, 64), "currency");
         ItemStack product = tagged(new ItemStack(card), "product");
         ItemStack[] inventory = { crystals, null };
 
-        CrystalShopTrade.Result result = purchase(inventory, product);
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, product, 279);
 
         assertEquals(CrystalShopTrade.INSUFFICIENT_CRYSTALS, result.getStatus());
+        assertEquals(279, result.getBalance());
         assertNull(result.getInventory());
         assertSame(crystals, inventory[0]);
-        assertEquals(7, crystals.stackSize);
-        assertEquals(
-            "currency",
-            crystals.getTagCompound()
-                .getString("test"));
+        assertEquals(64, crystals.stackSize);
+        assertEquals("currency", crystals.getTagCompound().getString("test"));
+        assertEquals("product", product.getTagCompound().getString("test"));
         assertNull(inventory[1]);
-        assertEquals(1, product.stackSize);
-        assertEquals(
-            "product",
-            product.getTagCompound()
-                .getString("test"));
     }
 
     @Test
-    public void eightThirtyFiveCrystalsPayForOneCard() {
-        ItemStack original = new ItemStack(thirtyFive, 8);
+    public void walletPaysExactly280AndInventoryCrystalsRemainAvailableForCrafting() {
+        ItemStack crystals = new ItemStack(thirtyFive, 8);
         ItemStack product = new ItemStack(card);
-        ItemStack[] inventory = { original };
+        ItemStack[] inventory = { crystals, null };
 
-        CrystalShopTrade.Result result = purchase(inventory, product);
-
-        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(0, count(result.getInventory()));
-        assertSame(card, result.getInventory()[0].getItem());
-        assertEquals(1, result.getInventory()[0].stackSize);
-        assertNotSame(product, result.getInventory()[0]);
-        assertSame(original, inventory[0]);
-        assertEquals(8, original.stackSize);
-    }
-
-    @Test
-    public void mixedDenominationsPayExactly280FromLargestFirst() {
-        ItemStack[] inventory = { new ItemStack(one, 5), new ItemStack(five, 7), new ItemStack(thirtyFive, 7), null };
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, product, 280);
 
         assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(5, count(result.getInventory()));
-        assertSame(one, result.getInventory()[0].getItem());
-        assertEquals(5, result.getInventory()[0].stackSize);
-        assertEquals(7, inventory[1].stackSize);
-        assertEquals(7, inventory[2].stackSize);
-    }
-
-    @Test
-    public void allThreeDenominationsCanBeUsedInOnePayment() {
-        ItemStack[] inventory = { new ItemStack(thirtyFive, 7), new ItemStack(five, 6), new ItemStack(one, 5) };
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
-        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(0, count(result.getInventory()));
-        assertSame(card, result.getInventory()[0].getItem());
-        assertNull(result.getInventory()[1]);
-        assertNull(result.getInventory()[2]);
-    }
-
-    @Test
-    public void paymentCanFreeTheOnlyDeliverySlot() {
-        ItemStack[] inventory = { new ItemStack(other, 64), new ItemStack(thirtyFive, 8) };
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
-        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertSame(other, result.getInventory()[0].getItem());
+        assertEquals(0, result.getBalance());
+        assertEquals(8, result.getInventory()[0].stackSize);
         assertSame(card, result.getInventory()[1].getItem());
-        assertEquals(8, inventory[1].stackSize);
+        assertNotSame(product, result.getInventory()[1]);
+        assertNotSame(crystals, result.getInventory()[0]);
+        assertSame(crystals, inventory[0]);
+        assertNull(inventory[1]);
     }
 
     @Test
-    public void fullInventoryRejectsDeliveryWithoutCharging() {
-        ItemStack[] inventory = { tagged(new ItemStack(thirtyFive, 9), "retained"), new ItemStack(other, 64) };
-        ItemStack original = inventory[0];
+    public void fullInventoryRejectsPurchaseWithoutChargingOrConsumingPhysicalCrystals() {
+        ItemStack crystals = tagged(new ItemStack(thirtyFive, 8), "retained");
+        ItemStack[] inventory = { crystals, new ItemStack(other, 64) };
 
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, new ItemStack(card), 900);
 
         assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
+        assertEquals(900, result.getBalance());
         assertNull(result.getInventory());
-        assertSame(original, inventory[0]);
-        assertEquals(9, original.stackSize);
-        assertEquals(
-            "retained",
-            original.getTagCompound()
-                .getString("test"));
+        assertSame(crystals, inventory[0]);
+        assertEquals(8, crystals.stackSize);
+        assertEquals("retained", crystals.getTagCompound().getString("test"));
     }
 
     @Test
-    public void smallerDenominationsCanBePreferredToFreeADeliverySlot() {
-        ItemStack[] inventory = fullInventory();
-        inventory[0] = tagged(new ItemStack(thirtyFive, 9), "large");
-        inventory[1] = tagged(new ItemStack(five, 56), "small");
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
-        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(315, count(result.getInventory()));
-        assertSame(thirtyFive, result.getInventory()[0].getItem());
-        assertEquals(9, result.getInventory()[0].stackSize);
-        assertEquals(
-            "large",
-            result.getInventory()[0].getTagCompound()
-                .getString("test"));
-        assertSame(card, result.getInventory()[1].getItem());
-        assertEquals(1, result.getInventory()[1].stackSize);
-        assertEquals(9, inventory[0].stackSize);
-        assertEquals(56, inventory[1].stackSize);
-        assertEquals(
-            "small",
-            inventory[1].getTagCompound()
-                .getString("test"));
-    }
-
-    @Test
-    public void inexactPaymentAfterFreeingACandidateSlotLeavesInputsUnchanged() {
-        ItemStack[] inventory = fullInventory();
-        inventory[0] = tagged(new ItemStack(thirtyFive, 9), "large");
-        inventory[1] = tagged(new ItemStack(one), "candidate");
-        ItemStack originalCandidate = inventory[1];
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
-        assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
-        assertNull(result.getInventory());
-        assertEquals(316, count(inventory));
-        assertSame(originalCandidate, inventory[1]);
-        assertEquals(9, inventory[0].stackSize);
-        assertEquals(
-            "large",
-            inventory[0].getTagCompound()
-                .getString("test"));
-        assertEquals(1, originalCandidate.stackSize);
-        assertEquals(
-            "candidate",
-            originalCandidate.getTagCompound()
-                .getString("test"));
-    }
-
-    @Test
-    public void aFailedCandidateDoesNotChangeTheNextPaymentAttempt() {
-        ItemStack[] inventory = fullInventory();
-        inventory[0] = tagged(new ItemStack(one), "retained");
-        inventory[1] = new ItemStack(thirtyFive, 9);
-        inventory[2] = new ItemStack(five, 56);
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
-        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(316, count(result.getInventory()));
-        assertSame(one, result.getInventory()[0].getItem());
-        assertEquals(1, result.getInventory()[0].stackSize);
-        assertEquals(
-            "retained",
-            result.getInventory()[0].getTagCompound()
-                .getString("test"));
-        assertSame(card, result.getInventory()[2].getItem());
-        assertEquals(9, inventory[1].stackSize);
-        assertEquals(56, inventory[2].stackSize);
-    }
-
-    @Test
-    public void matchingProductCanMergeIntoExistingStack() {
-        ItemStack[] inventory = { new ItemStack(thirtyFive, 9), tagged(new ItemStack(card, 39, 2), "same") };
+    public void matchingProductCanMergeWithoutChangingInputStacksOrTags() {
+        ItemStack[] inventory = { tagged(new ItemStack(card, 39, 2), "same") };
         ItemStack product = tagged(new ItemStack(card, 1, 2), "same");
 
-        CrystalShopTrade.Result result = purchase(inventory, product);
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, product, 300);
 
         assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(40, result.getInventory()[1].stackSize);
-        assertEquals(39, inventory[1].stackSize);
+        assertEquals(20, result.getBalance());
+        assertEquals(40, result.getInventory()[0].stackSize);
+        assertEquals(39, inventory[0].stackSize);
         assertEquals(1, product.stackSize);
-        assertNotSame(inventory[1], result.getInventory()[1]);
-        assertNotSame(inventory[1].getTagCompound(), result.getInventory()[1].getTagCompound());
+        assertNotSame(inventory[0].getTagCompound(), result.getInventory()[0].getTagCompound());
+        result.getInventory()[0].getTagCompound().setString("test", "changed");
+        assertEquals("same", inventory[0].getTagCompound().getString("test"));
     }
 
     @Test
     public void productCannotExceedItsFortyItemLimit() {
-        ItemStack[] inventory = { new ItemStack(thirtyFive, 9), new ItemStack(card, 40) };
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(card));
-
+        ItemStack[] inventory = { new ItemStack(card, 40) };
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, new ItemStack(card), 280);
         assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
-        assertEquals(40, inventory[1].stackSize);
-        assertEquals(9, inventory[0].stackSize);
+        assertEquals(280, result.getBalance());
+        assertEquals(40, inventory[0].stackSize);
     }
 
     @Test
-    public void inventoryStackLimitStillAppliesToItemsAllowingMoreThan64() {
+    public void vanillaInventoryLimitStillAppliesToItemsAllowingMoreThan64() {
         Item largeStackItem = new Item().setMaxStackSize(128);
-        ItemStack[] inventory = { new ItemStack(thirtyFive, 9), new ItemStack(largeStackItem, 64) };
-
-        CrystalShopTrade.Result result = purchase(inventory, new ItemStack(largeStackItem));
-
+        ItemStack[] inventory = { new ItemStack(largeStackItem, 64) };
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, new ItemStack(largeStackItem), 280);
         assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
-        assertEquals(64, inventory[1].stackSize);
-        assertEquals(9, inventory[0].stackSize);
+        assertEquals(280, result.getBalance());
+        assertEquals(64, inventory[0].stackSize);
     }
 
     @Test
     public void productMetadataAndTagsMustMatchBeforeMerging() {
-        ItemStack[] inventory = { new ItemStack(thirtyFive, 9), tagged(new ItemStack(card, 1, 1), "same"),
+        ItemStack[] inventory = { tagged(new ItemStack(card, 1, 1), "same"),
             tagged(new ItemStack(card, 1, 0), "different") };
-
-        CrystalShopTrade.Result result = purchase(inventory, tagged(new ItemStack(card), "same"));
-
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, tagged(new ItemStack(card), "same"), 280);
         assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
+        assertNull(result.getInventory());
+        assertEquals(1, inventory[0].stackSize);
         assertEquals(1, inventory[1].stackSize);
-        assertEquals(1, inventory[2].stackSize);
-        assertEquals(9, inventory[0].stackSize);
     }
 
     @Test
-    public void nonCurrencyMetadataAndNbtArePreserved() {
-        ItemStack[] inventory = { tagged(new ItemStack(thirtyFive, 9), "money"),
-            tagged(new ItemStack(thirtyFive, 12, 1), "variant"), tagged(new ItemStack(other, 8), "unrelated"), null };
+    public void failedMultiStackDeliveryDoesNotPartiallyFillOriginalStack() {
+        ItemStack[] inventory = { new ItemStack(card, 39), new ItemStack(other, 64) };
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(inventory, new ItemStack(card, 2), 280);
+        assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
+        assertEquals(39, inventory[0].stackSize);
+        assertEquals(280, result.getBalance());
+    }
 
-        CrystalShopTrade.Result result = purchase(inventory, tagged(new ItemStack(card), "product"));
+    @Test
+    public void purchaseHandlesLongBalancesWithoutIntegerTruncation() {
+        CrystalShopTrade.Result result = CrystalShopTrade.purchase(new ItemStack[1], new ItemStack(card), Long.MAX_VALUE);
+        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
+        assertEquals(Long.MAX_VALUE - 280, result.getBalance());
+    }
+
+    @Test
+    public void depositCountsEveryDenominationAndLeavesOtherItemsAndMetadataIntact() {
+        ItemStack[] inventory = { tagged(new ItemStack(one, 4), "currency"), new ItemStack(five, 3),
+            new ItemStack(thirtyFive, 2), tagged(new ItemStack(thirtyFive, 7, 1), "variant"),
+            tagged(new ItemStack(other, 6), "unrelated"), null };
+
+        CrystalShopTrade.Result result = deposit(inventory, 100);
 
         assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertEquals(35, count(result.getInventory()));
-        assertEquals(1, result.getInventory()[0].stackSize);
-        assertEquals(
-            "money",
-            result.getInventory()[0].getTagCompound()
-                .getString("test"));
-        assertEquals(12, result.getInventory()[1].stackSize);
-        assertEquals(1, result.getInventory()[1].getItemDamage());
-        assertEquals(
-            "variant",
-            result.getInventory()[1].getTagCompound()
-                .getString("test"));
-        assertSame(other, result.getInventory()[2].getItem());
-        assertEquals(
-            "unrelated",
-            result.getInventory()[2].getTagCompound()
-                .getString("test"));
-        assertEquals(
-            "product",
-            result.getInventory()[3].getTagCompound()
-                .getString("test"));
-        result.getInventory()[0].getTagCompound()
-            .setString("test", "changed");
-        assertEquals(
-            "money",
-            inventory[0].getTagCompound()
-                .getString("test"));
+        assertEquals(189, result.getBalance());
+        assertNull(result.getInventory()[0]);
+        assertNull(result.getInventory()[1]);
+        assertNull(result.getInventory()[2]);
+        assertEquals(7, result.getInventory()[3].stackSize);
+        assertEquals(1, result.getInventory()[3].getItemDamage());
+        assertEquals("variant", result.getInventory()[3].getTagCompound().getString("test"));
+        assertSame(other, result.getInventory()[4].getItem());
+        assertEquals("unrelated", result.getInventory()[4].getTagCompound().getString("test"));
+        assertNotSame(inventory[4].getTagCompound(), result.getInventory()[4].getTagCompound());
+        assertEquals(4, inventory[0].stackSize);
+        assertEquals("currency", inventory[0].getTagCompound().getString("test"));
     }
 
     @Test
-    public void balanceIgnoresEmptyNegativeAndOtherItemStacks() {
+    public void depositDoesNotCountEmptyNegativeOrVariantStacks() {
         ItemStack[] inventory = { new ItemStack(one, 0), new ItemStack(five, -10), new ItemStack(thirtyFive, 10, 1),
-            new ItemStack(other, 64), new ItemStack(one, 4), new ItemStack(five, 3), new ItemStack(thirtyFive, 2),
-            null };
-
-        assertEquals(89, count(inventory));
+            new ItemStack(other, 64), null };
+        CrystalShopTrade.Result result = deposit(inventory, 99);
+        assertEquals(CrystalShopTrade.NO_CRYSTALS, result.getStatus());
+        assertEquals(99, result.getBalance());
+        assertNull(result.getInventory());
+        assertEquals(-10, inventory[1].stackSize);
     }
 
     @Test
-    public void hugeBalancesClampInsteadOfOverflowing() {
-        ItemStack[] inventory = { new ItemStack(thirtyFive, Integer.MAX_VALUE) };
+    public void depositedSnapshotCannotCreditTheSameCrystalsTwice() {
+        ItemStack[] inventory = { new ItemStack(thirtyFive, 8), null };
+        CrystalShopTrade.Result first = deposit(inventory, 0);
+        CrystalShopTrade.Result repeated = deposit(first.getInventory(), first.getBalance());
+        assertEquals(CrystalShopTrade.NO_CRYSTALS, repeated.getStatus());
+        assertEquals(280, repeated.getBalance());
+        assertNull(repeated.getInventory());
+    }
 
-        assertEquals(Integer.MAX_VALUE, count(inventory));
-        CrystalShopTrade.Result result = purchase(new ItemStack[] { inventory[0], null }, new ItemStack(card));
+    @Test
+    public void depositCanExactlyReachTheMaximumBalance() {
+        ItemStack[] inventory = { new ItemStack(one), new ItemStack(thirtyFive) };
+        CrystalShopTrade.Result result = deposit(inventory, Long.MAX_VALUE - 36);
         assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
-        assertTrue(result.getInventory()[0].stackSize > 0);
-        assertEquals(Integer.MAX_VALUE - 8, result.getInventory()[0].stackSize);
+        assertEquals(Long.MAX_VALUE, result.getBalance());
+        assertNull(result.getInventory()[0]);
+        assertNull(result.getInventory()[1]);
+        assertEquals(1, inventory[0].stackSize);
+    }
+
+    @Test
+    public void depositOverflowRejectsAllStacksWithoutPartialCreditOrConsumption() {
+        ItemStack first = tagged(new ItemStack(one), "retained");
+        ItemStack[] inventory = { first, new ItemStack(thirtyFive) };
+        CrystalShopTrade.Result result = deposit(inventory, Long.MAX_VALUE - 35);
+        assertEquals(CrystalShopTrade.BALANCE_FULL, result.getStatus());
+        assertEquals(Long.MAX_VALUE - 35, result.getBalance());
+        assertNull(result.getInventory());
+        assertSame(first, inventory[0]);
+        assertEquals(1, inventory[1].stackSize);
+        assertEquals("retained", first.getTagCompound().getString("test"));
+    }
+
+    @Test
+    public void depositUsesLongArithmeticForOversizedStacks() {
+        ItemStack[] inventory = { new ItemStack(thirtyFive, Integer.MAX_VALUE), new ItemStack(five, Integer.MAX_VALUE) };
+        CrystalShopTrade.Result result = deposit(inventory, (long) Integer.MAX_VALUE + 1);
+        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
+        assertEquals((long) Integer.MAX_VALUE * 41 + 1, result.getBalance());
         assertEquals(Integer.MAX_VALUE, inventory[0].stackSize);
+        assertNull(result.getInventory()[0]);
+        assertNull(result.getInventory()[1]);
     }
 
-    private CrystalShopTrade.Result purchase(ItemStack[] inventory, ItemStack product) {
-        return CrystalShopTrade.purchase(inventory, product, one, five, thirtyFive);
+    @Test
+    public void withdrawalCreatesOneCraftingCrystalAndChargesExactly35() {
+        ItemStack[] inventory = { tagged(new ItemStack(other), "retained"), null };
+        CrystalShopTrade.Result result = CrystalShopTrade.withdraw(inventory, 35, thirtyFive);
+        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
+        assertEquals(0, result.getBalance());
+        assertSame(thirtyFive, result.getInventory()[1].getItem());
+        assertEquals(1, result.getInventory()[1].stackSize);
+        assertEquals(0, result.getInventory()[1].getItemDamage());
+        assertNull(result.getInventory()[1].getTagCompound());
+        assertNull(inventory[1]);
+        assertEquals("retained", result.getInventory()[0].getTagCompound().getString("test"));
     }
 
-    private int count(ItemStack[] inventory) {
-        return CrystalShopTrade.countCrystals(inventory, one, five, thirtyFive);
+    @Test
+    public void withdrawalMergesIntoAnExistingOrdinaryCrystalStack() {
+        ItemStack[] inventory = { new ItemStack(thirtyFive, 63) };
+        CrystalShopTrade.Result result = CrystalShopTrade.withdraw(inventory, 100, thirtyFive);
+        assertEquals(CrystalShopTrade.SUCCESS, result.getStatus());
+        assertEquals(65, result.getBalance());
+        assertEquals(64, result.getInventory()[0].stackSize);
+        assertEquals(63, inventory[0].stackSize);
     }
 
-    private ItemStack[] fullInventory() {
-        ItemStack[] inventory = new ItemStack[36];
-        for (int slot = 0; slot < inventory.length; slot++) {
-            inventory[slot] = new ItemStack(other, 64);
-        }
-        return inventory;
+    @Test
+    public void withdrawalWithNoDeliverySpaceDoesNotCharge() {
+        ItemStack[] inventory = { new ItemStack(thirtyFive, 64), new ItemStack(other, 64) };
+        CrystalShopTrade.Result result = CrystalShopTrade.withdraw(inventory, Long.MAX_VALUE, thirtyFive);
+        assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
+        assertEquals(Long.MAX_VALUE, result.getBalance());
+        assertNull(result.getInventory());
+        assertEquals(64, inventory[0].stackSize);
+    }
+
+    @Test
+    public void withdrawalDoesNotMergeIntoTaggedOrVariantCrystals() {
+        ItemStack[] inventory = { tagged(new ItemStack(thirtyFive), "named"), new ItemStack(thirtyFive, 1, 1) };
+        CrystalShopTrade.Result result = CrystalShopTrade.withdraw(inventory, 35, thirtyFive);
+        assertEquals(CrystalShopTrade.INVENTORY_FULL, result.getStatus());
+        assertEquals(35, result.getBalance());
+        assertEquals("named", inventory[0].getTagCompound().getString("test"));
+    }
+
+    @Test
+    public void insufficientWithdrawalLeavesInventoryUntouched() {
+        ItemStack[] inventory = { null };
+        CrystalShopTrade.Result result = CrystalShopTrade.withdraw(inventory, 34, thirtyFive);
+        assertEquals(CrystalShopTrade.INSUFFICIENT_CRYSTALS, result.getStatus());
+        assertEquals(34, result.getBalance());
+        assertNull(result.getInventory());
+        assertNull(inventory[0]);
+    }
+
+    private CrystalShopTrade.Result deposit(ItemStack[] inventory, long balance) {
+        return CrystalShopTrade.deposit(inventory, balance, one, five, thirtyFive);
     }
 
     private static ItemStack tagged(ItemStack stack, String value) {
