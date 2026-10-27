@@ -1,6 +1,7 @@
 package indi.byhfdd.bh3rd.item.food;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import indi.byhfdd.bh3rd.cuisine.Bh3rdPotRecipe;
 import indi.byhfdd.bh3rd.cuisine.FoodCore;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,7 +18,6 @@ import project.studio.manametalmod.itemAndBlockCraft.ItemCraft10;
 import project.studio.manametalmod.magic.magicItem.MagicItemType;
 import project.studio.manametalmod.produce.beekeeping.BeekeepingCore;
 import project.studio.manametalmod.produce.cuisine.FoodType;
-import project.studio.manametalmod.produce.cuisine.PotRecipe;
 import project.studio.manametalmod.produce.farming.CropDifficult;
 import project.studio.manametalmod.produce.farming.FarmCore;
 import project.studio.manametalmod.produce.farming.IWorldGenPlant;
@@ -45,7 +45,7 @@ public class FoodLoader {
 
     public static Item FoodCoreLV1 = new FoodCore(5, 3, "FoodCoreLv1");
     public static Item FoodCoreLV2 = new FoodCore(10, 16, "FoodCoreLv2");
-    public static Item FoodCoreLV3 = new FoodCore(20, 17, "FoodCoreLv3");
+    public static Item FoodCoreLV3 = new FoodCore(20, 18, "FoodCoreLv3");
     public static Item FoodCoreLV4 = new FoodCore(25, 9, "FoodCoreLv4");
 
     public static ItemCropBh3rd FoodMaterials1;
@@ -56,8 +56,6 @@ public class FoodLoader {
     public static ItemCropBh3rd FoodMaterials8;
     public static ItemCropBh3rd FoodMaterials9;
     public static ItemCropBh3rd FoodMaterials11;
-
-    int FishCount = ManaMetalAPI.FishingList.size();
 
     public FoodLoader() {
         init();
@@ -171,112 +169,112 @@ public class FoodLoader {
             Quality.VeryRare);
         // LV1
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 0),
                 new int[] { 0, 4, 0, 0, 0, 0, 0, 0 },
                 30,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, FarmCore.Rice, FarmCore.Rice }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 1),
                 new int[] { 0, 2, 0, 0, 2, 0, 0, 0 },
                 30,
                 new Object[] { Items.egg, Items.egg, FarmCore.Rice, FarmCore.Rice }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV1, 1, 2),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials1, FoodMaterials1, Items.chicken, Items.chicken }));
         // LV2
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 0),
                 new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials2, FoodMaterials2, FoodMaterials2, FoodMaterials2 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 1),
                 new int[] { 0, 0, 0, 2, 2, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials3, FoodMaterials3, Items.egg, Items.egg }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 2),
                 new int[] { 0, 0, 0, 2, 2, 0, 0, 0 },
                 30,
                 new Object[] { FarmCore.Tomato, FarmCore.Tomato, Items.egg, Items.egg }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 3),
                 new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
                 30,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, Items.porkchop, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 4),
                 new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials1, FoodMaterials1, FoodMaterials4, FoodMaterials4 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 5),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials3, FoodMaterials3, Items.porkchop, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 6),
                 new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials18, FoodMaterials18, Items.porkchop, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 7),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 30,
                 new Object[] { FarmCore.WhiteRadish, FarmCore.WhiteRadish, Items.porkchop, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 8),
                 new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
                 30,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, Items.egg, FarmCore.Tomato }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 9),
                 new int[] { 0, 2, 0, 0, 0, 0, 2, 0 },
                 30,
                 new Object[] { FoodMaterials18, FoodMaterials18, new ItemStack(FishingCore.fish_M3_Dead, 1, 40),
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 40) }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 10),
                 new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials3, FoodMaterials4, FoodMaterials4, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 11),
                 new int[] { 0, 2, 0, 0, 1, 0, 0, 1 },
                 30,
                 new Object[] { FoodMaterials18, FoodMaterials18, Items.egg, Items.milk_bucket }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 12),
                 new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
                 30,
                 new Object[] { FoodMaterials2, FoodMaterials2, FoodMaterials3, Items.potato }));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 13),
                 new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
                 30,
                 new Object[] { FoodMaterials1, FoodMaterials3 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 14),
                 new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
                 30,
@@ -284,20 +282,20 @@ public class FoodLoader {
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials1, FarmCore.WhiteRadish }));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV2, 1, 15),
                 new int[] { 0, 1, 0, 1, 0, 0, 2, 0 },
                 30,
                 new Object[] { FarmCore.Tomato, FoodMaterials18 }));
         // LV3
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 0),
                 new int[] { 0, 0, 0, 4, 0, 0, 0, 0 },
                 40,
                 new Object[] { FoodMaterials5, FoodMaterials5, FoodMaterials5, FoodMaterials5 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 1),
                 new int[] { 0, 0, 0, 0, 0, 0, 4, 0 },
                 40,
@@ -305,156 +303,156 @@ public class FoodLoader {
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 25), new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 25) }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 2),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { FoodMaterials6, FoodMaterials6, FoodMaterials3, FoodMaterials3 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 3),
                 new int[] { 0, 0, 2, 0, 0, 2, 0, 0 },
                 40,
                 new Object[] { Items.porkchop, Items.mushroom_stew }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 4),
                 new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
                 40,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, FoodMaterials1, Items.porkchop }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 5),
                 new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, ManaMetalMod.Lotus, ManaMetalMod.Lotus }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 6),
                 new int[] { 0, 2, 1, 1, 0, 0, 0, 0 },
                 40,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, Items.porkchop, FarmCore.Onion }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 7),
                 new int[] { 0, 2, 0, 0, 0, 0, 2, 0 },
                 40,
                 new Object[] { new ItemStack(FishingCore.fish_M3_Dead, 1, 25),
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 25), FoodMaterials4, FoodMaterials4 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 8),
                 new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
                 40,
                 new Object[] { FoodMaterials3, new ItemStack(FishingCore.fish_M3_Dead, 1, 118),
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 118), FoodMaterials7 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 9),
                 new int[] { 0, 1, 2, 1, 0, 0, 0, 0 },
                 40,
                 new Object[] { Items.porkchop, Items.porkchop, FoodMaterials18, FarmCore.Onion }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 10),
                 new int[] { 0, 0, 3, 1, 0, 0, 0, 0 },
                 40,
                 new Object[] { FoodMaterials7, FoodMaterials6, Items.chicken, Items.chicken }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 11),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { FarmCore.Onion, Items.potato, Items.porkchop, Items.porkchop }));
         // 查看
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 12),
                 new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
                 40,
                 new Object[] { FoodMaterials18, FoodMaterials18, Items.egg, "foodSweetBerrie" }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 13),
                 new int[] { 0, 0, 1, 3, 0, 0, 0, 0 },
                 40,
                 new Object[] { Items.porkchop, FoodMaterials2, FoodMaterials2, FoodMaterials7 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 14),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { Items.porkchop, Items.porkchop, FoodMaterials7, "foodBamboo" }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV3, 1, 15),
                 new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { "foodSweetBerrie", FarmCore.Rice, FarmCore.Rice, FoodMaterials8 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
-                new ItemStack(FoodCoreLV3, 1, 15),
+            new Bh3rdPotRecipe(
+                new ItemStack(FoodCoreLV3, 1, 16),
                 new int[] { 0, 0, 0, 2, 0, 0, 0, 2 },
                 40,
                 new Object[] { Items.milk_bucket, Items.milk_bucket, FoodMaterials9, FoodMaterials5 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
-                new ItemStack(FoodCoreLV3, 1, 16),
+            new Bh3rdPotRecipe(
+                new ItemStack(FoodCoreLV3, 1, 17),
                 new int[] { 0, 2, 0, 2, 0, 0, 0, 0 },
                 40,
                 new Object[] { FarmCore.Rice, FarmCore.Rice, FoodMaterials8, "foodSweetBerrie" }));
         // LV4
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 0),
                 new int[] { 0, 0, 0, 2, 0, 0, 2, 0 },
                 60,
                 new Object[] { FoodMaterials10, FoodMaterials10, "foodSweetBerrie", "foodSweetBerrie" }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 1),
                 new int[] { 0, 0, 0, 3, 1, 0, 0, 0 },
                 60,
                 new Object[] { FoodMaterials11, FoodMaterials11, "foodBamboo", Items.egg }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 2),
                 new int[] { 0, 2, 2, 0, 0, 0, 0, 0 },
                 60,
                 new Object[] { FoodMaterials12, FoodMaterials12, FarmCore.Rice, FarmCore.Rice }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 3),
                 new int[] { 0, 1, 1, 0, 1, 0, 1, 0 },
                 60,
                 new Object[] { FoodMaterials13, Items.egg, FarmCore.Rice,
                     new ItemStack(FishingCore.fish_M3_Dead, 1, 40) }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 4),
                 new int[] { 0, 2, 0, 1, 1, 0, 0, 0 },
                 60,
                 new Object[] { ManaMetalMod.Lotus, FarmCore.Rice, FarmCore.Rice, FoodMaterials14 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 5),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 60,
                 new Object[] { FoodMaterials15, FoodMaterials15, FoodMaterials9, FoodMaterials5 }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 6),
                 new int[] { 0, 0, 1, 3, 0, 0, 0, 0 },
                 60,
                 new Object[] { FoodMaterials16, FoodMaterials3, FoodMaterials7, FarmCore.Onion }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 7),
                 new int[] { 0, 0, 2, 2, 0, 0, 0, 0 },
                 60,
                 new Object[] { FoodMaterials17, FoodMaterials17, FoodMaterials8, "foodSweetBerrie" }));
         ManaMetalAPI.PotFoodRecipe.add(
-            new PotRecipe(
+            new Bh3rdPotRecipe(
                 new ItemStack(FoodCoreLV4, 1, 8),
                 new int[] { 0, 0, 4, 0, 0, 0, 0, 0 },
                 60,
@@ -475,7 +473,7 @@ public class FoodLoader {
             Items.gold_nugget);
         ManaMetalAPI.FishingList.add(
             new FishPrey(
-                new ItemStack(FishingCore.fish_M3_Life, 1, FishCount + 2),
+                new ItemStack(FoodMaterials10),
                 FishSizeType.Medium,
                 WaterType.river,
                 30,

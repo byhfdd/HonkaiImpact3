@@ -389,3 +389,4 @@ gui.bh3rd.crystalShop.status.noCrystals=背包中没有可以存入的水晶
 gui.bh3rd.crystalShop.status.balanceFull=钱包余额已达上限，水晶未被消耗
 gui.bh3rd.crystalShop.status.deposited=背包中的水晶已存入独立钱包
 gui.bh3rd.crystalShop.status.withdrawn=已提取 35 水晶，可用于原有合成
+message.bh3rd.cuisine.splitBeforeEating=料理请先拆成单份再食用。

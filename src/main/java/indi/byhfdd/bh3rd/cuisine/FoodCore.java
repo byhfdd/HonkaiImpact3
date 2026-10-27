@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
@@ -40,7 +41,7 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
         this.some = some;
         this.nameLV = nameLV;
         this.icons = new IIcon[some];
-        this.setMaxStackSize(20); // 设置最大堆叠数量
+        this.setMaxStackSize(1); // 每份料理的剩余口数和收藏次数保存在独立 NBT 中
         this.setAlwaysEdible(); // 设置总是可以食用（即使饥饿值满也可以食用）
         this.setHasSubtypes(true); // 启用子类型（metadata）
         this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);// 设置创造模式物品栏分类
@@ -55,12 +56,34 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
      * @return 处理后的物品栈
      */
     public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
+        // 旧存档可能仍有多份一叠，不能让本体按一份料理修改整叠的 NBT。
+        if (rejectStackedCuisine(item, world, player)) {
+            return item;
+        }
         player.getFoodStats()
             .func_151686_a(this, item); // 增加玩家的饱食度
         world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F); // 播放打嗝声音
         this.onFoodEaten(item, world, player); // 调用父类的食物食用处理方法
         ItemCuisine.addItemCuisineEffect(item, world, player, false); // 添加料理效果
         return item;
+    }
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
+        if (rejectStackedCuisine(item, world, player)) {
+            return item;
+        }
+        return super.onItemRightClick(item, world, player);
+    }
+
+    private boolean rejectStackedCuisine(ItemStack item, World world, EntityPlayer player) {
+        if (item.stackSize <= 1) {
+            return false;
+        }
+        if (!world.isRemote) {
+            player.addChatMessage(new ChatComponentTranslation("message.bh3rd.cuisine.splitBeforeEating"));
+        }
+        return true;
     }
 
     @Override
@@ -147,7 +170,7 @@ public class FoodCore extends ItemFood implements IFood, ICuisine {
      */
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta) {
-        return icons[meta];
+        return icons[meta >= 0 && meta < icons.length ? meta : 0];
     }
 
     /**

@@ -35,6 +35,7 @@
  */
 dependencies {
     testImplementation("junit:junit:4.13.2")
+    testImplementation(project.files("libs/manametalmod.jar", "libs/Muya.jar"))
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.4-GTNH:dev")
     compileOnly("org.jetbrains:annotations:24.1.0")
     devOnlyNonPublishable(project.files("libs/manametalmod.jar"))

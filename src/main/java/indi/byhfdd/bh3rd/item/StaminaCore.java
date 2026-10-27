@@ -33,15 +33,15 @@ public class StaminaCore extends Item implements IPotion {
         GameRegistry.registerItem(this, name, Main.MODID);
     }
 
+    @Override
     public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
-        if (PotionEffectM3.isPotion(player, PotionM3.potionResistance)) {
+        if (world.isRemote || PotionEffectM3.isPotion(player, PotionM3.potionResistance)) {
             return item;
         } else {
             ManaMetalModRoot root = MMM.getEntityNBT(player);
             if (root != null) {
                 if (root.carrer.getLv() >= this.getLV(item.getItemDamage())) {
-                    root.mana.addPower(this.getEffect(root, item.getItemDamage()));
-                    root.mana.addFatigue(-4 * (item.getItemDamage() + 1));
+                    root.mana.addFatigue(this.getEffect(root, item.getItemDamage()));
                     world.playSoundAtEntity(player, "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
                     if (!player.capabilities.isCreativeMode) {
                         --item.stackSize;
@@ -49,7 +49,7 @@ public class StaminaCore extends Item implements IPotion {
                     player.addPotionEffect(new PotionEffect(3, 2400, 2));
                     PotionEffectM3.addPotion(player, PotionM3.potionMinefood, 120, 0);// 矿工汤
                     PotionEffectM3.addPotion(player, PotionM3.potionCofe, 120, 0);// 咖啡
-                } else if (!world.isRemote) {
+                } else {
                     player.addChatComponentMessage(new ChatComponentTranslation("MMM.info.hpwater", new Object[0]));
                 }
             }

@@ -92,3 +92,4 @@ gui.bh3rd.crystalShop.status.noCrystals=No crystals in your inventory to deposit
 gui.bh3rd.crystalShop.status.balanceFull=Wallet full. Your crystals were kept.
 gui.bh3rd.crystalShop.status.deposited=Inventory crystals deposited into wallet.
 gui.bh3rd.crystalShop.status.withdrawn=35 crystals withdrawn for crafting.
+message.bh3rd.cuisine.splitBeforeEating=Separate cuisine into single servings before eating.
